@@ -3,6 +3,12 @@ body{
     background-color: #f4f6f5;
 }
 
+.couleur_375452{
+    background-color: #375452;
+    color: white;
+
+}
+
 #top_menu{
     height: auto;
     border: 2px solid black;
@@ -18,6 +24,12 @@ body{
     border: 2px solid black;
 }
 
+#menu_search_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 #search_bar{
     min-width: 100px;
     width : 100px;
@@ -25,6 +37,11 @@ body{
 }
 
 
+
+#menu_icon_search_bar{
+    justify-content: center;
+    align-items: center;
+}
 
 
 #menu_icon_search_bar > img{

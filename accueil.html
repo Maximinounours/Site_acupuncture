@@ -21,31 +21,25 @@
     -->
 
         <!--Menu en haut-->
-        <div id="top_menu">
+        <div id="top_menu" class="couleur_375452">
+            <div>
+                <div><img src="./images/menu.png" alt="icone du menu"></div>
+            </div>
             <div id="menu_menu">Manu</div>
             <div id="menu_connexion">Connexion</div>
             <div id="menu_infos">Informations</div>
             <div id="menu_search_bar" >
                 <input type="text" value="Rechercher" onfocus="if(this.value=='Rechercher'){this.value='';}" onblur="if(this.value==''){this.value='Rechercher';}" />
-            </div>
-            <div id="menu_icon_search_bar">
-                <img src ="images/icone_loupe.png">
+                <div id="menu_icon_search_bar">
+                    <img src ="images/icone_loupe.png" alt="icone de loupe">
+                </div>
             </div>
         </div>
 
         <!--Deux icônes d'accès sur un fond cosy -->
         <div id="contain_icones">
+
             <div id="icone_connexion" class="icone_menu couleur_c0cfb2">
-
-                <!--<form>
-                    <label for="username">Username</label><br>
-                    <input type="text" id="username" name="username"><br>
-                    <label for="password">Password</label><br>
-                    <input type="text" id="password" name="password">
-                    <br>
-                    <button type="submit">Envoyer</button>
-                  </form>-->
-
                   <button>
                     Sign in
                   </button>
@@ -53,8 +47,8 @@
                     Sign up
                   </button>
             </div>
-            <div id="icone_liste" class="icone_menu couleur_c0cfb2">
-                <a href="./listeSymptome.html">Accéder à la liste</a>
+
+            <div id="icone_liste" class="icone_menu couleur_c0cfb2" onclick="location.href='./listeSymptome.html';" style="cursor: pointer;">
             </div>
 
         </div>
