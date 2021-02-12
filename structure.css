@@ -18,6 +18,7 @@ body{
     border: 2px solid black;
 }
 
+<<<<<<< HEAD
 #search_bar{
     min-width: 100px;
     width : 100px;
@@ -30,6 +31,11 @@ body{
 #menu_icon_search_bar > img{
     max-width: 40px;
     max-height: 40px;
+=======
+#top_menu{
+    height: 50px;
+    border: 5px solid black;
+>>>>>>> af7facdef81dcfeb3457a3024c872c86b8e98cbb
 }
 
 
@@ -45,3 +51,8 @@ body{
     border: 5px solid black;
 
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> af7facdef81dcfeb3457a3024c872c86b8e98cbb
