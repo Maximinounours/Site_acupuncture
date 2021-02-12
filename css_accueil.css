@@ -19,11 +19,24 @@
     flex-direction: row;
 }
 
+icone_connexion > div{
+    padding: 10%;
+    border: 1px solid black;
+}
+
 #icone_liste{
-    background-image: url("./images/romarin.jpg");
+    background-image: url("./images/liste.png");
     background-size:cover;
     background-repeat: no-repeat;
     overflow: hidden;
 }
 
+#icone_liste:hover{
+    background-image: url("./images/romarin.jpg");
+}
 
+#icone_liste > div{
+    color: white;
+    font-size: xx-large;
+    text-align: center;
+}

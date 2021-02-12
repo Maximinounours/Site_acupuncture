@@ -17,6 +17,7 @@ body{
     grid-template-columns: repeat(5, 1fr);
     grid-gap: 2%px;
     grid-auto-rows: minmax(15%, auto);
+    align-items: center;
 
 }
 
@@ -28,6 +29,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    max-height: 30px;
 }
 
 #search_bar{
@@ -41,12 +43,13 @@ body{
 #menu_icon_search_bar{
     justify-content: center;
     align-items: center;
+    max-width: 40px;
+    max-height: inherit;
 }
 
 
 #menu_icon_search_bar > img{
-    max-width: 40px;
-    max-height: 40px;
+    max-height: inherit;
 }
 
 
