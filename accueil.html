@@ -5,6 +5,7 @@
         <title>Accueil</title>
 
         <link rel="stylesheet" href="structure.css">
+        <link rel="stylesheet" href="css_accueil.css">
     </head>
 
     
@@ -21,23 +22,39 @@
 
         <!--Menu en haut-->
         <div id="top_menu">
-
+            <div id="menu_menu">Manu</div>
+            <div id="menu_connexion">Connexion</div>
+            <div id="menu_infos">Informations</div>
+            <div id="menu_search_bar" >
+                <input type="text" value="Rechercher" onfocus="if(this.value=='Rechercher'){this.value='';}" onblur="if(this.value==''){this.value='Rechercher';}" />
+            </div>
+            <div id="menu_icon_search_bar">
+                <img src ="images/icone_loupe.png">
+            </div>
         </div>
 
         <!--Deux icônes d'accès sur un fond cosy -->
         <div id="contain_icones">
-            <div id="icone_liste" class="icone">
-                <form>
+            <div id="icone_connexion" class="icone_menu couleur_c0cfb2">
+
+                <!--<form>
                     <label for="username">Username</label><br>
                     <input type="text" id="username" name="username"><br>
                     <label for="password">Password</label><br>
                     <input type="text" id="password" name="password">
                     <br>
                     <button type="submit">Envoyer</button>
-                  </form>
+                  </form>-->
+
+                  <button>
+                    Sign in
+                  </button>
+                  <button>
+                    Sign up
+                  </button>
             </div>
-            <div id="icone_liste" class="icone">
-                <a>Accéder à la liste</a>
+            <div id="icone_liste" class="icone_menu couleur_c0cfb2">
+                <a href="./listeSymptome.html">Accéder à la liste</a>
             </div>
 
         </div>
