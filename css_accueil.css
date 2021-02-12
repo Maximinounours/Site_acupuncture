@@ -19,9 +19,16 @@
     flex-direction: row;
 }
 
-icone_connexion > div{
+#icone_connexion > div{
+    background-color:#547a30;
+    width: fit-content;
+    height: fit-content;
     padding: 10%;
     border: 1px solid black;
+}
+
+#icone_connexion > div:hover{
+    background-color: #22c265;
 }
 
 #icone_liste{
