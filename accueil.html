@@ -23,18 +23,31 @@
         <!--Menu en haut-->
 
 
-        <div id="top_menu" class="couleur_375452">
-            <div>
-                <div><img src="./images/menu.png" alt="icone du menu"></div>
-            </div>
-            <div id="menu_menu">Menu</div>
-            <div id="menu_connexion">Connexion</div>
-            <div id="menu_infos">Informations</div>
-            <div id="menu_search_bar" >
-                <input type="text" value="Rechercher" onfocus="if(this.value=='Rechercher'){this.value='';}" onblur="if(this.value==''){this.value='Rechercher';}" />
-                <div id="menu_icon_search_bar">
-                    <img src ="images/icone_loupe.png" alt="icone de loupe">
-                </div>
+               <!-- Un petit menu avec les pages accessibles pratiques -->
+               <div class="menu_simple" class='lignes'>
+                <ul>
+                    <li>
+                        <a href="Accueil.html">
+                            <target=_ self></target> Home</a>
+                    </li>
+                    <li>
+                        <a href="connexion.html">
+                            <target=_ self></target> Connexion </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <target=_ self></target> About us </a>
+                    </li>
+                    <li>
+                            <a href="pageInfo.html">
+                                <target=_ self></target> Information </a>
+                    </li>
+                    <li id="menu_search_bar">
+                        <input type="text" value="Rechercher" onfocus="if(this.value=='Rechercher'){this.value='';}" onblur="if(this.value==''){this.value='Rechercher';}" />
+                        <div id="menu_icon_search_bar">
+                            <img src ="images/icone_loupe.png" alt="icone de loupe">
+                    </li>
+                </ul>   
             </div>
         </div>
 
@@ -50,7 +63,7 @@
                   </div>
             </div>
 
-            <div id="icone_liste" class="icone_menu couleur_c0cfb2" onclick="location.href='./listeSymptome.html';" style="cursor: pointer;">
+            <div id="icone_liste" class="icone_menu" onclick="location.href='./listeSymptome.html';" style="cursor: pointer;">
                 <div>
                     Symptoms list
                 </div>
