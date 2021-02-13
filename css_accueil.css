@@ -32,7 +32,7 @@
 }
 
 #icone_liste{
-    background-image: url("./images/liste.png");
+    background-image: url("./images/romarinClair.png");
     background-size:cover;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -47,3 +47,9 @@
     font-size: xx-large;
     text-align: center;
 }
+#icone_sign {
+        background-image: url("./images/sign.png");
+        background-size:cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
