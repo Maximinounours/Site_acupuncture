@@ -123,7 +123,7 @@ li {
     display: flex;
     justify-content: space-evenly;
     align-content: space-around;
-    background-color: rgba(0, 255, 98, 0.137);
+    background-color: #365f419d;
 }
 
 #bot_panel > div{
@@ -134,6 +134,13 @@ li {
     border-radius: 20px;
     vertical-align: middle;
     padding: 10px;
+    border: 2px solid #365f41;
+}
+
+#bot_panel > div:hover{
+    background-color: #365f419d;
+    cursor: pointer;
+    border: 2px solid white
 }
 
 #bot_panel > div > img{
