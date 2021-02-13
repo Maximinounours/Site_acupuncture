@@ -110,13 +110,30 @@ li {
 
 /*-----------------*/
 
-
-
-
-
-
 #bot_panel{
-    height: 100px;
-    border: 5px solid black;
+    height: 80px;
+    border-radius: 10px;
+    background-image: url("./images/liseret.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+}
 
+#bot_panel > div{
+    max-height: 50px;
+    max-width: 50px;
+    display: inline-block;
+    background-color:#365f41;
+    border-radius: 20px;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+#bot_panel > div > img{
+    max-width: inherit;
+    max-height: inherit;
 }
