@@ -50,7 +50,6 @@
                 </ul>   
             </div>
         </div>
-        <?php echo "ezr"; ?>
 
         <!--Deux icônes d'accès sur un fond cosy -->
         <div id="contain_icones">

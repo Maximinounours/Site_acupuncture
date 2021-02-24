@@ -1,8 +1,4 @@
 
-.couleur_c0cfb2{
-    background-color: #c0cfb2;
-    border: 2px solid #839b6d;
-}
 #contain_icones{
     max-width: 100%;
     justify-content: space-around;
@@ -43,10 +39,14 @@
     overflow: hidden;
 }
  .noircissement:hover{
-    background-image: url("./images/romarin.jpg");s
+    background-image: url("./images/romarinFoncé.jpg");
  }
 
-
+#icone_connexion{
+    display:grid;
+    grid-template-columns: 50% 50%;
+  
+}
 #icone_sign{
     display:grid;
     grid-template-columns: 50% 50%;
