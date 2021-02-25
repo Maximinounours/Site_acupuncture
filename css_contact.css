@@ -1,0 +1,14 @@
+#contact{
+    display: grid;
+}
+
+#map{
+    grid-column: 1;
+}
+
+#form{
+    grid-column: 2;
+}
+#info{
+    grid-column: 3;
+}
