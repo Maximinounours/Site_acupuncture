@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,32 +25,7 @@
 
 
                <!-- Un petit menu avec les pages accessibles pratiques -->
-               <div class="menu_simple" class='lignes'>
-                <ul>
-                    <li>
-                        <a href="Accueil.html">
-                            <target=_ self></target> Home</a>
-                    </li>
-                    <li>
-                        <a href="connexion.html">
-                            <target=_ self></target> Connexion </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">
-                            <target=_ self></target> About us </a>
-                    </li>
-                    <li>
-                            <a href="pageInfo.html">
-                                <target=_ self></target> Information </a>
-                    </li>
-                    <li id="menu_search_bar">
-                        <input type="text" value="Rechercher" onfocus="if(this.value=='Rechercher'){this.value='';}" onblur="if(this.value==''){this.value='Rechercher';}" />
-                        <div id="menu_icon_search_bar">
-                            <img src ="images/icone_loupe.png" alt="icone de loupe">
-                    </li>
-                </ul>   
-            </div>
-        </div>
+        <?php include("menu.php"); ?>
 
         <!--Deux icônes d'accès sur un fond cosy -->
         <div id="contain_icones">
@@ -87,16 +63,7 @@
             </p>
         </div>
         <!--Eventuellement quelquechose tout en bas-->
-        <div id="bot_panel">
-            <div onclick='location.href="https://www.instagram.com/maximinounours0/";'>
-                <img src="./images/icone_insta.png" alt="Page insta">
-            </div>
-            <div onclick="location.href='https://twitter.com';">
-                <img src="./images/icone_twitter.png" alt="Page twitter">
-            </div>
-            <div onclick="location.href='https://www.facebook.com/';">
-                <img src="./images/icone_fb.png" alt="Page facebook">
-            </div>
-        </div>
+        <?php include("footer.php"); ?>
+
     </body>
 </html>
