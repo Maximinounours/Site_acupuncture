@@ -66,11 +66,9 @@
    float: left;
 }
 
-
-
-
 #tout{
-    padding: 200px 50px;
+    margin: 50px auto;
+    padding: 20px 50px;
     display: grid;
 }
 
@@ -80,10 +78,15 @@
 }
 
 #tout > div {
+    border-radius: 10px;
     margin: 0 5%;
 }
 
 #tout a{
+
+    font-family:fantasy;
+    letter-spacing: 5px;
+    font-size: 30px;
     padding: 100px 0;
     border: none;
     text-decoration: none;
@@ -91,7 +94,7 @@
 }
 
 #gauche{
-    background-image: url("./images/sign.png");
+    background-image: url("../images/sign.png");
     background-size:cover;
     grid-column: 1;
     display: grid;
@@ -107,12 +110,13 @@
 }
 
 #droite{
-    background-image: url("./images/romarinClair.png");
+    background-image: url("../images/romarinClair.png");
     background-size:cover;
     background-repeat: no-repeat;    grid-column: 2;
     display: grid;
 }
 
 .noirci:hover{
+    border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.5);
 }
