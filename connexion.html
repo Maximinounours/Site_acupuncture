@@ -9,18 +9,10 @@
 
     
     <body>
-        <!-- MENU 
-        <nav class="menu_top">
-            <div><a href="page_menu.html" class="menu_tab page_active">Accueil</a></div>
-            <div><a href="page_contact.html" class="menu_tab">Contact</a></div>
-            <div class="menu_tab_filler"></div>
-            <div><a id="menuConnexion" href="page_connexion.html" class="menu_tab menu_tab_droite">Connexion</a></div>
-            <div><a href="page_panier.html" class="menu_tab menu_tab_droite">Panier</a></div>
-        </nav>
-    -->
 
         <!--Menu en haut-->
-        <div id="top_menu">
+        <?php include("menu.php"); >
+
 
         </div>
         <!--Fenetre de connexion-->
@@ -29,8 +21,6 @@
                 <img src="images/connexion.png">
             </div>
             <div id="rubriqueConnexion">
-                <p id="signIn"> Sign in : </p> 
-                <p id="signUp"> Sign up : </p> 
                 <form>
                     <label for="username">Username</label><br>
                     <input type="text" id="username" name="username"><br>
@@ -41,11 +31,11 @@
                   </form>
             </div>
         </div>
-        
-        
+
 
         <!--Eventuellement quelquechose tout en bas-->
         <div id="bot_panel">
+
 
         </div>
     </body>
