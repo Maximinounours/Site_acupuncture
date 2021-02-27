@@ -20,7 +20,11 @@ h2 {
     font-size: larger;
     text-transform: uppercase;
     text-align: center;
-} 
+}
+
+#menu_search_bar > input {
+    width: 100%;
+}
 p{
     font-family: system-ui;
     color: white;
@@ -29,7 +33,7 @@ p{
 } 
 #style{
     border-top : 1px solid #000;
-    width : 500px;
+    width : 100%;
 }
 
 #pract{
@@ -39,7 +43,7 @@ p{
 }
   #arrayTitle {
     font-size: 26px;
-    margin: 20px 0;
+    margin: 10px 0;
     text-align: center;
   }
   
@@ -88,6 +92,7 @@ p{
     background-color: #543739;
 }
 #map {
+    width: 100%;
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
     -ms-filter: grayscale(100%);
