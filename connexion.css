@@ -50,14 +50,14 @@ hr {
     background-color: #3d8d52;
 }
 
-#login{
+#register{
     text-align: center;
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 5px;
 }
 
-#login a {
+#register a {
     color: black;
     text-decoration: none;
     border: none;
@@ -67,7 +67,7 @@ hr {
 }
 
 
-#login a:hover{
+#register a:hover{
     background-color: #3d8d52;
 
 }

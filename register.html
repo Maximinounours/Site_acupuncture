@@ -3,6 +3,8 @@
 
 <head>
     <link rel="stylesheet" href="structure.css">
+    <link rel="stylesheet" href="register.css">
+
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,18 +52,43 @@
     </div>
 
     <!-- Formulaire pour s'enregistrer-->
-    <div id="formulaire">
-        <form action="\page_login" method="post">
 
-            <label for="adresse_mail">Mail :</label>
-            <input type="text" id="adresse_mail" name="user_mail">
+    <form action="">
 
-            <label for="password">Password :</label>
-            <input type="password" id="password" name="user_password">
+        <div id="container">
 
-            <a href="">Mot de passe oublié</a>
-        </form>
-    </div>
+            <h1>Créer un compte ACUPUNCTURA</h1>
+
+            <hr>
+
+            <label for="name">Prénom</label>
+            <input type="text" name="name" placeholder="Prénom">
+
+            <label for="firstname">Nom</label>
+            <input type="text" name="firstname" placeholder="Nom">
+
+            <label for="email">Adresse mail</label>
+            <input type="text" name="email" placeholder="exemple@de.bosh.com">
+
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" placeholder="Mot de passe">
+
+            <label for="rpt-password">Confirmer le mot de passe</label>
+            <input type="password" name="rpt-password" placeholder="Répeter le mot de passe">
+
+            <button type="submit" id="btn_register">Créer un compte</button>
+
+            <hr>
+
+            <div id="login">
+            <p>Vous avez déjà un compte ? <a href="connexion.html"> Se connecter</a></p>
+
+          </div>
+        </div>
+        
+    </form>
+
+
     <!--Include le foote avec smarty apres-->
 
     <!--Eventuellement quelquechose tout en bas-->
