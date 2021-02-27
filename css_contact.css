@@ -2,18 +2,22 @@
 
 #contact{
     display: grid;
-    background-color: #E0DED8;
+    background-color: #EAECEE;
     border-radius: 2%;
 }
 
 #map{
     grid-column: 1;
+
 }
 #form{
     grid-column: 2;
 }
-#info{
+#photo {
     grid-column: 3;
+}
+#info{
+    grid-column: 4;  
 }
 h2 { color: #283747; 
     font-family: 'Trocchi', serif; 

@@ -21,22 +21,30 @@
                     <h2> Request a consultation </h2>
                     <form action="/ma-page-de-traitement" method="post">
                         <div>
-                            <input type="text" id="name" name="user_name" value="Full Name">
+                            <input type="text" id="name" name="user_name" placeholder="Full Name">
                         </div>
                         <div>
-                            <input type="email" id="mail" name="user_mail" value="Email">
+                            <input type="email" id="mail" name="user_mail" placeholder="Email">
                         </div>
                         <div>
-                            <input type="text" id="number" name="user_number" value="Phone Number">
+                            <input type="text" id="number" name="user_number" placeholder="Phone Number">
                         </div>
                         <div>
-                            <input type="text" value="Write your message">
+                            <input type="text"  placeholder="Write your message">
                         </div>
                         <div class="button">
                             <button type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
+                <div id="photo"></div>
+                <form method="post">
+                    <label>Email</label>
+                    <input type="email" name="email" required><br>
+                    <label>Message</label>
+                    <textarea name="message" required></textarea><br>
+                    <input type="submit">
+                </form>
                 <!--Text-->
                 <div id="info">
                     <h2> Things to know </h2>
