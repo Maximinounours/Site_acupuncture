@@ -1,7 +1,7 @@
 
 body{
     background-color: #f4f6f5;
-    background-image: url("./images/fond.png");
+    background-image: url("../images/fond.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -113,7 +113,7 @@ li {
 #bot_panel{
     height: 80px;
     border-radius: 10px;
-    background-image: url("./images/liseret.png");
+    background-image: url("../images/liseret.png");
     border-radius: 30px;
     border: 2px solid #365f41;
     background-size: cover;

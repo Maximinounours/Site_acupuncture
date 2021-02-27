@@ -5,8 +5,8 @@
         <meta charset="utf-8"/>
         <title>Accueil</title>
 
-        <link rel="stylesheet" href="structure.css">
-        <link rel="stylesheet" href="css_accueil.css">
+        <link rel="stylesheet" href="../css/structure.css">
+        <link rel="stylesheet" href="../css/css_accueil.css">
     </head>
 
     
@@ -46,7 +46,7 @@
                     <li id="menu_search_bar">
                         <input type="text" value="Rechercher" onfocus="if(this.value=='Rechercher'){this.value='';}" onblur="if(this.value==''){this.value='Rechercher';}" />
                         <div id="menu_icon_search_bar">
-                            <img src ="images/icone_loupe.png" alt="icone de loupe">
+                            <img src ="../images/icone_loupe.png" alt="icone de loupe">
                     </li>
                 </ul>   
             </div>
@@ -68,28 +68,6 @@
     
         </div>
 
-        <div id="contain_icones">
-        <!--Connexion avec signIn et SingUp -->
-            <div id="icone_connexion" class="contain_icones">
-                <div id="icone_sign" class="noircissement" onclick="location.href='./connexion.html';" style="cursor: pointer;">
-                    <div id="signIn"  >
-                        Sign in 
-                    </div>
-                </div>
-                <div id="icone_sign"  onclick="location.href='./connexionSup.html';" style="cursor: pointer;">
-                    <div id="signUp"class="noircissement">
-                        Sign up
-                    </div>
-                </div>
-            </div>
-
-            <div id="icone_liste" class="icone_menu" onclick="location.href='./listeSymptome.html';" style="cursor: pointer;">
-                <div>
-                    Symptoms list
-                </div>
-            </div>
-
-        </div>
         <!--Blabla sur l'acupuncture-->
         <div>
             <p>
@@ -105,13 +83,13 @@
         <!--Eventuellement quelquechose tout en bas-->
         <div id="bot_panel">
             <div onclick='location.href="https://www.instagram.com/maximinounours0/";'>
-                <img src="./images/icone_insta.png" alt="Page insta">
+                <img src="../images/icone_insta.png" alt="Page insta">
             </div>
             <div onclick="location.href='https://twitter.com';">
-                <img src="./images/icone_twitter.png" alt="Page twitter">
+                <img src="../images/icone_twitter.png" alt="Page twitter">
             </div>
             <div onclick="location.href='https://www.facebook.com/';">
-                <img src="./images/icone_fb.png" alt="Page facebook">
+                <img src="../images/icone_fb.png" alt="Page facebook">
             </div>
         </div>
     </body>
