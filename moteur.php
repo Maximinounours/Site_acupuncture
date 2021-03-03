@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 function template($page) {
 // on s'occupe du skin
@@ -28,3 +29,5 @@ $affichage = ereg_replace("\[DATE\]", $date, $affichage); // remplacement de [DA
 return $affichage;
 }
 ?>
+=======
+>>>>>>> 04c42d2f2ac5e519a9c44c05469c436cdb12c021
