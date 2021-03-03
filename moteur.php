@@ -8,8 +8,8 @@ $affichage = fread ($ouvrir, filesize ($skin)); // lecture du fichier et stockag
 fclose ($ouvrir); // fermeture du fichier 
 // on s'occupe du contenu
 switch ($page) { // contrôle du contenu demandé par la page
-case "accueil": $include = "accueil.inc"; break;
-case "listeSymptome": $include = "listeSymptome.inc"; break;
+case "presentation": $include = "presentation.inc"; break;
+case "catalogue": $include = "catalogue.inc"; break;
 case "contact": $include = "contact.inc"; break; 
 default: $include = "accueil.inc";
 }
