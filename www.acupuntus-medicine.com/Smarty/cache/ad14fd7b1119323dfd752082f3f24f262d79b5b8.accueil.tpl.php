@@ -1,4 +1,37 @@
+<?php
+/* Smarty version 3.1.39, created on 2021-03-04 22:00:40
+  from '/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/templates/accueil.tpl' */
 
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.39',
+  'unifunc' => 'content_60414a78e13ce3_45306398',
+  'has_nocache_code' => true,
+  'file_dependency' => 
+  array (
+    'a764f46546803e4f8005cb5cd87931c7616d0a1e' => 
+    array (
+      0 => '/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/templates/accueil.tpl',
+      1 => 1614891635,
+      2 => 'file',
+    ),
+    '80a28daad5db41484c4776be6c9e2486ebb029eb' => 
+    array (
+      0 => '/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/templates/menu.tpl',
+      1 => 1614891555,
+      2 => 'file',
+    ),
+    '3c57d32423a9aee14bc238d06cb50e24ed1f397c' => 
+    array (
+      0 => '/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/templates/footer.tpl',
+      1 => 1614788986,
+      2 => 'file',
+    ),
+  ),
+  'cache_lifetime' => 3600,
+),true)) {
+function content_60414a78e13ce3_45306398 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,12 +41,40 @@
         <link rel="stylesheet" href="css/structure.css">
         <link rel="stylesheet" href="css/css_accueil.css">
         
-        <?php $page=accueil ?>
+        <?php echo '<?php ';?>
+$page=accueil <?php echo '?>';?>
+
     </head>
 
     
     <body>
-{include file="menu.tpl"}
+               <!-- Un petit menu avec les pages accessibles pratiques -->
+               <div class="menu_simple" class='lignes'>
+                <ul>
+                    <li>
+                        <a href="index.php?page=accueil">
+                            <target=_ self></target> Home</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=connexion">
+                            <target=_ self></target> Connexion </a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=contact">
+                            <target=_ self></target> About us </a>
+                    </li>
+                    <li>
+                            <a href="index.php?page=info">
+                                <target=_ self></target> Information </a>
+                    </li>
+                    <li id="menu_search_bar">
+                        <input type="text" placeholder="Rechercher" />
+                        <div id="menu_icon_search_bar">
+                            <img src ="./images/icone_loupe.png" alt="icone de loupe">
+                    </li>
+                </ul>   
+            </div>
+        </div>
 
         <!--Deux icônes d'accès sur un fond cosy -->
 
@@ -45,8 +106,20 @@
             
         </div>
         
-        {include file="footer.tpl"}
+                <!--Eventuellement quelquechose tout en bas-->
+        <div id="bot_panel">
+            <div onclick='location.href="https://www.instagram.com/maximinounours0/";'>
+                <img src="./images/icone_insta.png" alt="Page insta">
+            </div>
+            <div onclick="location.href='https://twitter.com';">
+                <img src="./images/icone_twitter.png" alt="Page twitter">
+            </div>
+            <div onclick="location.href='https://www.facebook.com/';">
+                <img src="./images/icone_fb.png" alt="Page facebook">
+            </div>
 
         </div>
     </body>
 </html>
+<?php }
+}
