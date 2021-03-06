@@ -53,40 +53,41 @@
 
     <!-- Formulaire pour s'enregistrer-->
 
-    <form action="">
-
-        <div id="container">
-
-            <h1>Créer un compte ACUPUNCTURA</h1>
-
-            <hr>
-
-            <label for="name">Prénom</label>
-            <input type="text" name="name" placeholder="Prénom">
-
-            <label for="firstname">Nom</label>
-            <input type="text" name="firstname" placeholder="Nom">
-
-            <label for="email">Adresse mail</label>
-            <input type="text" name="email" placeholder="exemple@de.bosh.com">
-
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" placeholder="Mot de passe">
-
-            <label for="rpt-password">Confirmer le mot de passe</label>
-            <input type="password" name="rpt-password" placeholder="Répeter le mot de passe">
-
-            <button type="submit" id="btn_register">Créer un compte</button>
-
-            <hr>
-
-            <div id="login">
-            <p>Vous avez déjà un compte ? <a href="connexion.html"> Se connecter</a></p>
-
-          </div>
+    <div id="wrapper">
+        <div id="contact"> 
+            <h2>Create an account Acupunctus Medecine</h2>
         </div>
+        <div id="pract" class="array">
+            <div id="container">
+                <form action="">
         
-    </form>
+                    <label for="name"><p>First Name</p></label>
+                    <input type="text" name="name" placeholder="First Name">
+        
+                    <label for="firstname"><p>Last Name</p></label>
+                    <input type="text" name="firstname" placeholder="Last name">
+        
+                    <label for="email"><p>Mail Adress</p></label>
+                    <input type="text" name="email" placeholder="exemple@de.bosh.com">
+        
+                    <label for="password"><p>Password</p></label>
+                    <input type="password" name="password" placeholder="Password">
+        
+                    <label for="rpt-password"><p>Confirm Password</p></label>
+                    <input type="password" name="rpt-password" placeholder="Confirm password">
+        
+                    <button type="submit" id="btn_register">Register</button>
+        
+                    <hr>
+        
+                    <div id="login">
+                    <p>Already have an account ? <a href="connexion.html"> Log in</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
     <!--Include le foote avec smarty apres-->
