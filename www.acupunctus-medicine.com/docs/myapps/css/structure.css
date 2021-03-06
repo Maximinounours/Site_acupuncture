@@ -1,0 +1,149 @@
+
+body{
+    background-color: #f4f6f5;
+    background-image: url("../images/fond.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.couleur_375452{
+    background-color: #375452;
+    color: white;
+
+}
+
+/*-------- Menu-----------*/
+li {
+    list-style:none !important;
+    color:#FFF;
+    padding:10px;
+    font-size:20px;
+    text-decoration:none;
+    }
+     
+    nav ul {
+    background-color:#375452;
+    padding:0;
+    margin:0;
+    }
+     
+    .menu_simple {
+        margin: 0 0;
+        background: url(imagens/navbar.png) #375452;
+        -webkit-box-shadow: 0 0 5px 0 #000000;
+        box-shadow: 0 0 5px 0 #000000;
+        filter: progid: DXImageTransform.Microsoft.Shadow(color=#000000, Direction=NaN, Strength=5);
+        position: -webkit-sticky;
+        position: sticky;
+        top: 5px;
+        z-index:5;
+    }
+    
+    .menu_simple ul {
+        display: table;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .menu_simple ul li {
+        display: table-cell;
+        border-left: 1px solid rgba(0, 0, 0, 0.5);
+    }
+    
+    .menu_simple ul li a {
+        display: inline-block;
+        width: 100%;
+        height: 79px;
+        font-family: 'calibri', sans-serif;
+        text-transform: uppercase;
+        font-size: 17px;
+        text-align: center;
+        font-weight: 550;
+        text-decoration: none;
+        color: white;
+        -webkit-transition: all 700ms;
+        transition: all 700ms;
+        line-height: 79px;
+    }
+    
+    .menu_simple ul li:first-child {
+        border-left: none;
+    }
+    
+    .menu_simple ul li a:visited {
+        color: white;
+    }
+    
+    .menu_simple ul li a:hover {
+        color: #c0cfb2;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+#menu_search_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-height: 30px;
+}
+
+#search_bar{
+    min-width: 100px;
+    width : 100px;
+    grid-column: 4;
+}
+
+
+
+#menu_icon_search_bar{
+    justify-content: center;
+    align-items: center;
+    max-width: 40px;
+    max-height: inherit;
+}
+
+
+#menu_icon_search_bar > img{
+    max-height: inherit;
+}
+
+
+/*-----------------*/
+
+#bot_panel{
+    height: 80px;
+    border-radius: 10px;
+    background-image: url("../images/liseret.png");
+    border-radius: 30px;
+    border: 2px solid #365f41;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+    background-color: #365f419d;
+}
+
+#bot_panel > div{
+    max-height: 50px;
+    max-width: 50px;
+    display: inline-block;
+    background-color:#365f41;
+    border-radius: 20px;
+    vertical-align: middle;
+    padding: 10px;
+    border: 2px solid #365f41;
+}
+
+#bot_panel > div:hover{
+    background-color: #365f419d;
+    cursor: pointer;
+    border: 2px solid white
+}
+
+#bot_panel > div > img{
+    max-width: inherit;
+    max-height: inherit;
+}
