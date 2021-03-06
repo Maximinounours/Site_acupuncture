@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/structure.css">
         <link rel="stylesheet" href="css/css_accueil.css">
         
-        <?php $page=accueil ?>
+        {assign "page" accueil }
     </head>
 
     

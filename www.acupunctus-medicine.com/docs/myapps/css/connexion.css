@@ -1,15 +1,20 @@
-#container {
-    background-color: #95d3a5;
+
+#container{
+    grid-column: 2; 
+    background-color: #768981; 
     margin: 20px auto;
     border-radius: 10px;
-    padding: 10px 20px;
-    max-width: 500px;
-    min-width: 200px;
-    border: #3d8d52 1px solid;
+    padding: 10px 20px; 
 }
-
-#container h1 {
+h2 {
+    font-family: system-ui;
+    color: white;
+    font-size: xx-large;
+    text-transform: uppercase;
     text-align: center;
+    vertical-align: middle;
+    padding-top: 150px;
+    
 }
 
 input[type=text], input[type=password] {
@@ -35,19 +40,17 @@ button{
     width: 100%;
     padding: 10px;
     margin: 5px 0;
-    background-color: #53be70;
+    background-color: #543739;
     border: none;
     border-radius: 10px;
 }
 
 button:hover{
-    background-color: #3d8d52;
+    background-color: #2b1b1c;
 }
 
 hr {
-    height: 2px;
-    border: none;
-    background-color: #3d8d52;
+    width : 100%;
 }
 
 #register{
@@ -58,16 +61,43 @@ hr {
 }
 
 #register a {
-    color: black;
+    color: white;
     text-decoration: none;
     border: none;
     border-radius: 5px;
-    background-color: #53be70;
+    background-color: #543739;
     padding: 5px 10px;
+    font-family: system-ui;
+    font-size: small;
+
 }
 
-
 #register a:hover{
-    background-color: #3d8d52;
+    background-color: #2b1b1c;
 
+}
+
+p{
+    font-family: system-ui;
+    color: white;
+    font-size: medium;
+
+}
+
+#wrapper{
+    display: grid;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: 1fr 1fr;
+}
+#contact{
+    grid-column: 1 ;
+    background-image:url("../images/connexion.jpg");
+    background-size: cover;
+}
+#pract{
+    grid-column: 2; 
+    background-color: #768981;
+    
 }

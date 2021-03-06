@@ -1,36 +1,28 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-06 17:35:39
+/* Smarty version 3.1.39, created on 2021-03-06 18:11:33
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6043af5be65cb7_27690993',
-  'has_nocache_code' => true,
+  'unifunc' => 'content_6043b7c51d9530_20845158',
+  'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8f749288e98de4c49a459e5f06dc6de5e1cf4040' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl',
-      1 => 1615047754,
-      2 => 'file',
-    ),
-    'ba93bdd447996ae0fba3296b3006423f1c4180e7' => 
-    array (
-      0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/menu.tpl',
-      1 => 1615047754,
-      2 => 'file',
-    ),
-    '93f47ecd9a61208a8d6267b47fff612ace099181' => 
-    array (
-      0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/footer.tpl',
-      1 => 1615047754,
+      1 => 1615050689,
       2 => 'file',
     ),
   ),
-  'cache_lifetime' => 3600,
-),true)) {
-function content_6043af5be65cb7_27690993 (Smarty_Internal_Template $_smarty_tpl) {
+  'includes' => 
+  array (
+    'file:menu.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_6043b7c51d9530_20845158 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,40 +33,13 @@ function content_6043af5be65cb7_27690993 (Smarty_Internal_Template $_smarty_tpl)
         <link rel="stylesheet" href="css/structure.css">
         <link rel="stylesheet" href="css/css_accueil.css">
         
-        <?php echo '<?php ';?>
-$page=accueil <?php echo '?>';?>
-
+        <?php $_smarty_tpl->_assignInScope('page', 'accueil');?>
     </head>
 
     
     <body>
-               <!-- Un petit menu avec les pages accessibles pratiques -->
-               <div class="menu_simple" class='lignes'>
-                <ul>
-                    <li>
-                        <a href="index.php?page=accueil">
-                            <target=_ self></target> Home</a>
-                    </li>
-                    <li>
-                        <a href="index.php?page=connexion">
-                            <target=_ self></target> Connexion </a>
-                    </li>
-                    <li>
-                        <a href="index.php?page=contact">
-                            <target=_ self></target> About us </a>
-                    </li>
-                    <li>
-                            <a href="index.php?page=info">
-                                <target=_ self></target> Information </a>
-                    </li>
-                    <li id="menu_search_bar">
-                        <input type="text" placeholder="Rechercher" />
-                        <div id="menu_icon_search_bar">
-                            <img src ="./images/icone_loupe.png" alt="icone de loupe">
-                    </li>
-                </ul>   
-            </div>
-        </div>
+<?php $_smarty_tpl->_subTemplateRender("file:menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
         <!--Deux icônes d'accès sur un fond cosy -->
 
@@ -106,17 +71,8 @@ $page=accueil <?php echo '?>';?>
             
         </div>
         
-                <!--Eventuellement quelquechose tout en bas-->
-        <div id="bot_panel">
-            <div onclick='location.href="https://www.instagram.com/maximinounours0/";'>
-                <img src="./images/icone_insta.png" alt="Page insta">
-            </div>
-            <div onclick="location.href='https://twitter.com';">
-                <img src="./images/icone_twitter.png" alt="Page twitter">
-            </div>
-            <div onclick="location.href='https://www.facebook.com/';">
-                <img src="./images/icone_fb.png" alt="Page facebook">
-            </div>
+        <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
         </div>
     </body>

@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.39, created on 2021-03-06 18:19:35
+  from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.39',
+  'unifunc' => 'content_6043b9a7a44e48_84422719',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'f54fc9e13a9326168ac6b46bde7b5b1f8f75eb2f' => 
+    array (
+      0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl',
+      1 => 1615051164,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:menu.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_6043b9a7a44e48_84422719 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +38,8 @@
 </head>
 
 <body>
-  {include file = 'menu.tpl'}
+  <?php $_smarty_tpl->_subTemplateRender('file:menu.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 
     <!-- Formulaire pour s'enregistrer-->
@@ -51,9 +77,12 @@
             </div>
         </div>
     </div>
-	{include file="footer.tpl"}
+	<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 
 </body>
 
 </html>
+<?php }
+}
