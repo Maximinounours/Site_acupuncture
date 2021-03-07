@@ -67,10 +67,12 @@
 }
 
 #tout{
-    margin: 50px auto;
-    padding: 20px 50px;
+    margin: 15px auto;
+    padding: 50px auto;
     display: grid;
 }
+
+
 
 #tout *{
     text-align: center;
@@ -80,13 +82,15 @@
 #tout > div {
     border-radius: 10px;
     margin: 0 5%;
+    border: 5px solid #543739;
 }
 
 #tout a{
 
+    -webkit-text-stroke: 2px #543739;
     font-family:fantasy;
     letter-spacing: 5px;
-    font-size: 30px;
+    font-size: 40px;
     padding: 100px 0;
     border: none;
     text-decoration: none;

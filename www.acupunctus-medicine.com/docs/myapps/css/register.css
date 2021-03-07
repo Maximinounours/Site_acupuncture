@@ -27,6 +27,11 @@ p{
     margin: 0;
     grid-template-columns: 1fr 1fr;
 }
+
+#wrapper > div {
+    border: none;
+}
+
 #contact{
     grid-column: 1 ;
     background-image:url("../images/register.jpg");

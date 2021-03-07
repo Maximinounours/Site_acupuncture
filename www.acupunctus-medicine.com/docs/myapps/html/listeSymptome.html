@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="../css/structure.css">
-    <link rel="stylesheet" href="../css/connexion.css">
+    <link rel="stylesheet" href="../css/listeSymptome.css">
 
 
     <meta charset="UTF-8">
@@ -41,44 +41,45 @@
                         </target> Information
                 </a>
             </li>
-            <li id="menu_search_bar">
-                <input type="text" value="Rechercher" onfocus="if(this.value=='Rechercher'){this.value='';}"
-                    onblur="if(this.value==''){this.value='Rechercher';}" />
-                <div id="menu_icon_search_bar">
-                    <img src="../images/icone_loupe.png" alt="icone de loupe">
-            </li>
+
         </ul>
     </div>
     </div>
 
-    <!-- Formulaire pour s'enregistrer-->
+    <!--Corps de la page-->
 
     <form action="">
 
-        <div id="container">
+        <div id="filter">
 
-            <h1>Connexion</h1>
+            <div class="filter_choice">
+                <label for="meridien-select">Méridien</label>
+                <!--Faire avec smarty apres, prendre les options possbiles avec ce qu'il y a dans la base de données-->
+                <select name="meridiens" id="meridien-select">
+                    <option value="">Choisir un méridien</option>
+                    <option value="Shao_yin">Shao yin</option>
+                    <option value="Tai_yang">Tai yang</option>
+                </select>
+            </div>
 
-            <hr>
-
-            <label for="email">Adresse mail</label>
-            <input type="text" name="email" placeholder="exemple@de.bosh.com">
-
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" placeholder="Mot de passe">
-
-            <button type="submit" id="btn_register">Se connecter</button>
-
-            <hr>
-
-            <div id="register">
-            <p>Pas de compte ? <a href="register.html"> Créer un compte</a></p>
-            
-          </div>
+            <div class="filter_choice">
+                <label for="symptome-select">Zone des symptômes</label>
+                <select name="symptomes" id="symptome-select">
+                    <option value="">Choisir un symptôme</option>
+                    <option value="cote_gauche_3">Troisième cotes gauche</option>
+                    <option value="orteil_10">Petit orteil droit</option>
+                </select>
+            </div>
         </div>
 
     </form>
 
+
+    <div id="liste_symptomes">
+
+        
+
+    </div>
 
     <!--Include le foote avec smarty apres-->
 

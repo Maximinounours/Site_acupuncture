@@ -16,7 +16,7 @@ body{
 li {
     list-style:none !important;
     color:#FFF;
-    padding:10px;
+    padding:0;
     font-size:20px;
     text-decoration:none;
     }
@@ -33,7 +33,6 @@ li {
         -webkit-box-shadow: 0 0 5px 0 #000000;
         box-shadow: 0 0 5px 0 #000000;
         filter: progid: DXImageTransform.Microsoft.Shadow(color=#000000, Direction=NaN, Strength=5);
-        position: -webkit-sticky;
         position: sticky;
         top: 5px;
         z-index:5;
@@ -80,31 +79,17 @@ li {
         background-color: rgba(0, 0, 0, 0.3);
     }
 
-#menu_search_bar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    max-height: 30px;
-}
 
-#search_bar{
-    min-width: 100px;
-    width : 100px;
-    grid-column: 4;
+
+#image_logo{
+
 }
 
 
-
-#menu_icon_search_bar{
-    justify-content: center;
-    align-items: center;
-    max-width: 40px;
-    max-height: inherit;
-}
-
-
-#menu_icon_search_bar > img{
-    max-height: inherit;
+#image_logo > img{
+    display: block;
+    margin: auto;
+    max-height: 57px;
 }
 
 
@@ -112,9 +97,7 @@ li {
 
 #bot_panel{
     height: 80px;
-    border-radius: 10px;
     background-image: url("../images/liseret.png");
-    border-radius: 30px;
     border: 2px solid #365f41;
     background-size: cover;
     background-repeat: no-repeat;
