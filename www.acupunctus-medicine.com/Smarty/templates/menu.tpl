@@ -17,11 +17,6 @@
                             <a href="index.php?page=info">
                                 <target=_ self></target> Information </a>
                     </li>
-                    <li id="menu_search_bar">
-                        <input type="text" placeholder="Rechercher" />
-                        <div id="menu_icon_search_bar">
-                            <img src ="./images/icone_loupe.png" alt="icone de loupe">
-                    </li>
                 </ul>   
             </div>
         </div>

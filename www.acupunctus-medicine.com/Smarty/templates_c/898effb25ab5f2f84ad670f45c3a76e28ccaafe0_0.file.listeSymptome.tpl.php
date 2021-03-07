@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-04 22:01:48
-  from '/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/templates/listeSymptome.tpl' */
+/* Smarty version 3.1.39, created on 2021-03-07 23:36:05
+  from '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60414abc32f918_00195024',
+  'unifunc' => 'content_604555552c0ce3_14638647',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '80b9bf8acd64446ff68f60e4bd90c97f3c52d6ad' => 
+    '898effb25ab5f2f84ad670f45c3a76e28ccaafe0' => 
     array (
-      0 => '/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1614891703,
+      0 => '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
+      1 => 1615156563,
       2 => 'file',
     ),
   ),
@@ -22,10 +22,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_60414abc32f918_00195024 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '201331179960414abc32e3c5_51524692';
-?>
-<!DOCTYPE html>
+function content_604555552c0ce3_14638647 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,7 +38,7 @@ $_smarty_tpl->compiled->nocache_hash = '201331179960414abc32e3c5_51524692';
 </head>
 
 <body>
- <?php $_smarty_tpl->_subTemplateRender('file:menu.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+    <?php $_smarty_tpl->_subTemplateRender('file:menu.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 
@@ -74,12 +72,26 @@ $_smarty_tpl->compiled->nocache_hash = '201331179960414abc32e3c5_51524692';
 
 
     <div id="liste_symptomes">
+        <ul >
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['idp']->value, 'nom');
+$_smarty_tpl->tpl_vars['nom']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['nom']->value) {
+$_smarty_tpl->tpl_vars['nom']->do_else = false;
+?>
+            <li style="color : black;">
+                <?php echo $_smarty_tpl->tpl_vars['nom']->value[0];?>
 
-        
+                <?php echo $_smarty_tpl->tpl_vars['nom']->value[1];?>
 
+            </li>
+            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+        </ul>
     </div>
 
- <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+    <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
 </body>

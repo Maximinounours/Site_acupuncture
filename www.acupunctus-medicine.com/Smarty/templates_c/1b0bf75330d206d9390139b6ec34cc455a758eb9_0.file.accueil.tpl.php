@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-06 17:35:21
-  from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl' */
+/* Smarty version 3.1.39, created on 2021-03-07 23:32:05
+  from '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6043af49456d11_96813500',
-  'has_nocache_code' => true,
+  'unifunc' => 'content_60455465665cb7_99127017',
+  'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8f749288e98de4c49a459e5f06dc6de5e1cf4040' => 
+    '1b0bf75330d206d9390139b6ec34cc455a758eb9' => 
     array (
-      0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl',
-      1 => 1615047754,
+      0 => '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl',
+      1 => 1615155299,
       2 => 'file',
     ),
   ),
@@ -22,10 +22,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6043af49456d11_96813500 (Smarty_Internal_Template $_smarty_tpl) {
-$_smarty_tpl->compiled->nocache_hash = '16406166406043af49451bb0_12106245';
+function content_60455465665cb7_99127017 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,16 +33,12 @@ $_smarty_tpl->compiled->nocache_hash = '16406166406043af49451bb0_12106245';
         <link rel="stylesheet" href="css/structure.css">
         <link rel="stylesheet" href="css/css_accueil.css">
         
-        <?php echo '/*%%SmartyNocache:16406166406043af49451bb0_12106245%%*/<?php echo \'<?php \';?>
-/*/%%SmartyNocache:16406166406043af49451bb0_12106245%%*/';?>
-$page=accueil <?php echo '/*%%SmartyNocache:16406166406043af49451bb0_12106245%%*/<?php echo \'?>\';?>
-/*/%%SmartyNocache:16406166406043af49451bb0_12106245%%*/';?>
-
+        <?php $_smarty_tpl->_assignInScope('page', 'accueil');?>
     </head>
 
     
     <body>
-<?php $_smarty_tpl->_subTemplateRender("file:menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+<?php $_smarty_tpl->_subTemplateRender("file:menu.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
         <!--Deux icônes d'accès sur un fond cosy -->
@@ -77,7 +71,7 @@ $page=accueil <?php echo '/*%%SmartyNocache:16406166406043af49451bb0_12106245%%*
             
         </div>
         
-        <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 9999, $_smarty_tpl->cache_lifetime, array(), 0, false);
+        <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
         </div>

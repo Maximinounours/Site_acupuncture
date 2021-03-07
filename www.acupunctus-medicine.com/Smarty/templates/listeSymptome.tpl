@@ -13,7 +13,7 @@
 </head>
 
 <body>
- {include file = 'menu.tpl'}
+    {include file = 'menu.tpl'}
 
 
     <!--Corps de la page-->
@@ -46,12 +46,17 @@
 
 
     <div id="liste_symptomes">
-
-        
-
+        <ul >
+            {foreach from=$idp item=nom}
+            <li style="color : black;">
+                {$nom[0]}
+                {$nom[1]}
+            </li>
+            {/foreach}
+        </ul>
     </div>
 
- {include file = 'footer.tpl'}
+    {include file = 'footer.tpl'}
 
 </body>
 
