@@ -22,8 +22,24 @@ else{
 
 	$maPage = $_GET['page'];
 	if($maPage == 'listeSymptome'){
+	
+		//Connexion a la base de donnees
+		$dsn = 'pgsql:dbname=acudb;host=localhost';
+		$user = 'postgres-tli';
+		$password = 'tli';
+		try{
+			$dbh = new PDO($dsn, $user, $password);
+		}
+		catch (PDOException $e){
+		echo 'connexion echouee : ' . $e->getMessage();
+		};
+		
+		$sql = $dbh->prepare('SELECT * FROM meridien');
+		$sql->execute(array());
+		
+	
 		$idp = array([1002,1000],[011,5540],[33015,540]);
-		$smarty->assign('idp', $idp);
+		$smarty->assign('idp', $sql);
 	}
 	
 	$smarty->display($maPage . '.tpl');
