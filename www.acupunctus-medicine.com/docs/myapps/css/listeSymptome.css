@@ -35,3 +35,34 @@
     padding: 5px;
 
 }
+
+/* ========================== */
+#liste_symptomes{
+    margin: 5px 10px;
+}
+.element_symptome{
+    display: table;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 0;
+    width: 100%;
+    border: black solid 1px;
+    background-color: blue;
+}
+.element_symptome li:first-child{
+    border: none;
+}
+.element_symptome li{
+    border-left: black 1px solid;
+    display: table-cell;
+    text-align: center;
+
+
+}
+
+.element_symptome li div{
+    margin: 10px 5px;
+    background-color: red;
+
+}
+
