@@ -29,7 +29,7 @@
                 <select name="meridien" id="meridien-select">
                     <option value="">Choisir un méridien</option>
 
-                    {foreach from=$option_meridien item = meridien}
+                    {foreach from=$options_meridien item = meridien}
                         <option value={$meridien->code} >{$meridien->nom}</option>
                     {/foreach}
 
@@ -40,8 +40,9 @@
                 <label for="pathologie-select">Type de pathologie</label>
                 <select name="pathologie" id="pathologie-select">
                     <option value="">Choisir une pathologie</option>
-                    <option value="cote_gauche_3">Luo</option>
-                    <option value="orteil_10">Méridien</option>
+                    {foreach from=$options_pathologie key=k item = i}
+                        <option value={$k} >{$i}</option>
+                    {/foreach}
                 </select>
             </div>
 
@@ -70,7 +71,7 @@
                         <p>{$itemSQL->zonedouleur}</p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I>{$itemSQL->detaildouleur}</I></p>
+                        <p><I>{$itemSQL->detailmeridien}</I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
                         <p>Type de pathologie</p>
