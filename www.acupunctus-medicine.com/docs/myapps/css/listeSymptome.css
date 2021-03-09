@@ -1,6 +1,12 @@
+*{
+    text-decoration: none;
+    font-family: system-ui;
+    color: white;
+    font-weight: bold;
+}
+
 #filter{
     background-color: #768981;
-    color: white;
     margin: 20px auto;
     border-radius: 10px;
     padding: 10px 20px;
@@ -16,25 +22,38 @@
     margin: 5px 10px;
 }
 
-#filter label{
+label{
     font-weight: bold;
     padding: 5px;
 }
 
-#filter select{
+select{
+    color: black;
     border: none;
     border-radius: 5px;
     padding: 5px;
 }
 
-#filter option:focus {
-    border: none;
+select option{
+    color: black;
 }
 
-#filter select:hover{
-    background-color: rgb(235, 235, 235);
-    padding: 5px;
+select option:checked {
+    background-color:rgb(109, 109, 109);
+    color: white;
+}
 
+select:hover{
+    background-color: white;
+    padding: 5px;
+}
+
+#filter_submit > input{
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #543739;
 }
 
 /* =============================liste================================================= */
@@ -43,9 +62,6 @@
     background-color: #375452;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    text-decoration: none;
-    font-family: system-ui;
-    color: white;
     text-align: center;
     margin: 5px 50px;
     border:#3d8d52 solid 1px;
