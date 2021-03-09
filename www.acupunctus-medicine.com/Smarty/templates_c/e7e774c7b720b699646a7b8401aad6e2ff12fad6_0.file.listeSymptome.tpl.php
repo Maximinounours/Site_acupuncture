@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-07 23:36:05
-  from '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
+/* Smarty version 3.1.39, created on 2021-03-09 09:00:46
+  from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_604555552c0ce3_14638647',
+  'unifunc' => 'content_60472b2e7e3e72_13321105',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '898effb25ab5f2f84ad670f45c3a76e28ccaafe0' => 
+    'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
-      0 => '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615156563,
+      0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
+      1 => 1615276442,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_604555552c0ce3_14638647 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60472b2e7e3e72_13321105 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
