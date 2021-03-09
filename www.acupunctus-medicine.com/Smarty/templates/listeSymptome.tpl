@@ -45,16 +45,42 @@
     </form>
 
 
-    <div id="liste_symptomes">
-        <ul >
-            {foreach from=$idp item=nom}
-            <li style="color : black;">
-                {$nom[0]}
-                {$nom[1]}
-            </li>
-            {/foreach}
-        </ul>
-    </div>
+
+        <!--foreach-->
+            <div >
+                
+                <a id="container_liste_symptome" href="">
+                    <div style="grid-column: 1/4; grid-row: 1;">
+                        <p>Type de symptôme</p>
+                    </div>
+                    <div style="grid-column: 1/4; grid-row: 2/4;">
+                        <p><I>Detail pathologie</I></p>
+                    </div>
+                    <div style="grid-column: 1/4; grid-row: 4;">
+                        <p>type de pathologie</p>
+                    </div>
+                    <div style="grid-column: 4/7; grid-row: 1/5;">
+                        <p><I>DescriptionDescriptionDescriptionDescription symptome</I></p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 1;">
+                        <p>meridien</p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 2;">
+                        <p>carac 1</p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 3;">
+                        <p>carac 2</p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 4;">
+                        <p>carac 3</p>
+                    </div>
+                    <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
+                    <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>
+                    <div style="grid-column: 9; grid-row: 3;"><img src="" alt=""></div>
+                    <div style="grid-column: 9; grid-row: 4;"><img src="" alt=""></div>
+                </a>
+            </div>
+                <!--/foreach-->
 
     {include file = 'footer.tpl'}
 

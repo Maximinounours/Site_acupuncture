@@ -19,7 +19,7 @@
                     </li>
                     <li>
                         <div id="image_logo">
-                            <img src="../images/logo.png" alt="logo">
+                            <img src="./images/logo.png" alt="logo">
                         </div>
                     </li>
                 </ul>   
