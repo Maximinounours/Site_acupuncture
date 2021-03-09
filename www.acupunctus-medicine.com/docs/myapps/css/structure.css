@@ -39,21 +39,24 @@ li {
     }
     
     .menu_simple ul {
-        display: table;
+        display: flex;
         margin: 0;
         padding: 0;
         width: 100%;
     }
     
     .menu_simple ul li {
-        display: table-cell;
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         border-left: 1px solid rgba(0, 0, 0, 0.5);
     }
     
     .menu_simple ul li a {
-        display: inline-block;
         width: 100%;
-        height: 79px;
+        min-height: 79px;
         font-family: 'calibri', sans-serif;
         text-transform: uppercase;
         font-size: 17px;
@@ -82,14 +85,14 @@ li {
 
 
 #image_logo{
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
 #image_logo > img{
-    display: block;
-    margin: auto;
-    max-height: 57px;
+    max-height: 79px;
 }
 
 
