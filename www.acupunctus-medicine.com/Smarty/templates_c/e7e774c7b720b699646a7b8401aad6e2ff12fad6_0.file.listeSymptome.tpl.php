@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-09 09:56:19
+/* Smarty version 3.1.39, created on 2021-03-09 12:30:14
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_604738339b5017_64775809',
+  'unifunc' => 'content_60475c46c5bd25_01751418',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615280177,
+      1 => 1615289411,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_604738339b5017_64775809 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60475c46c5bd25_01751418 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +44,7 @@ function content_604738339b5017_64775809 (Smarty_Internal_Template $_smarty_tpl)
 
     <!--Corps de la page-->
 
-    <form action="">
+    <form action="filtre.php" method="post">
 
         <div id="filter">
 
@@ -75,6 +75,9 @@ function content_604738339b5017_64775809 (Smarty_Internal_Template $_smarty_tpl)
                     <option value="orteil_10">Froid</option>
                 </select>
             </div>
+            <div id="filter_submit">
+                <input type="submit" value="Filtrer" >
+            </div>
         </div>
 
     </form>
@@ -91,22 +94,22 @@ $_smarty_tpl->tpl_vars['itemSQL']->do_else = false;
 
                 <a id="container_liste_symptome" href="">
                     <div style="grid-column: 1/4; grid-row: 1;">
-                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[0];?>
+                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->zonedouleur;?>
 </p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[2];?>
+                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->detaildouleur;?>
 </I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
                         <p>Type de pathologie</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
-                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[1];?>
+                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->detaildouleur;?>
 </I></p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 1;">
-                        <p>Méridien : <?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[3];?>
+                        <p>Méridien : <?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->nommeridien;?>
 </p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">

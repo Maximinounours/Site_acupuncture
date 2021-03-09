@@ -14,20 +14,18 @@ $smarty->setCompileDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acup
 $smarty->setCacheDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
 $smarty->setConfigDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
 
-
-if (empty($_GET['page'])){
-	$smarty->display('accueil.tpl');
-}
-else{
-
-	$maPage = $_GET['page'];
-	if($maPage == 'listeSymptome'){
-	
-		//Filtrage ?
-		if (!empty($_POST['meridien'])){
+if (!empty($_POST['meridien'])){
 			echo $_POST['meridien'];
 		}
-	
+
+if (!empty($_POST['pathologie'])){
+			echo $_POST['pathologie'];
+		}
+		
+if (!empty($_POST['caracteristique'])){
+			echo $_POST['caracteristique'];
+		}
+
 		//Connexion a la base de donnees
 		$dsn = 'pgsql:dbname=acudb;host=localhost';
 		$user = 'postgres-tli';
@@ -41,7 +39,7 @@ else{
 		
 		//WHERE meridien.nom = 'Foie'
 
-		$requeteSQL = "SELECT 
+		$PDOrep = $dbh->prepare("SELECT 
 name AS zoneDouleur,
 symptome.desc as detailDouleur,
 patho.desc AS detailMeridien,
@@ -53,19 +51,19 @@ INNER JOIN symptome ON keysympt.ids = symptome.ids
 INNER JOIN symptpatho ON symptpatho.ids = symptome.ids
 INNER JOIN patho ON patho.idp = symptpatho.idp
 INNER JOIN meridien ON patho.mer = meridien.code
+WHERE meridien.nom = 'Estomac'
 ORDER BY name
-LIMIT 20;";
-
-		$PDOrep = $dbh->prepare($requeteSQL);
+LIMIT 20;");
 		
 		$PDOrep->execute(array());	
 		
-		
 		$reponseREQ = $PDOrep->fetchAll(PDO::FETCH_OBJ);
-		$smarty->assign('reponseSQL', $reponseREQ);
+		$smarty->assign('reponseSQL', $reponseREQ);	
+
+$smarty->display('listeSymptome.tpl');
+	
+
 		
-	}
-		$smarty->display($maPage . '.tpl');
 		
-}
+
 

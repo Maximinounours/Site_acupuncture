@@ -18,7 +18,7 @@
 
     <!--Corps de la page-->
 
-    <form action="">
+    <form action="filtre.php" method="post">
 
         <div id="filter">
 
@@ -49,6 +49,9 @@
                     <option value="orteil_10">Froid</option>
                 </select>
             </div>
+            <div id="filter_submit">
+                <input type="submit" value="Filtrer" >
+            </div>
         </div>
 
     </form>
@@ -60,19 +63,19 @@
 
                 <a id="container_liste_symptome" href="">
                     <div style="grid-column: 1/4; grid-row: 1;">
-                        <p>{$itemSQL[0]}</p>
+                        <p>{$itemSQL->zonedouleur}</p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I>{$itemSQL[2]}</I></p>
+                        <p><I>{$itemSQL->detaildouleur}</I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
                         <p>Type de pathologie</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
-                        <p><I>{$itemSQL[1]}</I></p>
+                        <p><I>{$itemSQL->detaildouleur}</I></p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 1;">
-                        <p>Méridien : {$itemSQL[3]}</p>
+                        <p>Méridien : {$itemSQL->nommeridien}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">
                         <p>carac 1</p>
