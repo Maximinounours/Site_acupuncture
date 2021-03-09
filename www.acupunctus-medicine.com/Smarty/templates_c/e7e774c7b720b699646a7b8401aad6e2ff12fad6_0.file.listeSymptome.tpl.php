@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-09 09:30:54
+/* Smarty version 3.1.39, created on 2021-03-09 09:56:19
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6047323ebd8995_02150479',
+  'unifunc' => 'content_604738339b5017_64775809',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615277014,
+      1 => 1615280177,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6047323ebd8995_02150479 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604738339b5017_64775809 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -80,25 +80,34 @@ function content_6047323ebd8995_02150479 (Smarty_Internal_Template $_smarty_tpl)
     </form>
 
 
+            <div id = "container_liste_symptomes">
 
-        <!--foreach-->
-            <div >
-                
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['reponseSQL']->value, 'itemSQL');
+$_smarty_tpl->tpl_vars['itemSQL']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['itemSQL']->value) {
+$_smarty_tpl->tpl_vars['itemSQL']->do_else = false;
+?>
+
                 <a id="container_liste_symptome" href="">
                     <div style="grid-column: 1/4; grid-row: 1;">
-                        <p>Type de symptôme</p>
+                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[0];?>
+</p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I>Detail pathologie</I></p>
+                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[2];?>
+</I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
-                        <p>type de pathologie</p>
+                        <p>Type de pathologie</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
-                        <p><I>DescriptionDescriptionDescriptionDescription symptome</I></p>
+                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[1];?>
+</I></p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 1;">
-                        <p>meridien</p>
+                        <p>Méridien : <?php echo $_smarty_tpl->tpl_vars['itemSQL']->value[3];?>
+</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">
                         <p>carac 1</p>
@@ -114,8 +123,12 @@ function content_6047323ebd8995_02150479 (Smarty_Internal_Template $_smarty_tpl)
                     <div style="grid-column: 9; grid-row: 3;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 4;"><img src="" alt=""></div>
                 </a>
+
+            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
             </div>
-                <!--/foreach-->
 
     <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

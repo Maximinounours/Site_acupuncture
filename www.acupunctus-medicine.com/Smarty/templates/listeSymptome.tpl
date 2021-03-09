@@ -54,25 +54,25 @@
     </form>
 
 
+            <div id = "container_liste_symptomes">
 
-        <!--foreach-->
-            <div >
-                
+            {foreach from=$reponseSQL item = itemSQL}
+
                 <a id="container_liste_symptome" href="">
                     <div style="grid-column: 1/4; grid-row: 1;">
-                        <p>Type de symptôme</p>
+                        <p>{$itemSQL[0]}</p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I>Detail pathologie</I></p>
+                        <p><I>{$itemSQL[2]}</I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
-                        <p>type de pathologie</p>
+                        <p>Type de pathologie</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
-                        <p><I>DescriptionDescriptionDescriptionDescription symptome</I></p>
+                        <p><I>{$itemSQL[1]}</I></p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 1;">
-                        <p>meridien</p>
+                        <p>Méridien : {$itemSQL[3]}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">
                         <p>carac 1</p>
@@ -88,8 +88,10 @@
                     <div style="grid-column: 9; grid-row: 3;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 4;"><img src="" alt=""></div>
                 </a>
+
+            {/foreach}
+
             </div>
-                <!--/foreach-->
 
     {include file = 'footer.tpl'}
 

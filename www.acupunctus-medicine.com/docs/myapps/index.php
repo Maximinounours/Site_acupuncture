@@ -34,14 +34,27 @@ else{
 		echo 'connexion echouee : ' . $e->getMessage();
 		};
 		
-		$sql = $dbh->prepare('SELECT * FROM meridien');
-		$sql->execute(array());
+		//WHERE meridien.nom = 'Foie'
+
+		$sql = $dbh->prepare("SELECT 
+name,
+symptome.desc,
+patho.desc,
+meridien.nom,
+patho.type
+FROM keywords
+INNER JOIN keysympt ON keysympt.idk = keywords.idk
+INNER JOIN symptome ON keysympt.ids = symptome.ids
+INNER JOIN symptpatho ON symptpatho.ids = symptome.ids
+INNER JOIN patho ON patho.idp = symptpatho.idp
+INNER JOIN meridien ON patho.mer = meridien.code
+ORDER BY name
+LIMIT 20;");
 		
-	
-		$idp = array([1002,1000],[011,5540],[33015,540]);
-		$smarty->assign('idp', $sql);
+		$sql->execute(array());	
+		$test = array([["1","2","3","4","5"],["11","22","33","44","55"],["111","222","333","444","555"]]);
+		$smarty->assign('reponseSQL', $sql);
 	}
-	
 	$smarty->display($maPage . '.tpl');
 }
 
