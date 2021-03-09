@@ -88,7 +88,8 @@
 #tout a{
 
     -webkit-text-stroke: 2px #543739;
-    font-family:fantasy;
+    font-family: system-ui;
+    font-weight: bolder;
     letter-spacing: 5px;
     font-size: 40px;
     padding: 100px 0;
