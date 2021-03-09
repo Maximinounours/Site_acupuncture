@@ -74,7 +74,7 @@
                         <p><I>{$itemSQL->detailmeridien}</I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
-                        <p>Type de pathologie</p>
+                        <p>{$itemSQL->nom_de_la_pathologie}</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
                         <p><I>{$itemSQL->detaildouleur}</I></p>
@@ -83,13 +83,13 @@
                         <p>Méridien : {$itemSQL->nommeridien}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">
-                        <p>carac 1</p>
+                        <p> </p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 3;">
-                        <p>carac 2</p>
+                        <p>{$itemSQL->code_de_la_pathologie}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 4;">
-                        <p>carac 3</p>
+                        <p>{$itemSQL->code}</p>
                     </div>
                     <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>

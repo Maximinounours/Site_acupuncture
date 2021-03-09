@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-09 18:55:35
+/* Smarty version 3.1.39, created on 2021-03-09 19:42:44
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6047b6979a2dd3_50311373',
+  'unifunc' => 'content_6047c1a40b72e4_17241236',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615312514,
+      1 => 1615315360,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6047b6979a2dd3_50311373 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6047c1a40b72e4_17241236 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -125,7 +125,8 @@ $_smarty_tpl->tpl_vars['itemSQL']->do_else = false;
 </I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
-                        <p>Type de pathologie</p>
+                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->nom_de_la_pathologie;?>
+</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
                         <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->detaildouleur;?>
@@ -136,13 +137,15 @@ $_smarty_tpl->tpl_vars['itemSQL']->do_else = false;
 </p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">
-                        <p>carac 1</p>
+                        <p> </p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 3;">
-                        <p>carac 2</p>
+                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->code_de_la_pathologie;?>
+</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 4;">
-                        <p>carac 3</p>
+                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->code;?>
+</p>
                     </div>
                     <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>

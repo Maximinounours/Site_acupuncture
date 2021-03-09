@@ -39,11 +39,11 @@ $smarty->setConfigDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupu
 
 		//Option filtre pathologie
 		$options_pathologie = [
+		"mv" => "Merveilleux vaisseaux",
+		"tf" => "Zang / Fu",
 		"j" => "Jing jin",
 		"l" => "Voie luo",
-		"m" => "Méridien",
-		"mv" => "Branche",
-		"tf" => "Zang / Fu"
+		"m" => "Méridien"
 		];
 		$smarty->assign('options_pathologie', $options_pathologie);
 
@@ -90,8 +90,6 @@ if (!empty($_POST['caracteristique'])){
 			echo $_POST['caracteristique'];
 		}
 
-echo $requeteSQLFiltre;
-
 $requeteSQLFiltre = $requeteSQLFiltre . " ORDER BY name;";
 		
 		$PDOrep = $dbh->prepare($requeteSQLFiltre);
@@ -99,6 +97,22 @@ $requeteSQLFiltre = $requeteSQLFiltre . " ORDER BY name;";
 		$PDOrep->execute(array());	
 		
 		$reponseREQ = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+		
+				foreach($reponseREQ as $ligne){
+			foreach($options_pathologie as $code_pathologie => $nom_pathologie){
+				if(!empty(stristr($ligne->code, $code_pathologie))){
+					print_r($code_pathologie . "   ");
+					$ligne->nom_de_la_pathologie = $nom_pathologie;
+					$ligne->code_de_la_pathologie = $code_pathologie;
+					$ligne->code = preg_replace("/".$code_pathologie."/", "",$ligne->code, 1);
+					
+					
+					
+				}
+			}
+			
+		}
+		
 		$smarty->assign('reponseSQL', $reponseREQ);	
 
 $smarty->display('listeSymptome.tpl');

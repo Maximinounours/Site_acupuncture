@@ -14,12 +14,13 @@ $smarty->setCompileDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acup
 $smarty->setCacheDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
 $smarty->setConfigDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
 
+/*
 $cherche = "/Bonjour/";
 $remplace = "";
 $chaine = "Bonjour Maxime";
 $chaine2 = preg_replace($cherche, $remplace, $chaine, 1);
 echo $chaine;
-echo $chaine2;
+echo $chaine2;*/
 
 if (empty($_GET['page'])){
 	$smarty->display('accueil.tpl');
@@ -29,13 +30,15 @@ else{
 	$maPage = $_GET['page'];
 	if($maPage == 'listeSymptome'){
 		
+		//Option filtre pathologie
 		$options_pathologie = [
+		"mv" => "Merveilleux vaisseaux",
+		"tf" => "Zang / Fu",
 		"j" => "Jing jin",
 		"l" => "Voie luo",
-		"m" => "Méridien",
-		"mv" => "Branche",
-		"tf" => "Zang / Fu"
+		"m" => "Méridien"
 		];
+
 		
 		//Filtrage ?
 		if (!empty($_POST['meridien'])){
