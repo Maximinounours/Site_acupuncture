@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-09 09:00:46
+/* Smarty version 3.1.39, created on 2021-03-09 09:30:54
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60472b2e7e3e72_13321105',
+  'unifunc' => 'content_6047323ebd8995_02150479',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615276442,
+      1 => 1615277014,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_60472b2e7e3e72_13321105 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6047323ebd8995_02150479 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -51,19 +51,28 @@ function content_60472b2e7e3e72_13321105 (Smarty_Internal_Template $_smarty_tpl)
             <div class="filter_choice">
                 <label for="meridien-select">Méridien</label>
                 <!--Faire avec smarty apres, prendre les options possbiles avec ce qu'il y a dans la base de données-->
-                <select name="meridiens" id="meridien-select">
+                <select name="meridien" id="meridien-select">
                     <option value="">Choisir un méridien</option>
-                    <option value="Shao_yin">Shao yin</option>
-                    <option value="Tai_yang">Tai yang</option>
+                    <option value="Shao_yin">Estomac</option>
+                    <option value="Tai_yang">Foie</option>
                 </select>
             </div>
 
             <div class="filter_choice">
-                <label for="symptome-select">Zone des symptômes</label>
-                <select name="symptomes" id="symptome-select">
-                    <option value="">Choisir un symptôme</option>
-                    <option value="cote_gauche_3">Troisième cotes gauche</option>
-                    <option value="orteil_10">Petit orteil droit</option>
+                <label for="pathologie-select">Type de pathologie</label>
+                <select name="pathologie" id="pathologie-select">
+                    <option value="">Choisir une pathologie</option>
+                    <option value="cote_gauche_3">Luo</option>
+                    <option value="orteil_10">Méridien</option>
+                </select>
+            </div>
+
+            <div class="filter_choice">
+                <label for="caracteristique-select">Caractéristique</label>
+                <select name="caracteristique" id="caracteristique-select">
+                    <option value="">Choisir une caractéristique</option>
+                    <option value="cote_gauche_3">Externe</option>
+                    <option value="orteil_10">Froid</option>
                 </select>
             </div>
         </div>
@@ -71,25 +80,42 @@ function content_60472b2e7e3e72_13321105 (Smarty_Internal_Template $_smarty_tpl)
     </form>
 
 
-    <div id="liste_symptomes">
-        <ul >
-            <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['idp']->value, 'nom');
-$_smarty_tpl->tpl_vars['nom']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['nom']->value) {
-$_smarty_tpl->tpl_vars['nom']->do_else = false;
-?>
-            <li style="color : black;">
-                <?php echo $_smarty_tpl->tpl_vars['nom']->value[0];?>
 
-                <?php echo $_smarty_tpl->tpl_vars['nom']->value[1];?>
-
-            </li>
-            <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-        </ul>
-    </div>
+        <!--foreach-->
+            <div >
+                
+                <a id="container_liste_symptome" href="">
+                    <div style="grid-column: 1/4; grid-row: 1;">
+                        <p>Type de symptôme</p>
+                    </div>
+                    <div style="grid-column: 1/4; grid-row: 2/4;">
+                        <p><I>Detail pathologie</I></p>
+                    </div>
+                    <div style="grid-column: 1/4; grid-row: 4;">
+                        <p>type de pathologie</p>
+                    </div>
+                    <div style="grid-column: 4/7; grid-row: 1/5;">
+                        <p><I>DescriptionDescriptionDescriptionDescription symptome</I></p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 1;">
+                        <p>meridien</p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 2;">
+                        <p>carac 1</p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 3;">
+                        <p>carac 2</p>
+                    </div>
+                    <div style="grid-column: 7/9; grid-row: 4;">
+                        <p>carac 3</p>
+                    </div>
+                    <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
+                    <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>
+                    <div style="grid-column: 9; grid-row: 3;"><img src="" alt=""></div>
+                    <div style="grid-column: 9; grid-row: 4;"><img src="" alt=""></div>
+                </a>
+            </div>
+                <!--/foreach-->
 
     <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

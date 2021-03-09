@@ -6,7 +6,6 @@
     padding: 10px 20px; 
 }
 h2 {
-    font-family: system-ui;
     color: white;
     font-size: xx-large;
     text-transform: uppercase;
@@ -15,7 +14,6 @@ h2 {
     padding-top: 220px;  
 }
 p{
-    font-family: system-ui;
     color: white;
     font-size: medium;
 
@@ -94,7 +92,6 @@ hr {
     border-radius: 5px;
     background-color: #543739;
     padding: 5px 10px;
-    font-family: system-ui;
     font-size: small;
 }
 

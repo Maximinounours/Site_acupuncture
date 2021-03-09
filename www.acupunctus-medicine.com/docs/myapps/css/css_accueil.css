@@ -1,4 +1,3 @@
-
 #contain_icones{
     max-width: 100%;
     justify-content: space-around;
@@ -88,7 +87,6 @@
 #tout a{
 
     -webkit-text-stroke: 2px #543739;
-    font-family: system-ui;
     font-weight: bolder;
     letter-spacing: 5px;
     font-size: 40px;
