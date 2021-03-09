@@ -87,8 +87,9 @@
     grid-template-columns: repeat(9, 10%);
     text-decoration: none;
     text-align: center;
-    margin: 5px 20px;
+    margin: auto;
     border:#3d8d52 solid 2px;
+    justify-content: space-between;
 }
 
 #container_liste_symptome div {
