@@ -87,7 +87,7 @@
     grid-template-columns: repeat(9, 10%);
     text-decoration: none;
     text-align: center;
-    margin: auto;
+    margin: 5px 50px;
     border:#3d8d52 solid 2px;
     justify-content: space-between;
 }
@@ -96,16 +96,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: black solid 1px;
-    margin: 5px;
+    border-right: 1px black solid;
 
 }
 
+#container_liste_symptome div:nth-last-child(-n+4){
+    border: none;
+}
 #container_liste_symptome div p{
     width: 100%;
     word-wrap: break-word;
     padding: 10px 15px;
     box-sizing: border-box;
+    margin: 0;
 }
 
 #container_liste_symptome:hover{
