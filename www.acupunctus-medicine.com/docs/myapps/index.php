@@ -22,7 +22,7 @@ else{
 
 	$maPage = $_GET['page'];
 	if($maPage == 'listeSymptome'){
-	
+
 		//Filtrage ?
 		if (!empty($_POST['meridien'])){
 			echo $_POST['meridien'];
@@ -38,6 +38,18 @@ else{
 		catch (PDOException $e){
 		echo 'connexion echouee : ' . $e->getMessage();
 		};
+		
+		//Option filtre meridien
+		$filtre_meridien_SQL = "SELECT 
+		nom,
+		code
+		FROM meridien
+		ORDER BY nom";
+        $PDOrep = $dbh->prepare($filtre_meridien_SQL);
+        $PDOrep->execute(array());
+		$option_meridien = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+		$smarty->assign('option_meridien', $option_meridien);	
+		
 		
 		//WHERE meridien.nom = 'Foie'
 

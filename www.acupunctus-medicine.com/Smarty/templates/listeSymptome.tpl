@@ -22,13 +22,17 @@
 
         <div id="filter">
 
+
             <div class="filter_choice">
                 <label for="meridien-select">Méridien</label>
                 <!--Faire avec smarty apres, prendre les options possbiles avec ce qu'il y a dans la base de données-->
                 <select name="meridien" id="meridien-select">
                     <option value="">Choisir un méridien</option>
-                    <option value="Shao_yin">Estomac</option>
-                    <option value="Tai_yang">Foie</option>
+
+                    {foreach from=$option_meridien item = meridien}
+                        <option value={$meridien->code} >{$meridien->nom}</option>
+                    {/foreach}
+
                 </select>
             </div>
 

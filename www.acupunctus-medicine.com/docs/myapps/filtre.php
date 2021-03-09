@@ -14,19 +14,7 @@ $smarty->setCompileDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acup
 $smarty->setCacheDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
 $smarty->setConfigDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
 
-if (!empty($_POST['meridien'])){
-			echo $_POST['meridien'];
-		}
-
-if (!empty($_POST['pathologie'])){
-			echo $_POST['pathologie'];
-		}
-		
-if (!empty($_POST['caracteristique'])){
-			echo $_POST['caracteristique'];
-		}
-
-		//Connexion a la base de donnees
+//Connexion a la base de donnees
 		$dsn = 'pgsql:dbname=acudb;host=localhost';
 		$user = 'postgres-tli';
 		$password = 'tli';
@@ -37,9 +25,18 @@ if (!empty($_POST['caracteristique'])){
 		echo 'connexion echouee : ' . $e->getMessage();
 		};
 		
-		//WHERE meridien.nom = 'Foie'
+		//Option filtre meridien
+		$filtre_meridien_SQL = "SELECT 
+		nom,
+		code
+		FROM meridien
+		ORDER BY nom";
+        $PDOrep = $dbh->prepare($filtre_meridien_SQL);
+        $PDOrep->execute(array());
+		$option_meridien = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+		$smarty->assign('option_meridien', $option_meridien);	
 
-		$PDOrep = $dbh->prepare("SELECT 
+		$requeteSQLFiltre = "SELECT 
 name AS zoneDouleur,
 symptome.desc as detailDouleur,
 patho.desc AS detailMeridien,
@@ -51,9 +48,28 @@ INNER JOIN symptome ON keysympt.ids = symptome.ids
 INNER JOIN symptpatho ON symptpatho.ids = symptome.ids
 INNER JOIN patho ON patho.idp = symptpatho.idp
 INNER JOIN meridien ON patho.mer = meridien.code
-WHERE meridien.nom = 'Estomac'
-ORDER BY name
-LIMIT 20;");
+WHERE meridien.code = '";
+
+
+
+		
+
+if (!empty($_POST['meridien'])){
+			$choixMeridien = $_POST['meridien'];
+			$requeteSQLFiltre = $requeteSQLFiltre . $choixMeridien;
+		}
+
+if (!empty($_POST['pathologie'])){
+			echo $_POST['pathologie'];
+		}
+		
+if (!empty($_POST['caracteristique'])){
+			echo $_POST['caracteristique'];
+		}
+
+$requeteSQLFiltre = $requeteSQLFiltre . "' ORDER BY name;";
+		
+		$PDOrep = $dbh->prepare($requeteSQLFiltre);
 		
 		$PDOrep->execute(array());	
 		
