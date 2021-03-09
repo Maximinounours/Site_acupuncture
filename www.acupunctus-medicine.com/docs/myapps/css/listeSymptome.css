@@ -13,6 +13,7 @@
 
 .filter_choice{
     padding: 5px;
+    margin: 5px 10px;
 }
 
 #filter label{
@@ -36,51 +37,7 @@
 
 }
 
-/* ========================== */
-#liste_symptomes{
-    margin: 5px 10px;
-}
-
-#liste_symptomes > div > a{
-    text-decoration: none;
-}
-
-#liste_symptomes > div{
-    box-sizing: border-box;
-    margin: 10px 0;
-}
-#liste_symptomes > div:hover{
-
-}
-
-
-.element_symptome{
-    box-sizing: border-box;
-    display: table;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    background-color: blue;
-}
-
-.element_symptome > li:first-child{
-    border: none;
-}
-.element_symptome > li{
-    border-left: black 2px solid;
-    display: table-cell;
-    text-align: center;
-
-}
-
-.element_symptome > li > div{
-
-    margin: 10px 5px;
-    background-color: red;
-
-}
-
-/* ============================================================================== */
+/* =============================liste================================================= */
 
 #container_liste_symptome{
     display: grid;
@@ -89,7 +46,6 @@
     text-align: center;
     margin: 5px 50px;
     border:#3d8d52 solid 2px;
-    justify-content: space-between;
 }
 
 #container_liste_symptome div {
@@ -100,9 +56,19 @@
 
 }
 
-#container_liste_symptome div:nth-last-child(-n+4){
-    border: none;
+#container_liste_symptome div:nth-last-child(-n+8){
+    border-bottom: black solid 1px;
 }
+
+
+#container_liste_symptome div:nth-last-child(-n+4){
+    border-right: none;
+}
+
+#container_liste_symptome div:nth-last-child(-4n+5){
+    border-bottom: none;
+}
+
 #container_liste_symptome div p{
     width: 100%;
     word-wrap: break-word;

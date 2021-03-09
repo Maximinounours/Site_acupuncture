@@ -17,6 +17,11 @@
                             <a href="index.php?page=info">
                                 <target=_ self></target> Information </a>
                     </li>
+                    <li>
+                        <div id="image_logo">
+                            <img src="../images/logo.png" alt="logo">
+                        </div>
+                    </li>
                 </ul>   
             </div>
         </div>
