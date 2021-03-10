@@ -18,7 +18,7 @@
 
     <!--Corps de la page-->
 
-    <form action="filtre.php" method="post">
+    <form action="index.php?page=listeSymptome" method="post">
 
         <div id="filter">
 
@@ -38,7 +38,7 @@
 
             <div class="filter_choice">
                 <label for="pathologie-select">Type de pathologie</label>
-                <select name="pathologie" id="pathologie-select">
+                <select name="pathologie" id="pathologie-select" on>
                     <option value="">Choisir une pathologie</option>
                     {foreach from=$options_pathologie key=k item = i}
                         <option value={$k} >{$i}</option>
@@ -50,8 +50,9 @@
                 <label for="caracteristique-select">Caractéristique</label>
                 <select name="caracteristique" id="caracteristique-select">
                     <option value="">Choisir une caractéristique</option>
-                    <option value="cote_gauche_3">Externe</option>
-                    <option value="orteil_10">Froid</option>
+                    {foreach from=$options_caracteristique key=k item = i}
+                        <option value={$i} >{$i}</option>
+                    {/foreach}
                 </select>
             </div>
             <div id="filter_submit">
@@ -60,6 +61,8 @@
         </div>
 
     </form>
+
+    {if $filtre_actif}<p>{$nb_resp}{$choix_filtre[0]}{$choix_filtre[1]}{$choix_filtre[2]}</p>{/if}
 
 
             <div id = "container_liste_symptomes">
@@ -74,7 +77,7 @@
                         <p><I>{$itemSQL->detailmeridien}</I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
-                        <p>{$itemSQL->nom_de_la_pathologie}</p>
+                        <p>{$itemSQL->nom_pathologie}</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
                         <p><I>{$itemSQL->detaildouleur}</I></p>
@@ -83,13 +86,13 @@
                         <p>Méridien : {$itemSQL->nommeridien}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">
-                        <p> </p>
+                        <p>{$itemSQL->nom_caracteristique_1}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 3;">
-                        <p>{$itemSQL->code_de_la_pathologie}</p>
+                        <p>{$itemSQL->nom_caracteristique_2}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 4;">
-                        <p>{$itemSQL->code}</p>
+                        <p></p>
                     </div>
                     <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>

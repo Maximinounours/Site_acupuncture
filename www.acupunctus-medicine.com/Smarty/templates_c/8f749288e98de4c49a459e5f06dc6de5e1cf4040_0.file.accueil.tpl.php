@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-09 18:16:33
+/* Smarty version 3.1.39, created on 2021-03-10 16:55:04
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6047ad71369860_88490252',
+  'unifunc' => 'content_6048ebd8a7c469_52379041',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8f749288e98de4c49a459e5f06dc6de5e1cf4040' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/accueil.tpl',
-      1 => 1615276442,
+      1 => 1615388310,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6047ad71369860_88490252 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6048ebd8a7c469_52379041 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,6 @@ function content_6047ad71369860_88490252 (Smarty_Internal_Template $_smarty_tpl)
         <link rel="stylesheet" href="css/structure.css">
         <link rel="stylesheet" href="css/css_accueil.css">
         
-        <?php $_smarty_tpl->_assignInScope('page', 'accueil');?>
     </head>
 
     
@@ -44,7 +43,6 @@ function content_6047ad71369860_88490252 (Smarty_Internal_Template $_smarty_tpl)
         <!--Deux icônes d'accès sur un fond cosy -->
 
         <div id="tout">
-
             <div id="gauche" class="container">
                 <a id="gauche1" class="noirci" href="index.php?page=register">
                 Register</a>
