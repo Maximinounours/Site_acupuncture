@@ -13,45 +13,67 @@
 </head>
 
 <body>
-                <!-- Un petit menu avec les pages accessibles pratiques -->
-                <div class="menu_simple" class='lignes'>
-                    <ul>
-                        <li>
-                            <a href="Accueil.html">
-                                <target=_ self></target> Home</a>
-                        </li>
-                        <li>
-                            <a href="connexion.html">
-                                <target=_ self></target> Connexion </a>
-                        </li>
-                        <li>
-                            <a href="contact.html">
-                                <target=_ self></target> About us </a>
-                        </li>
-                        <li>
-                                <a href="pageInfo.html">
-                                    <target=_ self></target> Information </a>
-                        </li>
+    <div class="menu_simple" class='lignes'>
+        <ul>
+            <li>
+                <a href="Accueil.html">
+                    <target=_ self>
+                        </target> Home
+                </a>
+            </li>
+            <li>
+                <a href="connexion.html">
+                    <target=_ self>
+                        </target> Connexion
+                </a>
+            </li>
+            <li>
+                <a href="contact.html">
+                    <target=_ self>
+                        </target> About us
+                </a>
+            </li>
+            <li>
+                <a href="pageInfo.html">
+                    <target=_ self>
+                        </target> Information
+                </a>
+            </li>
 
-                    </ul>   
+<!--A ajouter au template du menu,
+     aussi faire la condition si on est connecté ou pas-->
+            <!--
+                CSS : structure.css
+            -->
+            <li style=" background-color: red; width: 100%;">
+                <div id="info_utilisateur" >
+                    <p>Nom prénom</p>
                 </div>
+
+                <div><button>Déconnexion</button></div>
+            </li>
+<!--fin a ajouter au template du menu-->
+            <li>
+                <div id="image_logo">
+                    <img src="../images/logo.png" alt="logo">
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+
+        <!--Eventuellement quelquechose tout en bas-->
+        <div id="bot_panel">
+            <div tabindex="0" onclick='location.href="https://www.instagram.com/maximinounours0/";'>
+                <img src="../images/icone_insta.png" alt="Page insta">
             </div>
-
-
-
-	        <!--Eventuellement quelquechose tout en bas-->
-            <div id="bot_panel">
-                <div onclick='location.href="https://www.instagram.com/maximinounours0/";'>
-                    <img src="../images/icone_insta.png" alt="Page insta">
-                </div>
-                <div onclick="location.href='https://twitter.com';">
-                    <img src="../images/icone_twitter.png" alt="Page twitter">
-                </div>
-                <div onclick="location.href='https://www.facebook.com/';">
-                    <img src="../images/icone_fb.png" alt="Page facebook">
-                </div>
-    
-
+            <div tabindex="0" onclick="location.href='https://twitter.com';">
+                <img src="../images/icone_twitter.png" alt="Page twitter">
+            </div>
+            <div tabindex="0" onclick="location.href='https://www.facebook.com/';">
+                <img src="../images/icone_fb.png" alt="Page facebook">
+            </div>
 </body>
 
 </html>
