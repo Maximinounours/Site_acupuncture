@@ -20,7 +20,7 @@
 
     <form action="index.php?page=listeSymptome" method="post">
 
-        <div id="filter">
+        <div class="filter">
 
 
             <div class="filter_choice">
@@ -54,7 +54,7 @@
                     {/foreach}
                 </select>
             </div>
-            <div id="filter_submit">
+            <div class="filter_submit">
                 <input type="submit" value="Filtrer" >
             </div>
         </div>

@@ -1,18 +1,22 @@
 
 #container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     grid-column: 2; 
     background-color: #768981; 
-    margin: 20px auto;
-    border-radius: 10px;
-    padding: 10px 20px;
 }
+#container > *{
+    width: 100%;
+    padding: 0px 10px;
+}
+
 h2 {
     color: white;
     font-size: xx-large;
     text-transform: uppercase;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 150px;
+
     
 }
 
@@ -42,6 +46,7 @@ button{
     background-color: #543739;
     border: none;
     border-radius: 10px;
+    color: white; 
 }
 
 button:hover{
@@ -49,7 +54,10 @@ button:hover{
 }
 
 hr {
+    height: 1px;
     width : 100%;
+    border: none;
+    background-color: #543739;
 }
 
 #register{
@@ -93,12 +101,15 @@ p{
 }
 
 #contact{
+    padding: 150px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     grid-column: 1 ;
     background-image:url("../images/connexion.jpg");
     background-size: cover;
 }
 #pract{
-    grid-column: 2; 
-    background-color: #768981;
+
     
 }

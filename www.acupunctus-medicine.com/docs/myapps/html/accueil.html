@@ -38,13 +38,26 @@
                         </target> Information
                 </a>
             </li>
+
+<!--A ajouter au template du menu,
+     aussi faire la condition si on est connecté ou pas-->
+            <!--
+                CSS : structure.css
+            -->
+            <li style=" background-color: red; width: 100%;">
+                <div id="info_utilisateur" >
+                    <p>Nom prénom</p>
+                </div>
+
+                <div><button>Déconnexion</button></div>
+            </li>
+<!--fin a ajouter au template du menu-->
             <li>
                 <div id="image_logo">
                     <img src="../images/logo.png" alt="logo">
                 </div>
             </li>
         </ul>
-    </div>
     </div>
 
     <!--Deux icônes d'accès sur un fond cosy -->
@@ -91,20 +104,18 @@
             ce depuis son introduction en Europe au xviie siècle. L'UNESCO l'a inscrite au patrimoine culturel
             immatériel de l'humanité le 16 novembre 2010.
         </p>
-        <?php echo ?>
     </div>
-    <!--Eventuellement quelquechose tout en bas-->
-    <div id="bot_panel">
-        <div onclick='location.href="https://www.instagram.com/maximinounours0/";'>
-            <img src="../images/icone_insta.png" alt="Page insta">
-        </div>
-        <div onclick="location.href='https://twitter.com';">
-            <img src="../images/icone_twitter.png" alt="Page twitter">
-        </div>
-        <div onclick="location.href='https://www.facebook.com/';">
-            <img src="../images/icone_fb.png" alt="Page facebook">
-        </div>
-    </div>
+        <!--Eventuellement quelquechose tout en bas-->
+        <div id="bot_panel">
+            <div tabindex="0" onclick='location.href="https://www.instagram.com/maximinounours0/";'>
+                <img src="../images/icone_insta.png" alt="Page insta">
+            </div>
+            <div tabindex="0" onclick="location.href='https://twitter.com';">
+                <img src="../images/icone_twitter.png" alt="Page twitter">
+            </div>
+            <div tabindex="0" onclick="location.href='https://www.facebook.com/';">
+                <img src="../images/icone_fb.png" alt="Page facebook">
+            </div>
 </body>
 
 </html>

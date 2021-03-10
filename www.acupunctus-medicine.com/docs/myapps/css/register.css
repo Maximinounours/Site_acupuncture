@@ -9,9 +9,6 @@ h2 {
     color: white;
     font-size: xx-large;
     text-transform: uppercase;
-    text-align: center;
-    vertical-align: middle;
-    padding-top: 220px;  
 }
 p{
     color: white;
@@ -31,6 +28,10 @@ p{
 }
 
 #contact{
+    padding: 150px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-column: 1 ;
     background-image:url("../images/register.jpg");
     background-size: cover;
@@ -79,6 +80,7 @@ hr {
 }
 
 #login{
+
     text-align: center;
     font-weight: bold;
     padding: 5px 10px;
