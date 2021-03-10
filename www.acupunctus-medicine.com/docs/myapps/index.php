@@ -7,13 +7,13 @@ require('classe_Utilisateur.php');
 require('/usr/local/lib/php/Smarty/libs/Smarty.class.php');
 $smarty = new Smarty();
 
-$templatesDir = '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates';
+$templatesDir = '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates';
 
 $smarty->setTemplateDir($templatesDir);
 
-$smarty->setCompileDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates_c/');
-$smarty->setCacheDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
-$smarty->setConfigDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
+$smarty->setCompileDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates_c/');
+$smarty->setCacheDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
+$smarty->setConfigDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
 
 require_once('fonctions_acupuncture.php');
 session_start();
@@ -32,6 +32,12 @@ if (empty($_GET['page'])){ //Premiere visite du site pour la session en cours
 }
 
 else{ //Sinon on est en train de naviguer sur le site
+	
+	//Si on est sur la page depuis trop longtemps et les caches/cookies sont timeout
+	if(empty($_SESSION['utilisateur'])){
+		$utilisateur = new Utilisateur();
+  		$_SESSION['utilisateur'] = $utilisateur;
+  	}
 	
   	//Envoi des infos sur l'etat de connexion
   	$smarty->assign('utilisateur', $_SESSION['utilisateur']);
@@ -195,9 +201,7 @@ else{ //Sinon on est en train de naviguer sur le site
 			$PDOrep = $dbh->prepare($requete_association_meridien);
 			$PDOrep->execute(array());
 			$reponsecode = $PDOrep->fetchAll(PDO::FETCH_OBJ);
-			
-			print_r($reponseREQ);
-			
+						
 			$nom_code_meridien = array_combine(
 				array_column($reponsecode, 'code'),
 				array_column($reponsecode, 'nom'));
@@ -213,7 +217,6 @@ else{ //Sinon on est en train de naviguer sur le site
 			
 			$requeteSQLFiltre = $requeteSQLFiltre . " ORDER BY name LIMIT 20;";
 	//A ce stade la requete est prete a etre envoyée
-			print_r($requeteSQLFiltre);
 			
 			$PDOrep = $dbh->prepare($requeteSQLFiltre);
 			$PDOrep->execute(array());
@@ -222,7 +225,6 @@ else{ //Sinon on est en train de naviguer sur le site
 	//la pathologie et les caracteristiques de la donnée)
 
 			$nb_resp = 0;
-			print_r($reponseREQ);
 			foreach($reponseREQ as $ligne){
 				$patho_caracteristiques = $decodage_code[$ligne->code];
 				$ligne->nom_pathologie = $options_pathologie[$patho_caracteristiques[0]];
