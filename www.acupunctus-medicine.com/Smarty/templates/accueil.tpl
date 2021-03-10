@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="css/structure.css">
         <link rel="stylesheet" href="css/css_accueil.css">
         
-        {assign "page" accueil }
     </head>
 
     
@@ -18,7 +17,6 @@
         <!--Deux icônes d'accès sur un fond cosy -->
 
         <div id="tout">
-
             <div id="gauche" class="container">
                 <a id="gauche1" class="noirci" href="index.php?page=register">
                 Register</a>

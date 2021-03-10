@@ -13,7 +13,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /*border : solid 3px #543739;*/
 }
 
 .filter_choice{
@@ -103,6 +102,6 @@ select:hover{
 }
 
 
-#container_liste_symptomes{
-    
+*{
+    color: black;
 }

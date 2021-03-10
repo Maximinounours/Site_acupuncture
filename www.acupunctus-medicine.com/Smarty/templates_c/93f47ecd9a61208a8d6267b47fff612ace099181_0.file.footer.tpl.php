@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-09 09:29:38
+/* Smarty version 3.1.39, created on 2021-03-09 18:16:33
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_604731f29d3223_96949557',
+  'unifunc' => 'content_6047ad715026b6_72890516',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604731f29d3223_96949557 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6047ad715026b6_72890516 (Smarty_Internal_Template $_smarty_tpl) {
 ?>        <!--Eventuellement quelquechose tout en bas-->
         <div id="bot_panel">
             <div tabindex="0" onclick='location.href="https://www.instagram.com/maximinounours0/";'>

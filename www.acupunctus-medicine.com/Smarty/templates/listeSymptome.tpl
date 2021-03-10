@@ -18,26 +18,31 @@
 
     <!--Corps de la page-->
 
-    <form action="">
+    <form action="index.php?page=listeSymptome" method="post">
 
         <div id="filter">
+
 
             <div class="filter_choice">
                 <label for="meridien-select">Méridien</label>
                 <!--Faire avec smarty apres, prendre les options possbiles avec ce qu'il y a dans la base de données-->
                 <select name="meridien" id="meridien-select">
                     <option value="">Choisir un méridien</option>
-                    <option value="Shao_yin">Estomac</option>
-                    <option value="Tai_yang">Foie</option>
+
+                    {foreach from=$options_meridien item = meridien}
+                        <option value={$meridien->code} >{$meridien->nom}</option>
+                    {/foreach}
+
                 </select>
             </div>
 
             <div class="filter_choice">
                 <label for="pathologie-select">Type de pathologie</label>
-                <select name="pathologie" id="pathologie-select">
+                <select name="pathologie" id="pathologie-select" on>
                     <option value="">Choisir une pathologie</option>
-                    <option value="cote_gauche_3">Luo</option>
-                    <option value="orteil_10">Méridien</option>
+                    {foreach from=$options_pathologie key=k item = i}
+                        <option value={$k} >{$i}</option>
+                    {/foreach}
                 </select>
             </div>
 
@@ -45,51 +50,59 @@
                 <label for="caracteristique-select">Caractéristique</label>
                 <select name="caracteristique" id="caracteristique-select">
                     <option value="">Choisir une caractéristique</option>
-                    <option value="cote_gauche_3">Externe</option>
-                    <option value="orteil_10">Froid</option>
+                    {foreach from=$options_caracteristique key=k item = i}
+                        <option value={$i} >{$i}</option>
+                    {/foreach}
                 </select>
+            </div>
+            <div id="filter_submit">
+                <input type="submit" value="Filtrer" >
             </div>
         </div>
 
     </form>
 
+    {if $filtre_actif}<p>{$nb_resp}{$choix_filtre[0]}{$choix_filtre[1]}{$choix_filtre[2]}</p>{/if}
 
 
-        <!--foreach-->
-            <div >
-                
+            <div id = "container_liste_symptomes">
+
+            {foreach from=$reponseSQL item = itemSQL}
+
                 <a id="container_liste_symptome" href="">
                     <div style="grid-column: 1/4; grid-row: 1;">
-                        <p>Type de symptôme</p>
+                        <p>{$itemSQL->zonedouleur}</p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I>Detail pathologie</I></p>
+                        <p><I>{$itemSQL->detailmeridien}</I></p>
                     </div>
                     <div style="grid-column: 1/4; grid-row: 4;">
-                        <p>type de pathologie</p>
+                        <p>{$itemSQL->nom_pathologie}</p>
                     </div>
                     <div style="grid-column: 4/7; grid-row: 1/5;">
-                        <p><I>DescriptionDescriptionDescriptionDescription symptome</I></p>
+                        <p><I>{$itemSQL->detaildouleur}</I></p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 1;">
-                        <p>meridien</p>
+                        <p>Méridien : {$itemSQL->nommeridien}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 2;">
-                        <p>carac 1</p>
+                        <p>{$itemSQL->nom_caracteristique_1}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 3;">
-                        <p>carac 2</p>
+                        <p>{$itemSQL->nom_caracteristique_2}</p>
                     </div>
                     <div style="grid-column: 7/9; grid-row: 4;">
-                        <p>carac 3</p>
+                        <p></p>
                     </div>
                     <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 3;"><img src="" alt=""></div>
                     <div style="grid-column: 9; grid-row: 4;"><img src="" alt=""></div>
                 </a>
+
+            {/foreach}
+
             </div>
-                <!--/foreach-->
 
     {include file = 'footer.tpl'}
 

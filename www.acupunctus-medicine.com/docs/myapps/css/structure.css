@@ -2,7 +2,6 @@
     font-family: 'calibri', sans-serif;
 }
 body{
-    background-color: #f4f6f5;
     background-image: url("../images/fond.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -86,7 +85,6 @@ margin:0;
     color: #c0cfb2;
     background-color: rgba(0, 0, 0, 0.3);
 }
-
 
 #image_logo{
     display: flex;
