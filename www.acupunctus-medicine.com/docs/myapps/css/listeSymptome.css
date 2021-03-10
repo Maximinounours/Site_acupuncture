@@ -4,7 +4,7 @@
     font-weight: bold;
 }
 
-#filter{
+.filter{
     background-color: #768981;
     margin: 20px auto;
     border-radius: 10px;
@@ -47,7 +47,7 @@ select:hover{
     padding: 5px;
 }
 
-#filter_submit > input{
+.filter_submit > input{
     margin-left: 20px;
     padding: 5px 10px;
     border-radius: 5px;
@@ -100,4 +100,9 @@ select:hover{
     border: 1px solid #365f41;
     box-shadow: 0px 0px 5px black,inset 0px 0px 5px black;
     background-color: #365f41;
+}
+
+
+#container_liste_symptomes{
+    
 }
