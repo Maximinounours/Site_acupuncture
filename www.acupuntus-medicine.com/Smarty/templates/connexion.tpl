@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="./css/structure.css">
-    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="./css/connexion.css">
 
 
     <meta charset="UTF-8">
@@ -13,8 +13,7 @@
 </head>
 
 <body>
-
-{include file = 'menu.tpl'}
+   {include file="menu.tpl"}
 
     <!-- Formulaire pour s'enregistrer-->
 
@@ -22,15 +21,9 @@
 
         <div id="container">
 
-            <h1>Créer un compte ACUPUNCTURA</h1>
+            <h1>Connexion</h1>
 
             <hr>
-
-            <label for="name">Prénom</label>
-            <input type="text" name="name" placeholder="Prénom">
-
-            <label for="firstname">Nom</label>
-            <input type="text" name="firstname" placeholder="Nom">
 
             <label for="email">Adresse mail</label>
             <input type="text" name="email" placeholder="exemple@de.bosh.com">
@@ -38,20 +31,18 @@
             <label for="password">Mot de passe</label>
             <input type="password" name="password" placeholder="Mot de passe">
 
-            <label for="rpt-password">Confirmer le mot de passe</label>
-            <input type="password" name="rpt-password" placeholder="Répeter le mot de passe">
-
-            <button type="submit" id="btn_register">Créer un compte</button>
+            <button type="submit" id="btn_register">Se connecter</button>
 
             <hr>
 
-            <div id="login">
-            <p>Vous avez déjà un compte ? <a href="index.php?page=connexion"> Se connecter</a></p>
-
+            <div id="register">
+            <p>Pas de compte ? <a href="index.php?page=register"> Créer un compte</a></p>
+            
           </div>
         </div>
-        
+
     </form>
+
 
 	{include file="footer.tpl"}
 </body>

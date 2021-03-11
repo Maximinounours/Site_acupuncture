@@ -13,9 +13,13 @@ $smarty->setCompileDir('/var/www/html/Site_acupuncture/www.acupuntus-medicine.co
 $smarty->setCacheDir('/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/cache/');
 $smarty->setConfigDir('/var/www/html/Site_acupuncture/www.acupuntus-medicine.com/Smarty/configs/');
 
-$maPage = $_GET['page'];
-echo $maPage;
+$smarty->caching = 1;
 
-$smarty->display('accueil.tpl');
+if(!($smarty->isCached("accueil.tpl"))){
+	$smarty->display('accueil.tpl');
+}
 
-$smarty->display($maPage . '.tpl');
+else {
+	$maPage = $_GET['page'];
+	$smarty->display($maPage . '.tpl');
+}
