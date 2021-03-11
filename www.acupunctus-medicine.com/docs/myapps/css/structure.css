@@ -1,0 +1,138 @@
+* {
+    font-family: 'calibri', sans-serif;
+}
+body{
+    background-image: url("../images/fond.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.couleur_375452{
+    background-color: #375452;
+    color: white;
+
+}
+
+/*-------- Menu-----------*/
+li {
+    list-style:none !important;
+    color:#FFF;
+    padding:0;
+    font-size:20px;
+    text-decoration:none;
+}
+     
+nav ul {
+background-color:#375452;
+padding:0;
+margin:0;
+}
+    
+.menu_simple {
+    margin: 0 0;
+    background: url(imagens/navbar.png) #375452;
+    -webkit-box-shadow: 0 0 5px 0 #000000;
+    box-shadow: 0 0 5px 0 #000000;
+    filter: progid: DXImageTransform.Microsoft.Shadow(color=#000000, Direction=NaN, Strength=5);
+    position: sticky;
+    top: 5px;
+    z-index:5;
+}
+
+.menu_simple ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.menu_simple ul li {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.menu_simple ul li:last-child{
+    flex: 1;
+}
+
+.menu_simple ul li a {
+    min-height: 80px;
+    width: 100%;
+    height: 100%;
+    text-transform: uppercase;
+    font-size: 17px;
+    font-weight: 550;
+    text-decoration: none;
+    transition: all 700ms;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu_simple ul li:first-child {
+    border-left: none;
+}
+
+.menu_simple ul li a:visited {
+    color: white;
+}
+
+.menu_simple ul li a:hover {
+    color: #c0cfb2;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#image_logo{
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#image_logo > img{
+    max-height: 80px;
+}
+
+
+/*-----------------*/
+
+#bot_panel{
+    height: 80px;
+    background-image: url("../images/liseret.png");
+    border: 2px solid #365f41;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+    background-color: #365f419d;
+}
+
+#bot_panel > div{
+    max-height: 50px;
+    max-width: 50px;
+    display: inline-block;
+    background-color:#365f41;
+    border-radius: 20px;
+    vertical-align: middle;
+    padding: 10px;
+    border: 2px solid #365f41;
+}
+
+#bot_panel > div:hover{
+    background-color: #365f419d;
+    cursor: pointer;
+    border: 2px solid white
+}
+
+#bot_panel > div > img{
+    max-width: inherit;
+    max-height: inherit;
+}
