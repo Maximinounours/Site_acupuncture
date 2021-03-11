@@ -14,4 +14,8 @@ function connexionBDD(){
 	return $dbh;
 };
 
+function test(){
+echo 'Bonjour';
+};
+
 ?>

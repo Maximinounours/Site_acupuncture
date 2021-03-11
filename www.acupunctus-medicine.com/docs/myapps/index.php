@@ -1,7 +1,6 @@
 <?php
 
-//class et autres fonctions utiles
-require('classe_Utilisateur.php');
+
 
 // put full path to Smarty.class.php
 require('/usr/local/lib/php/Smarty/libs/Smarty.class.php');
@@ -15,8 +14,11 @@ $smarty->setCompileDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.c
 $smarty->setCacheDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
 $smarty->setConfigDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
 
+//class et autres fonctions utiles
+require('classe_Utilisateur.php');
 require_once('fonctions_acupuncture.php');
 session_start();
+
 if (empty($_GET['page'])){ //Premiere visite du site pour la session en cours
 
 
@@ -120,6 +122,7 @@ else{ //Sinon on est en train de naviguer sur le site
 			];
 			
 			$options_pathologie = [
+				"" => "",
 				"mv" => "Merveilleux vaisseaux",
 				"tf" => "Zang / Fu",
 				"j" => "Jing jin",
@@ -154,6 +157,10 @@ else{ //Sinon on est en train de naviguer sur le site
 				INNER JOIN meridien ON patho.mer = meridien.code";
 			$filtreEnPlus = false;
 
+
+			$choixMeridien = "";
+			$choixPathologie = "";
+			$choixCaracteristique = "";
 			//Check les options de filtre et prepare la requete en consequence
 			if (!empty($_POST['meridien'])){
 				$filtre_actif = true;
@@ -215,7 +222,7 @@ else{ //Sinon on est en train de naviguer sur le site
 	
 
 			
-			$requeteSQLFiltre = $requeteSQLFiltre . " ORDER BY name LIMIT 20;";
+			$requeteSQLFiltre = $requeteSQLFiltre . " ORDER BY name LIMIT 200;";
 	//A ce stade la requete est prete a etre envoyée
 			
 			$PDOrep = $dbh->prepare($requeteSQLFiltre);

@@ -1,11 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <link rel="stylesheet" href="./css/structure.css">
     <link rel="stylesheet" href="./css/listeSymptome.css">
-
-
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +38,7 @@
 
             <div class="filter_choice">
                 <label for="pathologie-select">Type de pathologie</label>
-                <select name="pathologie" id="pathologie-select" on>
+                <select name="pathologie" id="pathologie-select" onchange="test()">
                     <option value="">Choisir une pathologie</option>
                     {foreach from=$options_pathologie key=k item = i}
                         <option value={$k} >{$i}</option>
