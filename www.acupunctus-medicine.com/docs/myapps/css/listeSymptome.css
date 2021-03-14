@@ -123,5 +123,5 @@ select:hover, .form_box:hover{
 /*a retirer une fois les debug php finis*/
 
 *{
-    color: black;
+    /*color: black;*/
 }
