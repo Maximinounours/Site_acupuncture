@@ -207,4 +207,12 @@ p{
     background-color:#768981;
     border-radius:5px;
 }
+#filter{
+    background-color: #543739;
+    border-radius:5px;
+}
+
+.imgFilter {
+    height: 10 px;
+}
 
