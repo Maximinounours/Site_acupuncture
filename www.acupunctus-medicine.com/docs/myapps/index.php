@@ -12,6 +12,9 @@ $smarty->setConfigDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.co
 //class et autres fonctions utiles
 require('classe_Utilisateur.php');
 require_once('fonctions_acupuncture.php');
+require_once('view.php');
+require_once('model.php');
+require_once('data.php');
 session_start();
 
 //Premiere visite du site pour la session en cours
@@ -19,7 +22,7 @@ if (empty($_GET['page'])){
   	$utilisateur = new Utilisateur();
   	$_SESSION['utilisateur'] = $utilisateur;
 //Envoi des infos sur l'etat de connexion
-  	$smarty->assign('utilisateur', $utilisateur);
+  	view_assign_info_template('utilisateur', $utilisateur, $smarty);
 	$maPage = 'accueil';
 	$smarty->display($maPage . '.tpl');
 }
@@ -31,9 +34,9 @@ else{
   		$_SESSION['utilisateur'] = $utilisateur;
   	}
 //Envoi des infos sur l'etat de connexion
-	$_SESSION['utilisateur']->connexion("Maxime", "Sophie", "coucou@mail.com");
-  	$smarty->assign('utilisateur', $_SESSION['utilisateur']);
-//Check si on est connecté avec utilisateur
+	$_SESSION['utilisateur']->connexion("Sophie", "Maxime", "coucou@mail.com");
+	view_assign_info_template('utilisateur', $_SESSION['utilisateur'], $smarty);
+	//Check si on est connecté avec utilisateur
 //On va utiliser ca pour afficher ou non des elements sur les pages html (dans le menu notamment pour afficher
 //le nom et prenom, et dans la liste pour afficher la recherche par mots-clés.
 //Aussi ajouter un bouton de deconnexion dans le menu
@@ -62,75 +65,26 @@ else{
 			break;
 			
 		case "listeSymptome":
-			$dbh = connexionBDD();
+			$dbh = MODEL_connexion_BDD();
+
 			$filtre1_actif = false;
 			$filtre2_actif = false;
-		//Une table aurait ete utile pour ca mais tant pis
-		//On peut faire ca par un algo mais ca change un peu
-			$decodage_code = [
-			"m" => ["m", "", ""],
-			"me" => ["m", "e", ""],
-			"mi" => ["m", "i", ""],
-			"tf" => ["tf", "", ""],
-			"tfp" => ["tf", "p", ""],
-			"tfv" => ["tf", "v", ""],
-			"tfv+" => ["tf", "v", ""],
-			"tfv-" => ["tf", "v", ""],
-			"tfc" => ["tf", "c", ""],
-			"tff" => ["tf", "f", ""],
-			"tfvf" => ["tf", "v", "f"],
-			"tfvfi" => ["tf", "v", "f"],
-			"tfvfm" => ["tf", "v", "f"],
-			"tfvfs" => ["tf", "v", "f"],
-			"tfpc" => ["tf", "p", "c"],
-			"tfpci" => ["tf", "p", "c"],
-			"tfpcm" => ["tf", "p", "c"],
-			"tfpcs" => ["tf", "p", "c"],
-			"j" => ["j", "", ""],
-			"l" => ["l", "", ""],
-			"l2p" => ["l", "p", ""],
-			"l2v" => ["l", "v", ""],
-			"lp" => ["l", "p", ""],
-			"lv" => ["l", "v", ""],
-			"mv" => ["mv", "", ""],
-			"mva" => ["mv", "", ""],
-			"mvi" => ["mv", "", ""],
-			"mvp" => ["mv", "", ""],
-			];
+
 			
 		//Code inutile pour les caract...
-			$options_caracteristique = [
-			"e" => "externe",
-			"i" => "interne",
-			"p" => "plein",
-			"v" => "vide",
-			"c" => "chaud",
-			"f" => "froid"
-			];
-			$options_pathologie = [
-				"" => "",
-				"mv" => "Merveilleux vaisseaux",
-				"tf" => "Zang / Fu",
-				"j" => "Jing jin",
-				"l" => "Voie luo",
-				"m" => "Méridien"
-			];
+
 		//Options filtre meridien
 			$filtre_meridien_SQL = "SELECT 
 				nom,
 				code
 				FROM meridien
 				ORDER BY nom";
-			$PDOrep = $dbh->prepare($filtre_meridien_SQL);
-			$PDOrep->execute(array());
-			$options_meridien = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+			$options_meridien = MODEL_SQL_envoi($filtre_meridien_SQL, $dbh);
 		//Options caracteristiques pour les utilsiateurs connectes
 			$filtre_keyword_SQL = "SELECT *
 				FROM keywords
 				ORDER BY name";
-			$PDOrep = $dbh->prepare($filtre_keyword_SQL);
-			$PDOrep->execute(array());
-			$options_keywords = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+			$options_keywords = MODEL_SQL_envoi($filtre_keyword_SQL, $dbh);
 		//Requete en fonction du filtre
 			$requeteSQLFiltre = "SELECT 
 				name AS zoneDouleur,
@@ -195,83 +149,57 @@ else{
 					//a terme avoir les choix dynamique en fonction de la pathologie selectionnée
 				}
 			//Comprendre quel meridien on a choisi pour le filtrage
-				if($filtre1_actif & $choixMeridien != ""){
+				if($filtre1_actif){
 					$requete_association_meridien = "SELECT code, nom
 					FROM meridien";
-					$PDOrep = $dbh->prepare($requete_association_meridien);
-					$PDOrep->execute(array());
-					$reponsecode = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+					$reponsecode = MODEL_SQL_envoi($requete_association_meridien, $dbh);
 					$nom_code_meridien = array_combine(
 						array_column($reponsecode, 'code'),
 						array_column($reponsecode, 'nom'));
+					$nom_code_meridien[""] = "";
 				}
 			}
 			
-	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
-	
-	//faire une partie visible ou non qui indique les options de filtre actif (utiliser $choixPathologie, $choixMeridien...)
-	
-	//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-	
-
-			
 			$requeteSQLFiltre = $requeteSQLFiltre . " ORDER BY name LIMIT 200;";
 	//A ce stade la requete est prete a etre envoyée
-			
-			$PDOrep = $dbh->prepare($requeteSQLFiltre);
-			$PDOrep->execute(array());
-			$reponseREQ = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+			$reponseREQ = MODEL_SQL_envoi($requeteSQLFiltre, $dbh);
 	//Il faut pouvoir comprendre les données maintenant pour avoir un affichage correct (a partir du patho.type trouver
 	//la pathologie et les caracteristiques de la donnée)
 
 			$nb_resp = 0;
 			foreach($reponseREQ as $ligne){
-				$patho_caracteristiques = $decodage_code[$ligne->code];
-				$ligne->nom_pathologie = $options_pathologie[$patho_caracteristiques[0]];
+				$patho_caracteristiques = $DATA_decodage_code[$ligne->code];
+				$ligne->nom_pathologie = $DATA_options_pathologie[$patho_caracteristiques[0]];
 				if($patho_caracteristiques[1] != ""){
-					$ligne->nom_caracteristique_1 = $options_caracteristique[$patho_caracteristiques[1]];
+					$ligne->nom_caracteristique_1 = $DATA_options_caracteristique[$patho_caracteristiques[1]];
 					}
 				else{
 					$ligne->nom_caracteristique_1 = "";
 				}
 				if($patho_caracteristiques[2] != ""){
-					$ligne->nom_caracteristique_2 = $options_caracteristique[$patho_caracteristiques[2]];
+					$ligne->nom_caracteristique_2 = $DATA_options_caracteristique[$patho_caracteristiques[2]];
 					}
 				else{
 					$ligne->nom_caracteristique_2 = "";
 				}
 				$nb_resp++;
 			}
-/* Permet d'extraire la pathologie du code mais c'est quand meme plus facile d'avoir une table de code
-			foreach($reponseREQ as $ligne){
-				foreach($options_pathologie as $code_pathologie => $nom_pathologie){
-					if(!empty(stristr($ligne->code, $code_pathologie))){
-						print_r($code_pathologie . "   ");
-						$ligne->nom_de_la_pathologie = $nom_pathologie;
-						$ligne->code_de_la_pathologie = $code_pathologie;
-						$ligne->code = preg_replace("/".$code_pathologie."/", "",$ligne->code, 1);
-					}
-				}
-			}
-*/
-
-
-
 			//Envoi des données au template
-			$smarty->assign('options_keywords', $options_keywords);
-			$smarty->assign('options_meridien', $options_meridien);
-			$smarty->assign('options_pathologie', $options_pathologie);
-			$smarty->assign('options_caracteristique', $options_caracteristique);
-			$smarty->assign('reponseSQL', $reponseREQ);
-			$smarty->assign('nb_resp', $nb_resp);
-			$smarty->assign('filtre1_actif', $filtre1_actif);
-			$smarty->assign('filtre2_actif', $filtre2_actif);
+			view_assign_info_template('options_keywords', $options_keywords, $smarty);
+			view_assign_info_template('options_meridien', $options_meridien, $smarty);
+			view_assign_info_template('options_pathologie', $DATA_options_pathologie, $smarty);
+			view_assign_info_template('options_caracteristique', $DATA_options_caracteristique, $smarty);
+			view_assign_info_template('reponseSQL', $reponseREQ, $smarty);
+			view_assign_info_template('nb_resp', $nb_resp, $smarty);
+			view_assign_info_template('filtre1_actif', $filtre1_actif, $smarty);
+			view_assign_info_template('filtre2_actif', $filtre2_actif, $smarty);
+
 
 			if($filtre1_actif){
-				$smarty->assign('choix_filtre', [$nom_code_meridien[$choixMeridien], $options_pathologie[$choixPathologie], $choixCaracteristique]);
+				view_assign_info_template('choix_filtre', [$nom_code_meridien[$choixMeridien], $DATA_options_pathologie[$choixPathologie], $choixCaracteristique], $smarty);
 			}
 			else if ($filtre2_actif){
-				$smarty->assign('choix_filtre', $choixKeyword);
+				view_assign_info_template('choix_filtre', $choixKeyword, $smarty);
 			}
 			break;		
 		
@@ -282,102 +210,3 @@ else{
 	//Affichage de la page apres avoir mis en place et envoyé toutes les données
 	$smarty->display($maPage . '.tpl');
 }	
-
-
-/*
-
-if (empty($_GET['page'])){
-	$smarty->display('accueil.tpl');
-}
-else{
-
-	$maPage = $_GET['page'];
-	if($maPage == 'listeSymptome'){
-		
-		//Option filtre pathologie
-		$options_pathologie = [
-		"mv" => "Merveilleux vaisseaux",
-		"tf" => "Zang / Fu",
-		"j" => "Jing jin",
-		"l" => "Voie luo",
-		"m" => "Méridien"
-		];
-
-		
-		//Filtrage ?
-		if (!empty($_POST['meridien'])){
-			echo $_POST['meridien'];
-		}
-	
-		//Connexion a la base de donnees
-		$dsn = 'pgsql:dbname=acudb;host=localhost';
-		$user = 'postgres-tli';
-		$password = 'tli';
-		try{
-			$dbh = new PDO($dsn, $user, $password);
-		}
-		catch (PDOException $e){
-		echo 'connexion echouee : ' . $e->getMessage();
-		};
-		
-		//Option filtre meridien
-		$filtre_meridien_SQL = "SELECT 
-		nom,
-		code
-		FROM meridien
-		ORDER BY nom";
-        $PDOrep = $dbh->prepare($filtre_meridien_SQL);
-        $PDOrep->execute(array());
-		$options_meridien = $PDOrep->fetchAll(PDO::FETCH_OBJ);
-		$smarty->assign('options_meridien', $options_meridien);		
-		
-		//Option filtre pathologie
-
-		$smarty->assign('options_pathologie', $options_pathologie);
-		
-		
-		//WHERE meridien.nom = 'Foie'
-
-		$requeteSQL = "SELECT 
-name AS zoneDouleur,
-symptome.desc as detailDouleur,
-patho.desc AS detailMeridien,
-meridien.nom AS nomMeridien,
-patho.type AS code
-FROM keywords
-INNER JOIN keysympt ON keysympt.idk = keywords.idk
-INNER JOIN symptome ON keysympt.ids = symptome.ids
-INNER JOIN symptpatho ON symptpatho.ids = symptome.ids
-INNER JOIN patho ON patho.idp = symptpatho.idp
-INNER JOIN meridien ON patho.mer = meridien.code
-ORDER BY name
-LIMIT 20;";
-
-		$PDOrep = $dbh->prepare($requeteSQL);
-		
-		$PDOrep->execute(array());	
-		
-		
-		$reponseREQ = $PDOrep->fetchAll(PDO::FETCH_OBJ);
-		
-		foreach($reponseREQ as $ligne){
-			$code = $ligne->code;
-			foreach($options_pathologie as $code_pathologie => $nom_pathologie){
-				if(!empty(stristr($code, $code_pathologie))){
-					$ligne->nom_de_la_pathologie = $nom_pathologie;
-					$ligne->code_de_la_pathologie = $code_pathologie;
-					$ligne->code = preg_replace("/".$code_pathologie."/", "", $code, 1);
-					
-					
-				}
-			}
-			
-		}
-		
-		$smarty->assign('reponseSQL', $reponseREQ);
-		
-	}
-		$smarty->display($maPage . '.tpl');
-		
-}
-*/
