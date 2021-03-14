@@ -26,6 +26,10 @@ class Utilisateur{
 		print("Prenom : " . "$this->_prenom");
 		print("Mail : " . "$this->_mail");
 	}
+
+	public function getIsConnected(){
+		return $this->_isConnected;
+	}
 	
 }
 

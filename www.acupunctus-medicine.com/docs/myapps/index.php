@@ -1,15 +1,10 @@
 <?php
 
-
-
 // put full path to Smarty.class.php
 require('/usr/local/lib/php/Smarty/libs/Smarty.class.php');
 $smarty = new Smarty();
-
 $templatesDir = '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates';
-
 $smarty->setTemplateDir($templatesDir);
-
 $smarty->setCompileDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates_c/');
 $smarty->setCacheDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
 $smarty->setConfigDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
@@ -19,36 +14,29 @@ require('classe_Utilisateur.php');
 require_once('fonctions_acupuncture.php');
 session_start();
 
-if (empty($_GET['page'])){ //Premiere visite du site pour la session en cours
-
-
+//Premiere visite du site pour la session en cours
+if (empty($_GET['page'])){
   	$utilisateur = new Utilisateur();
   	$_SESSION['utilisateur'] = $utilisateur;
-
-  	//Envoi des infos sur l'etat de connexion
+//Envoi des infos sur l'etat de connexion
   	$smarty->assign('utilisateur', $utilisateur);
-  	
 	$maPage = 'accueil';
-	
 	$smarty->display($maPage . '.tpl');
 }
-
-else{ //Sinon on est en train de naviguer sur le site
-	
-	//Si on est sur la page depuis trop longtemps et les caches/cookies sont timeout
+//Sinon on est en train de naviguer sur le site
+else{
+//Si on est sur la page depuis trop longtemps et les caches/cookies sont timeout
 	if(empty($_SESSION['utilisateur'])){
 		$utilisateur = new Utilisateur();
   		$_SESSION['utilisateur'] = $utilisateur;
   	}
-	
-  	//Envoi des infos sur l'etat de connexion
+//Envoi des infos sur l'etat de connexion
+	$_SESSION['utilisateur']->connexion("Maxime", "Sophie", "coucou@mail.com");
   	$smarty->assign('utilisateur', $_SESSION['utilisateur']);
-
 //Check si on est connecté avec utilisateur
 //On va utiliser ca pour afficher ou non des elements sur les pages html (dans le menu notamment pour afficher
 //le nom et prenom, et dans la liste pour afficher la recherche par mots-clés.
 //Aussi ajouter un bouton de deconnexion dans le menu
-
 	$maPage = $_GET['page'];
 	switch($maPage){
 		case "register":
@@ -75,10 +63,10 @@ else{ //Sinon on est en train de naviguer sur le site
 			
 		case "listeSymptome":
 			$dbh = connexionBDD();
-			$filtre_actif = false;
-			
-			//Une table aurait ete utile pour ca mais tant pis
-			//On peut faire ca par un algo mais ca change un peu
+			$filtre1_actif = false;
+			$filtre2_actif = false;
+		//Une table aurait ete utile pour ca mais tant pis
+		//On peut faire ca par un algo mais ca change un peu
 			$decodage_code = [
 			"m" => ["m", "", ""],
 			"me" => ["m", "e", ""],
@@ -110,8 +98,7 @@ else{ //Sinon on est en train de naviguer sur le site
 			"mvp" => ["mv", "", ""],
 			];
 			
-			
-			//Code inutile pour les caract...
+		//Code inutile pour les caract...
 			$options_caracteristique = [
 			"e" => "externe",
 			"i" => "interne",
@@ -120,7 +107,6 @@ else{ //Sinon on est en train de naviguer sur le site
 			"c" => "chaud",
 			"f" => "froid"
 			];
-			
 			$options_pathologie = [
 				"" => "",
 				"mv" => "Merveilleux vaisseaux",
@@ -129,8 +115,7 @@ else{ //Sinon on est en train de naviguer sur le site
 				"l" => "Voie luo",
 				"m" => "Méridien"
 			];
-			
-			//Options filtre meridien
+		//Options filtre meridien
 			$filtre_meridien_SQL = "SELECT 
 				nom,
 				code
@@ -139,10 +124,14 @@ else{ //Sinon on est en train de naviguer sur le site
 			$PDOrep = $dbh->prepare($filtre_meridien_SQL);
 			$PDOrep->execute(array());
 			$options_meridien = $PDOrep->fetchAll(PDO::FETCH_OBJ);
-			
-
-			
-			//Requete en fonction du filtre
+		//Options caracteristiques pour les utilsiateurs connectes
+			$filtre_keyword_SQL = "SELECT *
+				FROM keywords
+				ORDER BY name";
+			$PDOrep = $dbh->prepare($filtre_keyword_SQL);
+			$PDOrep->execute(array());
+			$options_keywords = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+		//Requete en fonction du filtre
 			$requeteSQLFiltre = "SELECT 
 				name AS zoneDouleur,
 				symptome.desc as detailDouleur,
@@ -156,62 +145,66 @@ else{ //Sinon on est en train de naviguer sur le site
 				INNER JOIN patho ON patho.idp = symptpatho.idp
 				INNER JOIN meridien ON patho.mer = meridien.code";
 			$filtreEnPlus = false;
-
+		//Check les options de filtre et prepare la requete en consequence
 
 			$choixMeridien = "";
 			$choixPathologie = "";
 			$choixCaracteristique = "";
-			//Check les options de filtre et prepare la requete en consequence
-			if (!empty($_POST['meridien'])){
-				$filtre_actif = true;
-				$choixMeridien = $_POST['meridien'];
-				$requeteSQLFiltre = $requeteSQLFiltre ." WHERE meridien.code = '". $choixMeridien . "'";
+			$choixKeyword = "";
+			
+			if (!empty($_POST['keywords-input'])){
+				$filtre2_actif = true;
+				$choixKeyword = $_POST['keywords-input'];
+				$requeteSQLFiltre = $requeteSQLFiltre ." WHERE keywords.name LIKE '%". $choixKeyword . "%'";
 				$filtreEnPlus = true;
 			}
-			
-			if (!empty($_POST['pathologie'])){
-				$filtre_actif = true;
-				$choixPathologie = $_POST['pathologie'];
-				if($filtreEnPlus){
-					$requeteSQLFiltre = $requeteSQLFiltre . "AND ";
-				}
-				else{
+			else{
+				if (!empty($_POST['meridien'])){
+					$filtre1_actif = true;
+					$choixMeridien = $_POST['meridien'];
+					$requeteSQLFiltre = $requeteSQLFiltre ." WHERE meridien.code = '". $choixMeridien . "'";
 					$filtreEnPlus = true;
-					$requeteSQLFiltre = $requeteSQLFiltre . " WHERE ";
 				}
-	 			$requeteSQLFiltre = $requeteSQLFiltre . "patho.type LIKE '". $choixPathologie . "%'";
-	 			
-	 			//Necessaire de part la structure de la base de donnée
-	 			if($choixPathologie == "m"){
-	 				$requeteSQLFiltre = $requeteSQLFiltre . "AND patho.type NOT LIKE 'mv%'";
-	 			}
-			}
-			
-			if (!empty($_POST['caracteristique'])){
-			//Formulaire renvoie la chaine de caractere, pas le  code (parce que sinon on peut pas distinguer tff de tfc entre autre...)
-				$filtre_actif = true;
-				$choixCaracteristique = $_POST['caracteristique'];
-				if($filtreEnPlus){
-					$requeteSQLFiltre = $requeteSQLFiltre . "AND ";
+				if (!empty($_POST['pathologie'])){
+					$filtre1_actif = true;
+					$choixPathologie = $_POST['pathologie'];
+					if($filtreEnPlus){
+						$requeteSQLFiltre = $requeteSQLFiltre . "AND ";
+					}
+					else{
+						$filtreEnPlus = true;
+						$requeteSQLFiltre = $requeteSQLFiltre . " WHERE ";
+					}
+					$requeteSQLFiltre = $requeteSQLFiltre . "patho.type LIKE '". $choixPathologie . "%'";
+				//Necessaire de part la structure de la base de donnée
+					if($choixPathologie == "m"){
+						$requeteSQLFiltre = $requeteSQLFiltre . "AND patho.type NOT LIKE 'mv%'";
+					}
 				}
-				else{
-					$requeteSQLFiltre = $requeteSQLFiltre . " WHERE ";
+				if (!empty($_POST['caracteristique'])){
+				//Formulaire renvoie la chaine de caractere, pas le  code (parce que sinon on peut pas distinguer tff de tfc entre autre...)
+					$filtre1_actif = true;
+					$choixCaracteristique = $_POST['caracteristique'];
+					if($filtreEnPlus){
+						$requeteSQLFiltre = $requeteSQLFiltre . "AND ";
+					}
+					else{
+						$requeteSQLFiltre = $requeteSQLFiltre . " WHERE ";
+					}
+					$requeteSQLFiltre = $requeteSQLFiltre . "patho.desc LIKE '%". $choixCaracteristique . "%'";
+					//a terme avoir les choix dynamique en fonction de la pathologie selectionnée
 				}
-	 			$requeteSQLFiltre = $requeteSQLFiltre . "patho.desc LIKE '%". $choixCaracteristique . "%'";
-	 		
-				//a terme avoir les choix dynamique en fonction de la pathologie selectionnée
-			}
-			
-			if($filtre_actif){
-			$requete_association_meridien = "SELECT code, nom
-			FROM meridien";
-			$PDOrep = $dbh->prepare($requete_association_meridien);
-			$PDOrep->execute(array());
-			$reponsecode = $PDOrep->fetchAll(PDO::FETCH_OBJ);
-						
-			$nom_code_meridien = array_combine(
-				array_column($reponsecode, 'code'),
-				array_column($reponsecode, 'nom'));
+			//Comprendre quel meridien on a choisi pour le filtrage
+				if($filtre1_actif & $choixMeridien != ""){
+					$requete_association_meridien = "SELECT code, nom
+					FROM meridien";
+					$PDOrep = $dbh->prepare($requete_association_meridien);
+					$PDOrep->execute(array());
+					$reponsecode = $PDOrep->fetchAll(PDO::FETCH_OBJ);
+					$nom_code_meridien = array_combine(
+						array_column($reponsecode, 'code'),
+						array_column($reponsecode, 'nom'));
+				}
 			}
 			
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
@@ -265,17 +258,21 @@ else{ //Sinon on est en train de naviguer sur le site
 
 
 			//Envoi des données au template
+			$smarty->assign('options_keywords', $options_keywords);
 			$smarty->assign('options_meridien', $options_meridien);
 			$smarty->assign('options_pathologie', $options_pathologie);
 			$smarty->assign('options_caracteristique', $options_caracteristique);
 			$smarty->assign('reponseSQL', $reponseREQ);
 			$smarty->assign('nb_resp', $nb_resp);
-			$smarty->assign('filtre_actif', $filtre_actif);
-			if($filtre_actif){
+			$smarty->assign('filtre1_actif', $filtre1_actif);
+			$smarty->assign('filtre2_actif', $filtre2_actif);
+
+			if($filtre1_actif){
 				$smarty->assign('choix_filtre', [$nom_code_meridien[$choixMeridien], $options_pathologie[$choixPathologie], $choixCaracteristique]);
 			}
-
-
+			else if ($filtre2_actif){
+				$smarty->assign('choix_filtre', $choixKeyword);
+			}
 			break;		
 		
 		default:

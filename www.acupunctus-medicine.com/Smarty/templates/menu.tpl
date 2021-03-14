@@ -17,11 +17,23 @@
                             <a href="index.php?page=info">
                                 <target=_ self></target> Information </a>
                     </li>
+
+
+                    <li style=" background-color: red; width: 100%;">
+                    <div id="info_utilisateur" >
+                        <p>Nom prénom</p>
+                    </div>
+
+                    <div><button>Déconnexion</button></div>
+                    </li>
+
+
                     <li>
                         <div id="image_logo">
                             <img src="./images/logo.png" alt="logo">
                         </div>
                     </li>
+
                 </ul>   
             </div>
         </div>

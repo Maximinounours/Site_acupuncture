@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-11 10:09:30
+/* Smarty version 3.1.39, created on 2021-03-11 18:16:16
   from '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6049de4a2c1e12_44522252',
+  'unifunc' => 'content_604a50600423d4_75117818',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '898effb25ab5f2f84ad670f45c3a76e28ccaafe0' => 
     array (
       0 => '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615453762,
+      1 => 1615482970,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6049de4a2c1e12_44522252 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604a50600423d4_75117818 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +73,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
             <div class="filter_choice">
                 <label for="pathologie-select">Type de pathologie</label>
-                <select name="pathologie" id="pathologie-select" onchange="test(this)">
+                <select name="pathologie" id="pathologie-select" onchange="">
                     <option value="">Choisir une pathologie</option>
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['options_pathologie']->value, 'i', false, 'k');
@@ -116,34 +116,43 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </form>
 
 
-
-        <form action="index.php?page=listeSymptome" method="post">
+<?php if ($_smarty_tpl->tpl_vars['utilisateur']->value->getIsConnected()) {?>
+    <form action="index.php?page=listeSymptome" method="post">
+        <div class="filter">
             <div class="filter_choice">
-                <label for="meridien-select">Méridien</label>
-                <select name="meridien" id="meridien-select">
-                    <option value="">Choisir un méridien</option>
-
+                <label for="keywords-input">Mot-clé</label>
+                <input id="keywords-input" name="keywords-input" class="form_box" list="keywords"/>
+                <datalist id="keywords">
                     <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['options_meridien']->value, 'meridien');
-$_smarty_tpl->tpl_vars['meridien']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['meridien']->value) {
-$_smarty_tpl->tpl_vars['meridien']->do_else = false;
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['options_keywords']->value, 'valeur');
+$_smarty_tpl->tpl_vars['valeur']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['valeur']->value) {
+$_smarty_tpl->tpl_vars['valeur']->do_else = false;
 ?>
-                        <option value=<?php echo $_smarty_tpl->tpl_vars['meridien']->value->code;?>
- ><?php echo $_smarty_tpl->tpl_vars['meridien']->value->nom;?>
-</option>
+                        <option value="<?php echo $_smarty_tpl->tpl_vars['valeur']->value->name;?>
+"></option>
                     <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-
-                </select>
+                </datalist>
             </div>
-        </form>
+            <div class="filter_submit">
+                <input type="submit" value="Filtrer">
+            </div>
 
-    <?php if ($_smarty_tpl->tpl_vars['filtre_actif']->value) {?><p><?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;
-echo $_smarty_tpl->tpl_vars['choix_filtre']->value[0];
-echo $_smarty_tpl->tpl_vars['choix_filtre']->value[1];
-echo $_smarty_tpl->tpl_vars['choix_filtre']->value[2];?>
+        </div>
+
+    </form>
+<?php }?>
+
+
+    <?php if ($_smarty_tpl->tpl_vars['filtre1_actif']->value) {?><p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;
+echo $_smarty_tpl->tpl_vars['choix_filtre']->value[0];?>
+ <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[1];?>
+ <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[2];?>
+</p><?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['filtre2_actif']->value) {?><p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;?>
+ Critere de recherche par mot clé : <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value;?>
 </p><?php }?>
 
 

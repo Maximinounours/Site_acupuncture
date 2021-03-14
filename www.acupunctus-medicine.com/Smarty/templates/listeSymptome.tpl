@@ -38,7 +38,7 @@
 
             <div class="filter_choice">
                 <label for="pathologie-select">Type de pathologie</label>
-                <select name="pathologie" id="pathologie-select" onchange="test()">
+                <select name="pathologie" id="pathologie-select" onchange="">
                     <option value="">Choisir une pathologie</option>
                     {foreach from=$options_pathologie key=k item = i}
                         <option value={$k} >{$i}</option>
@@ -63,22 +63,30 @@
     </form>
 
 
-
-        <form action="index.php?page=listeSymptome" method="post">
+{if $utilisateur->getIsConnected()}
+    <form action="index.php?page=listeSymptome" method="post">
+        <div class="filter">
             <div class="filter_choice">
-                <label for="meridien-select">Méridien</label>
-                <select name="meridien" id="meridien-select">
-                    <option value="">Choisir un méridien</option>
-
-                    {foreach from=$options_meridien item = meridien}
-                        <option value={$meridien->code} >{$meridien->nom}</option>
+                <label for="keywords-input">Mot-clé</label>
+                <input id="keywords-input" name="keywords-input" class="form_box" list="keywords"/>
+                <datalist id="keywords">
+                    {foreach from=$options_keywords item = valeur}
+                        <option value="{$valeur->name}"></option>
                     {/foreach}
-
-                </select>
+                </datalist>
             </div>
-        </form>
+            <div class="filter_submit">
+                <input type="submit" value="Filtrer">
+            </div>
 
-    {if $filtre_actif}<p>{$nb_resp}{$choix_filtre[0]}{$choix_filtre[1]}{$choix_filtre[2]}</p>{/if}
+        </div>
+
+    </form>
+{/if}
+
+
+    {if $filtre1_actif}<p>Nombre de reponses : {$nb_resp}{$choix_filtre[0]} {$choix_filtre[1]} {$choix_filtre[2]}</p>{/if}
+    {if $filtre2_actif}<p>Nombre de reponses : {$nb_resp} Critere de recherche par mot clé : {$choix_filtre}</p>{/if}
 
 
             <div id = "container_liste_symptomes">
@@ -120,7 +128,7 @@
 
             </div>
 
-    {include file = 'footer.tpl'}
+    {include  file = 'footer.tpl'}
 
 </body>
 
