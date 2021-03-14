@@ -59,6 +59,11 @@ margin:0;
     flex: 1;
 }
 
+.menu_simple ul li:nth-last-child(2){
+    background-color: red;
+    flex: 1;
+}
+
 .menu_simple ul li a {
     min-height: 80px;
     width: 100%;
