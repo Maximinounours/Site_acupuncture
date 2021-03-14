@@ -50,4 +50,13 @@ $DATA_options_pathologie = [
     "m" => "Méridien"
 ];
 
+$DATA_caract_to_image = [
+    "chaud" => "./images/chaud_nb.png",
+    "froid" => "./images/froid_nb.png",
+    "externe" => "./images/exterior.png",
+    "interne" => "./images/interior.png",
+    "vide" => "./images/vide.png",
+    "plein" => "./images/plein.png"
+];
+
 ?>

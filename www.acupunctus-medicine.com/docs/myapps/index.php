@@ -168,20 +168,22 @@ else{
 
 			$nb_resp = 0;
 			foreach($reponseREQ as $ligne){
+				$ligne->nom_caracteristique_2 = "";
+				$ligne->nom_caracteristique_1 = "";
+				$ligne->img_caracteristique_2 = "";
+				$ligne->img_caracteristique_1 = "";
+				$ligne->img_pathologie = "";
+				
 				$patho_caracteristiques = $DATA_decodage_code[$ligne->code];
 				$ligne->nom_pathologie = $DATA_options_pathologie[$patho_caracteristiques[0]];
 				if($patho_caracteristiques[1] != ""){
 					$ligne->nom_caracteristique_1 = $DATA_options_caracteristique[$patho_caracteristiques[1]];
+					$ligne->img_caracteristique_1 = $DATA_caract_to_image[$ligne->nom_caracteristique_1];
 					}
-				else{
-					$ligne->nom_caracteristique_1 = "";
-				}
 				if($patho_caracteristiques[2] != ""){
 					$ligne->nom_caracteristique_2 = $DATA_options_caracteristique[$patho_caracteristiques[2]];
+					$ligne->img_caracteristique_2 = $DATA_caract_to_image[$ligne->nom_caracteristique_2];
 					}
-				else{
-					$ligne->nom_caracteristique_2 = "";
-				}
 				$nb_resp++;
 			}
 			//Envoi des données au template

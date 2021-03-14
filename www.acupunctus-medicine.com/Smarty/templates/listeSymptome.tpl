@@ -68,7 +68,7 @@
         <div class="filter">
             <div class="filter_choice">
                 <label for="keywords-input">Mot-clé</label>
-                <input id="keywords-input" name="keywords-input" class="form_box" list="keywords"/>
+                <input type="search" id="keywords-input" name="keywords-input" class="form_box" list="keywords"/>
                 <datalist id="keywords">
                     {foreach from=$options_keywords item = valeur}
                         <option value="{$valeur->name}"></option>
@@ -76,7 +76,7 @@
                 </datalist>
             </div>
             <div class="filter_submit">
-                <input type="submit" value="Filtrer">
+                <input type="submit" value="Filtrer" onclick="localStorage.clear();">
             </div>
 
         </div>
@@ -89,44 +89,52 @@
     {if $filtre2_actif}<p>Nombre de reponses : {$nb_resp} Critere de recherche par mot clé : {$choix_filtre}</p>{/if}
 
 
-            <div id = "container_liste_symptomes">
 
-            {foreach from=$reponseSQL item = itemSQL}
 
-                <a id="container_liste_symptome" href="">
-                    <div style="grid-column: 1/4; grid-row: 1;">
-                        <p>{$itemSQL->zonedouleur}</p>
-                    </div>
-                    <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I>{$itemSQL->detailmeridien}</I></p>
-                    </div>
-                    <div style="grid-column: 1/4; grid-row: 4;">
-                        <p>{$itemSQL->nom_pathologie}</p>
-                    </div>
-                    <div style="grid-column: 4/7; grid-row: 1/5;">
-                        <p><I>{$itemSQL->detaildouleur}</I></p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 1;">
-                        <p>Méridien : {$itemSQL->nommeridien}</p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 2;">
-                        <p>{$itemSQL->nom_caracteristique_1}</p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 3;">
-                        <p>{$itemSQL->nom_caracteristique_2}</p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 4;">
-                        <p></p>
-                    </div>
-                    <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
-                    <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>
-                    <div style="grid-column: 9; grid-row: 3;"><img src="" alt=""></div>
-                    <div style="grid-column: 9; grid-row: 4;"><img src="" alt=""></div>
+        <div id="pract" class="array">
+                <ul class="arrayStern">
+
+                    {foreach from=$reponseSQL item = itemSQL}
+                    <a href = "">
+                    <li class="arrayHeader">
+                        <div class="col"id="grid">
+                            <div id="title">
+                                <h4>Description</h4>
+                                <p>
+                                    <I>{$itemSQL->detaildouleur}</I>
+                                </p>
+                            </div>
+                            <div id="text">
+                                <h5>Pathologie : </h5>
+                                <p>{$itemSQL->nom_pathologie}</p>
+                            </div>
+                        </div>
+                        <span class="vertical-line"></span>
+                        <div class="col" id="grid2" >
+                            <div id="title2">
+                                <div id="pres">
+                                    <img class="presimg" src="{$itemSQL->img_pathologie}" alt="Pathologie">
+                                    <img class="presimg" src="{$itemSQL->img_caracteristique_1}" alt="Caracteristique">
+                                    <img class="presimg" src="{$itemSQL->img_caracteristique_2}" alt="Caracteristique2">
+                                </div>
+                            </div>
+                            <div id="text2">
+                                <h5><I>{$itemSQL->detailmeridien}</I></h5>
+                            </div>
+                            <div id="mot-cle">
+                                <h5>Key-words</h5>
+                                <div id="key"> 
+                                    <h5>Mot-clé : {$itemSQL->zonedouleur}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </li>
                 </a>
+                {/foreach}
+                </ul>
+                </div>
 
-            {/foreach}
-
-            </div>
 
     {include  file = 'footer.tpl'}
 

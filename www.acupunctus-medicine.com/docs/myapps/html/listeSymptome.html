@@ -189,40 +189,47 @@
         <!--tableau du filtre-->
         <div id="pract" class="array">
                 <ul class="arrayStern">
+
+                    {foreach from=$reponseSQL item = itemSQL}
                     <li class="arrayHeader">
                         <div class="col"id="grid">
                             <div id="title">
                                 <h4>Description</h4>
                                 <p>
-                                    Cette pathologie est ..
+                                    <I>{$itemSQL->detaildouleur}</I>
                                 </p>
                             </div>
                             <div id="text">
                                 <h5>Pathologie : </h5>
-                                <p> Nom de la pathologie</p>
+                                <p>{$itemSQL->nom_pathologie}</p>
                             </div>
                         </div>
                         <span class="vertical-line"></span>
                         <div class="col" id="grid2" >
                             <div id="title2">
                                 <div id="pres">
-                                    <img class="presimg" src="../images/icone_fb.png" alt="Pathologie">
-                                    <img class="presimg" src="../images/icone_fb.png" alt="Caracteristique">
-                                    <img class="presimg" src="../images/icone_fb.png" alt="Caracteristique2">
+                                    <img class="presimg" src="./images/icone_fb.png" alt="Pathologie">
+                                    <img class="presimg" src="./images/icone_fb.png" alt="Caracteristique">
+                                    <img class="presimg" src="./images/icone_fb.png" alt="Caracteristique2">
                                 </div>
                             </div>
                             <div id="text2">
-                                <h5>Acts on the meridian: name of the meridian</h5>
+                                <h5><I>{$itemSQL->detailmeridien}</I></h5>
                             </div>
                             <div id="mot-cle">
                                 <h5>Key-words</h5>
                                 <div id="key"> 
-                                    <h5> Name of the key - words</h5>
+                                    <h5>{$itemSQL->zonedouleur}</h5>
                                 </div>
                             </div>
                         </div>
                         
                 </li>
+                {/foreach}
+
+
+
+
 
                 <li class="arrayHeader">
                     <div class="col"id="grid">
