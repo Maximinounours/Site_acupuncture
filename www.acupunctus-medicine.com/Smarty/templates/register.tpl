@@ -40,6 +40,8 @@
                     <label for="rpt-password"><p>Confirm Password</p></label>
                     <input type="password" name="rpt-password" placeholder="Confirm password" required>
         
+                    <p style="color: rgb(121, 16, 16);">Passwords do not match</p>
+
                     <button type="submit" id="btn_register">Register</button>
         
                     <hr>
