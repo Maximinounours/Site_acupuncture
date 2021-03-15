@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-10 17:28:26
+/* Smarty version 3.1.39, created on 2021-03-15 08:31:26
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6048f3aa683b97_60608919',
+  'unifunc' => 'content_604f0d4eb2e0c1_41822813',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615393703,
+      1 => 1615735871,
       2 => 'file',
     ),
   ),
@@ -22,15 +22,16 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6048f3aa683b97_60608919 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+function content_604f0d4eb2e0c1_41822813 (Smarty_Internal_Template $_smarty_tpl) {
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <link rel="stylesheet" href="./css/structure.css">
     <link rel="stylesheet" href="./css/listeSymptome.css">
-
-
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,12 +47,11 @@ function content_6048f3aa683b97_60608919 (Smarty_Internal_Template $_smarty_tpl)
 
     <form action="index.php?page=listeSymptome" method="post">
 
-        <div id="filter">
+        <div class="filter">
 
 
             <div class="filter_choice">
                 <label for="meridien-select">Méridien</label>
-                <!--Faire avec smarty apres, prendre les options possbiles avec ce qu'il y a dans la base de données-->
                 <select name="meridien" id="meridien-select">
                     <option value="">Choisir un méridien</option>
 
@@ -73,7 +73,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
             <div class="filter_choice">
                 <label for="pathologie-select">Type de pathologie</label>
-                <select name="pathologie" id="pathologie-select" on>
+                <select name="pathologie" id="pathologie-select" onchange="">
                     <option value="">Choisir une pathologie</option>
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['options_pathologie']->value, 'i', false, 'k');
@@ -108,72 +108,114 @@ $_smarty_tpl->tpl_vars['i']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </select>
             </div>
-            <div id="filter_submit">
+            <div class="filter_submit">
                 <input type="submit" value="Filtrer" >
             </div>
         </div>
 
     </form>
 
-    <?php if ($_smarty_tpl->tpl_vars['filtre_actif']->value) {?><p><?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;
-echo $_smarty_tpl->tpl_vars['choix_filtre']->value[0];
-echo $_smarty_tpl->tpl_vars['choix_filtre']->value[1];
-echo $_smarty_tpl->tpl_vars['choix_filtre']->value[2];?>
+
+<?php if ($_smarty_tpl->tpl_vars['utilisateur']->value->getIsConnected()) {?>
+    <form action="index.php?page=listeSymptome" method="post">
+        <div class="filter">
+            <div class="filter_choice">
+                <label for="keywords-input">Mot-clé</label>
+                <input type="search" id="keywords-input" name="keywords-input" class="form_box" list="keywords"/>
+                <datalist id="keywords">
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['options_keywords']->value, 'valeur');
+$_smarty_tpl->tpl_vars['valeur']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['valeur']->value) {
+$_smarty_tpl->tpl_vars['valeur']->do_else = false;
+?>
+                        <option value="<?php echo $_smarty_tpl->tpl_vars['valeur']->value->name;?>
+"></option>
+                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                </datalist>
+            </div>
+            <div class="filter_submit">
+                <input type="submit" value="Filtrer" onclick="localStorage.clear();">
+            </div>
+
+        </div>
+
+    </form>
+<?php }?>
+
+
+    <?php if ($_smarty_tpl->tpl_vars['filtre1_actif']->value) {?><p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;
+echo $_smarty_tpl->tpl_vars['choix_filtre']->value[0];?>
+ <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[1];?>
+ <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[2];?>
+</p><?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['filtre2_actif']->value) {?><p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;?>
+ Critere de recherche par mot clé : <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value;?>
 </p><?php }?>
 
 
-            <div id = "container_liste_symptomes">
 
-            <?php
+
+        <div id="pract" class="array">
+                <ul class="arrayStern">
+
+                    <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['reponseSQL']->value, 'itemSQL');
 $_smarty_tpl->tpl_vars['itemSQL']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['itemSQL']->value) {
 $_smarty_tpl->tpl_vars['itemSQL']->do_else = false;
 ?>
-
-                <a id="container_liste_symptome" href="">
-                    <div style="grid-column: 1/4; grid-row: 1;">
-                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->zonedouleur;?>
+                    <a href = "">
+                    <li class="arrayHeader">
+                        <div class="col"id="grid">
+                            <div id="title">
+                                <h4>Description</h4>
+                                <p>
+                                    <I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->detaildouleur;?>
+</I>
+                                </p>
+                            </div>
+                            <div id="text">
+                                <h5>Pathologie : </h5>
+                                <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->nom_pathologie;?>
 </p>
-                    </div>
-                    <div style="grid-column: 1/4; grid-row: 2/4;">
-                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->detailmeridien;?>
-</I></p>
-                    </div>
-                    <div style="grid-column: 1/4; grid-row: 4;">
-                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->nom_pathologie;?>
-</p>
-                    </div>
-                    <div style="grid-column: 4/7; grid-row: 1/5;">
-                        <p><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->detaildouleur;?>
-</I></p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 1;">
-                        <p>Méridien : <?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->nommeridien;?>
-</p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 2;">
-                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->nom_caracteristique_1;?>
-</p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 3;">
-                        <p><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->nom_caracteristique_2;?>
-</p>
-                    </div>
-                    <div style="grid-column: 7/9; grid-row: 4;">
-                        <p></p>
-                    </div>
-                    <div style="grid-column: 9; grid-row: 1;"><img src="" alt=""></div>
-                    <div style="grid-column: 9; grid-row: 2;"><img src="" alt=""></div>
-                    <div style="grid-column: 9; grid-row: 3;"><img src="" alt=""></div>
-                    <div style="grid-column: 9; grid-row: 4;"><img src="" alt=""></div>
+                            </div>
+                        </div>
+                        <span class="vertical-line"></span>
+                        <div class="col" id="grid2" >
+                            <div id="title2">
+                                <div id="pres">
+                                    <img class="presimg" src="<?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->img_pathologie;?>
+" alt="Pathologie">
+                                    <img class="presimg" src="<?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->img_caracteristique_1;?>
+" alt="Caracteristique">
+                                    <img class="presimg" src="<?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->img_caracteristique_2;?>
+" alt="Caracteristique2">
+                                </div>
+                            </div>
+                            <div id="text2">
+                                <h5><I><?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->detailmeridien;?>
+</I></h5>
+                            </div>
+                            <div id="mot-cle">
+                                <h5>Key-words</h5>
+                                <div id="key"> 
+                                    <h5>Mot-clé : <?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->zonedouleur;?>
+</h5>
+                                </div>
+                            </div>
+                        </div>
+                        
+                </li>
                 </a>
-
-            <?php
+                <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                </ul>
+                </div>
 
-            </div>
 
     <?php $_smarty_tpl->_subTemplateRender('file:footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

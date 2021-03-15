@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-10 07:51:52
+/* Smarty version 3.1.39, created on 2021-03-15 09:23:18
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60486c889f6302_33939910',
+  'unifunc' => 'content_604f197635d845_78037548',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f54fc9e13a9326168ac6b46bde7b5b1f8f75eb2f' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl',
-      1 => 1615276442,
+      1 => 1615796589,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_60486c889f6302_33939910 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604f197635d845_78037548 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -49,22 +49,22 @@ function content_60486c889f6302_33939910 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <div id="pract" class="array">
             <div id="container">
-                <form action="">
+                <form action="index.php?page=register" method="POST">
         
                     <label for="name"><p>First Name</p></label>
-                    <input type="text" name="name" placeholder="First Name">
+                    <input type="text" name="firstname" placeholder="First Name" required>
         
                     <label for="firstname"><p>Last Name</p></label>
-                    <input type="text" name="firstname" placeholder="Last name">
+                    <input type="text" name="lastname" placeholder="Last name" required>
         
                     <label for="email"><p>Mail Address</p></label>
-                    <input type="text" name="email" placeholder="exemple@de.bosh.com">
+                    <input type="text" name="email" placeholder="exemple@de.bosh.com" required>
         
                     <label for="password"><p>Password</p></label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
         
                     <label for="rpt-password"><p>Confirm Password</p></label>
-                    <input type="password" name="rpt-password" placeholder="Confirm password">
+                    <input type="password" name="rpt-password" placeholder="Confirm password" required>
         
                     <button type="submit" id="btn_register">Register</button>
         
