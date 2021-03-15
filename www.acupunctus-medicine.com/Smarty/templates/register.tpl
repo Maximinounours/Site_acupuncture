@@ -23,22 +23,22 @@
         </div>
         <div id="pract" class="array">
             <div id="container">
-                <form action="">
+                <form action="index.php?page=register" method="POST">
         
                     <label for="name"><p>First Name</p></label>
-                    <input type="text" name="firstname" placeholder="First Name">
+                    <input type="text" name="firstname" placeholder="First Name" required>
         
                     <label for="firstname"><p>Last Name</p></label>
-                    <input type="text" name="lastname" placeholder="Last name">
+                    <input type="text" name="lastname" placeholder="Last name" required>
         
                     <label for="email"><p>Mail Address</p></label>
-                    <input type="text" name="email" placeholder="exemple@de.bosh.com">
+                    <input type="text" name="email" placeholder="exemple@de.bosh.com" required>
         
                     <label for="password"><p>Password</p></label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
         
                     <label for="rpt-password"><p>Confirm Password</p></label>
-                    <input type="password" name="rpt-password" placeholder="Confirm password">
+                    <input type="password" name="rpt-password" placeholder="Confirm password" required>
         
                     <button type="submit" id="btn_register">Register</button>
         

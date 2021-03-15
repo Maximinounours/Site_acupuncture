@@ -3,11 +3,11 @@
 // put full path to Smarty.class.php
 require('/usr/local/lib/php/Smarty/libs/Smarty.class.php');
 $smarty = new Smarty();
-$templatesDir = '/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates';
+$templatesDir = '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates';
 $smarty->setTemplateDir($templatesDir);
-$smarty->setCompileDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates_c/');
-$smarty->setCacheDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
-$smarty->setConfigDir('/var/www/html/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
+$smarty->setCompileDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates_c/');
+$smarty->setCacheDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/cache/');
+$smarty->setConfigDir('/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/configs/');
 
 //class et autres fonctions utiles
 require('classe_Utilisateur.php');
@@ -31,22 +31,37 @@ else{
 //Si on est sur la page depuis trop longtemps et les caches/cookies sont timeout
 	if(empty($_SESSION['utilisateur'])){
 		$utilisateur = new Utilisateur();
-  		$_SESSION['utilisateur'] = $utilisateur;
-  	}
+		  $_SESSION['utilisateur'] = $utilisateur;
+	}
 //Envoi des infos sur l'etat de connexion
-	$_SESSION['utilisateur']->connexion("Sophie", "Maxime", "coucou@mail.com");
+	
 	view_assign_info_template('utilisateur', $_SESSION['utilisateur'], $smarty);
 	//Check si on est connecté avec utilisateur
 //On va utiliser ca pour afficher ou non des elements sur les pages html (dans le menu notamment pour afficher
 //le nom et prenom, et dans la liste pour afficher la recherche par mots-clés.
 //Aussi ajouter un bouton de deconnexion dans le menu
 	$maPage = $_GET['page'];
+	$utilisateur=$_SESSION['utilisateur'] ;
 	switch($maPage){
 		case "register":
-			//Check si l'on a rempli le formulaire
+			$passwordNotMatch=false;
+			//Check si l'on a rempli le formulaire ---> on a utilisé required ok
+			
 			
 			//Check s'il est bien rempli et si la connexion est acceptee
 			//Donc plusieurs cas
+			if (($_POST["password"])==($_POST["rpt-password"]) & !empty($_POST["rpt-password"])){
+				$utilisateur->connexion($_POST["firstname"], $_POST["lastname"], $_POST["email"]);
+				print_r($utilisateur->info());
+				$smarty->display('accueil.tpl');
+			}
+			else {
+				//affiche un message si les mdp ne sont pas les memes
+				$passwordNotMatch=true;
+				
+				$smarty->display($maPage . '.tpl');
+			}
+
 				
 			//Affichage de la page	
 			break;
@@ -203,12 +218,15 @@ else{
 			else if ($filtre2_actif){
 				view_assign_info_template('choix_filtre', $choixKeyword, $smarty);
 			}
-			break;		
+			$smarty->display($maPage . '.tpl');
+			break;	
+				
 		
 		default:
+			$smarty->display('accueil.tpl');
 			break;
 	}
 	
 	//Affichage de la page apres avoir mis en place et envoyé toutes les données
-	$smarty->display($maPage . '.tpl');
+	
 }	
