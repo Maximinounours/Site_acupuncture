@@ -26,10 +26,10 @@
                 <form action="">
         
                     <label for="name"><p>First Name</p></label>
-                    <input type="text" name="name" placeholder="First Name">
+                    <input type="text" name="firstname" placeholder="First Name">
         
                     <label for="firstname"><p>Last Name</p></label>
-                    <input type="text" name="firstname" placeholder="Last name">
+                    <input type="text" name="lastname" placeholder="Last name">
         
                     <label for="email"><p>Mail Address</p></label>
                     <input type="text" name="email" placeholder="exemple@de.bosh.com">
