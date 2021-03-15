@@ -22,6 +22,19 @@
             <h2>Create an account Acupunctus Medecine</h2>
         </div>
         <div id="pract" class="array">
+
+{if $utilisateur->getIsConnected()}
+        <div id="pract" class="array">
+            <div id="container">
+                <p>Vous etes deja connecté</p>
+                <form action="index.php" method="POST">
+
+                    <button type="submit" id="btn_register"><p>Déconnexion</p></button>
+                </form>
+            </div>
+        </div>
+
+{else}
             <div id="container">
                 <form action="index.php?page=register" method="POST">
         
@@ -39,9 +52,9 @@
         
                     <label for="rpt-password"><p>Confirm Password</p></label>
                     <input type="password" name="rpt-password" placeholder="Confirm password" required>
-        
+                    {if $passwordNotMatch}
                     <p style="color: rgb(121, 16, 16);">Passwords do not match</p>
-
+                    {/if}
                     <button type="submit" id="btn_register">Register</button>
         
                     <hr>
@@ -51,6 +64,7 @@
                     </div>
                 </form>
             </div>
+            {/if}
         </div>
     </div>
 	{include file="footer.tpl"}

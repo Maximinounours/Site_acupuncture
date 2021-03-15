@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-15 08:30:31
+/* Smarty version 3.1.39, created on 2021-03-15 11:54:51
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_604f0d17972413_93891785',
+  'unifunc' => 'content_604f3cfbe6d330_19242219',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba93bdd447996ae0fba3296b3006423f1c4180e7' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/menu.tpl',
-      1 => 1615459774,
+      1 => 1615805676,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_604f0d17972413_93891785 (Smarty_Internal_Template $_smarty_tpl) {
+function content_604f3cfbe6d330_19242219 (Smarty_Internal_Template $_smarty_tpl) {
 ?>               <!-- Un petit menu avec les pages accessibles pratiques -->
                <div class="menu_simple" class='lignes'>
                 <ul>
@@ -42,13 +42,15 @@ function content_604f0d17972413_93891785 (Smarty_Internal_Template $_smarty_tpl)
                     </li>
 
 
-                    <li style=" background-color: red; width: 100%;">
-                    <div id="info_utilisateur" >
-                        <p>Nom prénom</p>
-                    </div>
+            <li>
+                <div id="info_utilisateur" >
+                    <p id = "user"><?php echo $_smarty_tpl->tpl_vars['utilisateur']->value->_nom;?>
+ <?php echo $_smarty_tpl->tpl_vars['utilisateur']->value->_prenom;?>
+</p>
+                </div>
 
-                    <div><button>Déconnexion</button></div>
-                    </li>
+                <div><button id="button">Déconnexion</button></div>
+            </li>
 
 
                     <li>

@@ -19,13 +19,13 @@
                     </li>
 
 
-                    <li style=" background-color: red; width: 100%;">
-                    <div id="info_utilisateur" >
-                        <p>Nom prénom</p>
-                    </div>
+            <li>
+                <div id="info_utilisateur" >
+                    <p id = "user">{$utilisateur->_nom} {$utilisateur->_prenom}</p>
+                </div>
 
-                    <div><button>Déconnexion</button></div>
-                    </li>
+                <div><button id="button">Déconnexion</button></div>
+            </li>
 
 
                     <li>

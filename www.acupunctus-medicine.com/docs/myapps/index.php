@@ -42,6 +42,8 @@ else{
 //Aussi ajouter un bouton de deconnexion dans le menu
 	$maPage = $_GET['page'];
 	$utilisateur=$_SESSION['utilisateur'] ;
+	$dbh = MODEL_connexion_BDD();
+
 	switch($maPage){
 		case "register":
 			$passwordNotMatch=false;
@@ -50,18 +52,58 @@ else{
 			
 			//Check s'il est bien rempli et si la connexion est acceptee
 			//Donc plusieurs cas
-			if (($_POST["password"])==($_POST["rpt-password"]) & !empty($_POST["rpt-password"])){
-				$utilisateur->connexion($_POST["firstname"], $_POST["lastname"], $_POST["email"]);
-				print_r($utilisateur->info());
-				$smarty->display('accueil.tpl');
+			if(!empty($_POST["firstname"])){
+				if (($_POST["password"])==($_POST["rpt-password"]) & !empty($_POST["rpt-password"])){
+					$requete = "SELECT * FROM \"Client\"";
+					$reponseUtilisateur = MODEL_SQL_envoi($requete, $dbh);
+
+					$Utilisateur_already_known = false;
+					foreach($reponseUtilisateur as $value){
+						if ($value->Mail_Address == $_POST["email"]){
+							$Utilisateur_already_known = true;
+							break;
+						}
+					}
+					if (!$Utilisateur_already_known){
+						$id_en_cours = $value->IDP + 1;
+						$requeteAjoutUtilisateur = 
+						"INSERT INTO public.\"Client\"(
+							\"Last_Name\", \"First_Name\", \"Password\", \"Mail_Address\", \"IDP\")
+							VALUES ( '" . 
+							$_POST['firstname'] . "', '" .  
+							$_POST['lastname'] . "', '" .  
+							$_POST['password'] . "', '" .  
+							$_POST['email'] . "', '" .  
+							$id_en_cours . "');";
+						$reponseUtilisateur = MODEL_SQL_envoi($requeteAjoutUtilisateur, $dbh);
+
+						$utilisateur->connexion($_POST["lastname"], $_POST["firstname"], $_POST["email"]);
+						$_SESSION['utilisateur'] = $utilisateur;
+
+						view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
+						view_assign_info_template('utilisateur', $_SESSION['utilisateur'], $smarty);
+
+						$smarty->display('accueil.tpl');
+					}
+					else{
+						$passwordNotMatch=true;
+						view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
+						$smarty->display($maPage . '.tpl');
+					}
+				}
+				else {
+					//affiche un message si les mdp ne sont pas les memes
+					$passwordNotMatch=true;
+					view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
+					$smarty->display($maPage . '.tpl');
+				}
 			}
 			else {
-				//affiche un message si les mdp ne sont pas les memes
-				$passwordNotMatch=true;
-				
+				view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
 				$smarty->display($maPage . '.tpl');
+			
 			}
-
+			
 				
 			//Affichage de la page	
 			break;
@@ -80,7 +122,6 @@ else{
 			break;
 			
 		case "listeSymptome":
-			$dbh = MODEL_connexion_BDD();
 
 			$filtre1_actif = false;
 			$filtre2_actif = false;
