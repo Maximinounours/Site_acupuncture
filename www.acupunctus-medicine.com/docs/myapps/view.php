@@ -1,4 +1,5 @@
 <?php
+
 //Envoie des données aux template
 function view_assign_info_template($passerelle, $donnees, $smarty){ //$passerelle = nom de la variable dans smarty et $donnee variable dans php
     $smarty->assign($passerelle, $donnees);
@@ -9,7 +10,10 @@ function VIEW_affichage($smarty, $page){
 }
 
 
-function VIEW_TRAITEMENT_PAGE_REGISTER(){
+function VIEW_TRAITEMENT_PAGE_REGISTER($smarty){
+    $maPage = 'register';
+    $passwordNotMatch=false;
+    $adresseMailUtilisee=false;
 
     //Pour savoir si on arrive sur la page on check une entree du formulaire
     if(!empty($_POST["register_firstname"])){
@@ -57,11 +61,16 @@ function VIEW_TRAITEMENT_PAGE_REGISTER(){
             $passwordNotMatch=true;
         }
     }
+    view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
+    view_assign_info_template('adresseMailUtilisee', $adresseMailUtilisee, $smarty);
+    return $maPage;	
 };
 
 
-function VIEW_TRAITEMENT_PAGE_CONNEXION(){
-
+function VIEW_TRAITEMENT_PAGE_CONNEXION($smarty){
+    $maPage = 'connexion';
+    $wrong_password = false;
+    $unknown_email=false;
     //Sinon check le contenu du formulaire
     
     //Requete SQL pour savoir si l'utilisateur est connu et si la connexion est acceptée
@@ -88,13 +97,18 @@ function VIEW_TRAITEMENT_PAGE_CONNEXION(){
             }
         }	
     }
-
+    //Envoie des infos
+    view_assign_info_template('wrong_password', $wrong_password, $smarty);
+    view_assign_info_template('unknown_email', $unknown_email, $smarty);
+    return $maPage;
 };
 
 
-function VIEW_TRAITEMENT_PAGE_LISTE_SYMPTOME(){
-
-
+function VIEW_TRAITEMENT_PAGE_LISTE_SYMPTOME($smarty){
+    require('data.php');
+    $maPage = 'listeSymptome';
+    $filtre1_actif = false;
+    $filtre2_actif = false;
     //Options filtre meridien
     $filtre_meridien_SQL = "SELECT 
         nom,
@@ -177,7 +191,7 @@ function VIEW_TRAITEMENT_PAGE_LISTE_SYMPTOME(){
         if($filtre1_actif){
             $requete_association_meridien = "SELECT code, nom
             FROM meridien";
-            $reponsecode = MODEL_SQL_envoi($requete_association_meridien, $dbh);
+            $reponsecode = MODEL_SQL_envoi($requete_association_meridien);
             $nom_code_meridien = array_combine(
                 array_column($reponsecode, 'code'),
                 array_column($reponsecode, 'nom'));
@@ -196,10 +210,7 @@ function VIEW_TRAITEMENT_PAGE_LISTE_SYMPTOME(){
         $ligne = traitement_rep_SQL($ligne);
         $nb_resp++;
     }
-
-};
-
-function VIEW_ASSIGN_PAGE_LISTE_SYMPTOME(){
+    //Envoi des données au template
     view_assign_info_template('options_keywords', $options_keywords, $smarty);
     view_assign_info_template('options_meridien', $options_meridien, $smarty);
     view_assign_info_template('options_pathologie', $DATA_options_pathologie, $smarty);
@@ -209,20 +220,25 @@ function VIEW_ASSIGN_PAGE_LISTE_SYMPTOME(){
     view_assign_info_template('filtre1_actif', $filtre1_actif, $smarty);
     view_assign_info_template('filtre2_actif', $filtre2_actif, $smarty);
 
-
     if($filtre1_actif){
         view_assign_info_template('choix_filtre', [$nom_code_meridien[$choixMeridien], $DATA_options_pathologie[$choixPathologie], $choixCaracteristique], $smarty);
     }
     else if ($filtre2_actif){
         view_assign_info_template('choix_filtre', $choixKeyword, $smarty);
     }
+    return $maPage;
 };
 
 
-function VIEW_TRAITEMENT_PAGE_SYMPTOME(){
+
+function VIEW_TRAITEMENT_PAGE_SYMPTOME($smarty){
+    $maPage = 'pageSymptome';
     $code_sympt = $_GET['code_sympt'];
     $reponse = API_REST_GET($code_sympt);
     $info_symptome = traitement_rep_SQL($reponse[0]);
+
+    view_assign_info_template('info_symptome', $info_symptome, $smarty);
+    return $maPage;
 }
 
 ?>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-20 17:12:20
+/* Smarty version 3.1.39, created on 2021-03-20 23:37:05
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60561ee4a93223_10139218',
+  'unifunc' => 'content_60567911e86b15_55257729',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'ba93bdd447996ae0fba3296b3006423f1c4180e7' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/menu.tpl',
-      1 => 1616256713,
+      1 => 1616279808,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_60561ee4a93223_10139218 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60567911e86b15_55257729 (Smarty_Internal_Template $_smarty_tpl) {
 ?>               <!-- Un petit menu avec les pages accessibles pratiques -->
                <div class="menu_simple" class='lignes'>
                 <ul>
@@ -33,7 +33,7 @@ function content_60561ee4a93223_10139218 (Smarty_Internal_Template $_smarty_tpl)
                             <target=_ self></target> About us </a>
                     </li>
                     <li>
-                            <a href="index.php?page=info">
+                            <a href="index.php?page=pageInfo">
                                 <target=_ self></target> Information </a>
                     </li>
 

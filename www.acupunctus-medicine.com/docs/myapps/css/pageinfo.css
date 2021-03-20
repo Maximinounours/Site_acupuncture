@@ -49,7 +49,7 @@ h2 {
 
 #pract{
     grid-column: 2; 
-    background-image:url("../images/connexion.jpg");
+    background-image:url("./images/connexion.jpg");
     padding-top: 10%;
     
 }

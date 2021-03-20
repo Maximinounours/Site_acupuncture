@@ -23,8 +23,7 @@ function API_REST_GET($code){
     WHERE symptome.ids = '" . $IDS . "' 
     AND patho.idp = '" . $IDP . "' 
     AND keywords.idk = '" . $IDK . "'";
-    $dbh = MODEL_connexion_BDD();
-    $rep = MODEL_SQL_envoi($requete, $dbh);
+    $rep = MODEL_SQL_envoi($requete);
     return $rep;
 } 
 

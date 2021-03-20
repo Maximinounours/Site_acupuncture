@@ -10,7 +10,7 @@
                             <target=_ self></target> About us </a>
                     </li>
                     <li>
-                            <a href="index.php?page=info">
+                            <a href="index.php?page=pageInfo">
                                 <target=_ self></target> Information </a>
                     </li>
 
