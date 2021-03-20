@@ -26,7 +26,7 @@
 {if $utilisateur->getIsConnected()}
         <div id="pract" class="array">
             <div id="container">
-                <p>Youa re already logged in</p>
+                <p>You are already logged in</p>
                 <form action="index.php" method="POST">
 
                     <button type="submit" id="btn_register"><p>Déconnexion</p></button>

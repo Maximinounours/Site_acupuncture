@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-20 17:20:49
+/* Smarty version 3.1.39, created on 2021-03-20 22:20:04
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_605620e1c8aa48_72420215',
+  'unifunc' => 'content_60566704bf6d03_98288733',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1616257244,
+      1 => 1616269634,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_605620e1c8aa48_72420215 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60566704bf6d03_98288733 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -176,7 +176,8 @@ $_smarty_tpl->tpl_vars['itemSQL']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['itemSQL']->value) {
 $_smarty_tpl->tpl_vars['itemSQL']->do_else = false;
 ?>
-                    <a href = "">
+                    <a href = <?php echo $_smarty_tpl->tpl_vars['itemSQL']->value->lien;?>
+>
                     <li class="arrayHeader">
                         <div class="col"id="grid">
                             <div id="title">

@@ -14,7 +14,8 @@ function MODEL_connexion_BDD(){
 	return $dbh;
 };
 
-function MODEL_SQL_envoi($requete, $dbh){
+function MODEL_SQL_envoi($requete){
+	$dbh = MODEL_connexion_BDD();
     $PDOrep = $dbh->prepare($requete);
     $PDOrep->execute(array());
     $reponse = $PDOrep->fetchAll(PDO::FETCH_OBJ);

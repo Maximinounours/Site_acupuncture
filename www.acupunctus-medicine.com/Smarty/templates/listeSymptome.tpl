@@ -104,7 +104,7 @@
                 <ul class="arrayStern">
 
                     {foreach from=$reponseSQL item = itemSQL}
-                    <a href = "">
+                    <a href = {$itemSQL->lien}>
                     <li class="arrayHeader">
                         <div class="col"id="grid">
                             <div id="title">

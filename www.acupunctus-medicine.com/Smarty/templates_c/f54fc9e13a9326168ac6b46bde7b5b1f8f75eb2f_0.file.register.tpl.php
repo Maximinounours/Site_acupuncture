@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-20 16:04:28
+/* Smarty version 3.1.39, created on 2021-03-20 22:43:51
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60560efc14c195_74280960',
+  'unifunc' => 'content_60566c972739d4_76893508',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f54fc9e13a9326168ac6b46bde7b5b1f8f75eb2f' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl',
-      1 => 1616191658,
+      1 => 1616276484,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_60560efc14c195_74280960 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60566c972739d4_76893508 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +52,7 @@ function content_60560efc14c195_74280960 (Smarty_Internal_Template $_smarty_tpl)
 <?php if ($_smarty_tpl->tpl_vars['utilisateur']->value->getIsConnected()) {?>
         <div id="pract" class="array">
             <div id="container">
-                <p>Youa re already logged in</p>
+                <p>You are already logged in</p>
                 <form action="index.php" method="POST">
 
                     <button type="submit" id="btn_register"><p>Déconnexion</p></button>
