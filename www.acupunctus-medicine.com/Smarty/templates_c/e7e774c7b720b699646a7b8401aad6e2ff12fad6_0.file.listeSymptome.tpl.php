@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-15 08:31:26
+/* Smarty version 3.1.39, created on 2021-03-20 17:20:49
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_604f0d4eb2e0c1_41822813',
+  'unifunc' => 'content_605620e1c8aa48_72420215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e7e774c7b720b699646a7b8401aad6e2ff12fad6' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/listeSymptome.tpl',
-      1 => 1615735871,
+      1 => 1616257244,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_604f0d4eb2e0c1_41822813 (Smarty_Internal_Template $_smarty_tpl) {
+function content_605620e1c8aa48_72420215 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <!DOCTYPE html>
@@ -81,9 +81,11 @@ $_smarty_tpl->tpl_vars['i']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->do_else = false;
 ?>
+                    <?php if ($_smarty_tpl->tpl_vars['i']->value) {?> != ""}
                         <option value=<?php echo $_smarty_tpl->tpl_vars['k']->value;?>
  ><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 </option>
+                        <?php }?>
                     <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -100,9 +102,11 @@ $_smarty_tpl->tpl_vars['i']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['i']->value) {
 $_smarty_tpl->tpl_vars['i']->do_else = false;
 ?>
+                    <?php if ($_smarty_tpl->tpl_vars['i']->value) {?> != ""}
                         <option value=<?php echo $_smarty_tpl->tpl_vars['i']->value;?>
  ><?php echo $_smarty_tpl->tpl_vars['i']->value;?>
 </option>
+                        <?php }?>
                     <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -145,15 +149,20 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </form>
 <?php }?>
 
-
-    <?php if ($_smarty_tpl->tpl_vars['filtre1_actif']->value) {?><p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;
-echo $_smarty_tpl->tpl_vars['choix_filtre']->value[0];?>
- <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[1];?>
- <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[2];?>
-</p><?php }?>
-    <?php if ($_smarty_tpl->tpl_vars['filtre2_actif']->value) {?><p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;?>
- Critere de recherche par mot clé : <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value;?>
-</p><?php }?>
+    <div id="filtre_actif">
+    <?php if ($_smarty_tpl->tpl_vars['filtre1_actif']->value) {?>
+        <p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;?>
+</p> <p>Méridien : <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[0];?>
+</p><p>Pathologie : <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[1];?>
+</p><p>Caractéristique : <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value[2];?>
+</p>
+    <?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['filtre2_actif']->value) {?>
+    <p>Nombre de reponses : <?php echo $_smarty_tpl->tpl_vars['nb_resp']->value;?>
+ </p><p>Critere de recherche par mot clé : <?php echo $_smarty_tpl->tpl_vars['choix_filtre']->value;?>
+</p>
+    <?php }?>
+    </div>
 
 
 

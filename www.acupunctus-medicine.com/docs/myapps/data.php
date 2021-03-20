@@ -39,7 +39,8 @@ $DATA_options_caracteristique = [
     "p" => "plein",
     "v" => "vide",
     "c" => "chaud",
-    "f" => "froid"
+    "f" => "froid",
+    ""=>""
     ];
 $DATA_options_pathologie = [
     "" => "",
@@ -56,7 +57,8 @@ $DATA_caract_to_image = [
     "externe" => "./images/exterior.png",
     "interne" => "./images/interior.png",
     "vide" => "./images/vide.png",
-    "plein" => "./images/plein.png"
+    "plein" => "./images/plein.png",
+   	""=>"./images/blank.png"
 ];
 
 ?>

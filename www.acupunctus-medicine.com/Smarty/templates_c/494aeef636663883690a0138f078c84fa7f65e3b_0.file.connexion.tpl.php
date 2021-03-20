@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-20 00:02:16
+/* Smarty version 3.1.39, created on 2021-03-20 17:03:15
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_60552d78c5fac8_27554574',
+  'unifunc' => 'content_60561cc3d4a322_80775649',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '494aeef636663883690a0138f078c84fa7f65e3b' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/connexion.tpl',
-      1 => 1616191763,
+      1 => 1616256184,
       2 => 'file',
     ),
   ),
@@ -22,13 +22,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_60552d78c5fac8_27554574 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60561cc3d4a322_80775649 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/structure.css">
-    <link rel="stylesheet" href="css/connexion.css">
 
 
     <meta charset="UTF-8">
@@ -53,7 +53,7 @@ function content_60552d78c5fac8_27554574 (Smarty_Internal_Template $_smarty_tpl)
 <?php if ($_smarty_tpl->tpl_vars['utilisateur']->value->getIsConnected()) {?>
         <div id="pract" class="array">
             <div id="container">
-                <p>Youa re already logged in</p>
+                <p>You are already logged in</p>
                 <form action="index.php" method="POST">
 
                     <button type="submit" id="btn_register"><p>Déconnexion</p></button>
@@ -68,12 +68,20 @@ function content_60552d78c5fac8_27554574 (Smarty_Internal_Template $_smarty_tpl)
             
                     <label for="password"><p>Password</p></label>
                     <input type="password" name="login_password" placeholder="Password">
+
+                    <?php if ($_smarty_tpl->tpl_vars['wrong_password']->value) {?>
+                    <p style="color: rgb(121, 16, 16);">Invalid password</p>
+                    <?php }?>
+                    <?php if ($_smarty_tpl->tpl_vars['unknown_email']->value) {?>
+                    <p style="color: rgb(121, 16, 16);">Unknown mail</p>
+                    <?php }?>
             
                     <button type="submit" id="btn_register"><p>Log in</p></button>
             
                     <hr>
+
             
-                    <div id="register">
+                    <div id="login">
                         <p>No account ? <a href="index.php?page=register"> Register</a></p> 
                     </div>
                 </form>

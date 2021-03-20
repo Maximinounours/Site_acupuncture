@@ -15,16 +15,14 @@
                     </li>
 
 {if $utilisateur->getIsConnected()}
-        <div id="pract" class="array">
-            <div id="container">
-                <p>Youa re already logged in</p>
+<li>
+            <div id="container_name">
+                <p>{$utilisateur->_nom} {$utilisateur->_prenom}</p>
                 <form action="index.php" method="POST">
-
-                    <button type="submit" id="btn_register"><p>Déconnexion</p></button>
+                    <button type="submit" id="btn_deconnexion"><p>Déconnexion</p></button>
                 </form>
             </div>
-        </div>
-
+</li>
 {else}
 
                     <li>

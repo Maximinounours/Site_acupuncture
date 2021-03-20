@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/structure.css">
-    <link rel="stylesheet" href="css/connexion.css">
 
 
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
 {if $utilisateur->getIsConnected()}
         <div id="pract" class="array">
             <div id="container">
-                <p>Youa re already logged in</p>
+                <p>You are already logged in</p>
                 <form action="index.php" method="POST">
 
                     <button type="submit" id="btn_register"><p>Déconnexion</p></button>
@@ -42,12 +42,20 @@
             
                     <label for="password"><p>Password</p></label>
                     <input type="password" name="login_password" placeholder="Password">
+
+                    {if $wrong_password}
+                    <p style="color: rgb(121, 16, 16);">Invalid password</p>
+                    {/if}
+                    {if $unknown_email}
+                    <p style="color: rgb(121, 16, 16);">Unknown mail</p>
+                    {/if}
             
                     <button type="submit" id="btn_register"><p>Log in</p></button>
             
                     <hr>
+
             
-                    <div id="register">
+                    <div id="login">
                         <p>No account ? <a href="index.php?page=register"> Register</a></p> 
                     </div>
                 </form>

@@ -16,6 +16,7 @@ require_once('view.php');
 require_once('model.php');
 require_once('data.php');
 session_start();
+$dbh = MODEL_connexion_BDD();
 
 //Premiere visite du site pour la session en cours
 if (empty($_GET['page'])){
@@ -31,7 +32,7 @@ else{
 //Si on est sur la page depuis trop longtemps et les caches/cookies sont timeout
 	if(empty($_SESSION['utilisateur'])){
 		$utilisateur = new Utilisateur();
-		  $_SESSION['utilisateur'] = $utilisateur;
+		$_SESSION['utilisateur'] = $utilisateur;
 	}
 //Envoi des infos sur l'etat de connexion
 	
@@ -42,7 +43,6 @@ else{
 //Aussi ajouter un bouton de deconnexion dans le menu
 	$maPage = $_GET['page'];
 	$utilisateur=$_SESSION['utilisateur'] ;
-	$dbh = MODEL_connexion_BDD();
 
 	switch($maPage){
 		case "register":
@@ -65,7 +65,7 @@ else{
 					//Check si adresse mail nouvelle ou non
 					$Utilisateur_already_known = false;
 					foreach($reponseUtilisateur as $value){
-						if ($value->Mail_Address == $_POST["register_email"]){
+						if ($value->mail_address == $_POST["register_email"]){
 							$Utilisateur_already_known = true;
 							break;
 						}
@@ -73,7 +73,7 @@ else{
 
 					//Si nouvel utilisateur on ajoute dans la base de donnees
 					if (!$Utilisateur_already_known){
-						$id_en_cours = $value->IDP + 1;
+						$id_en_cours = $value->idp + 1;
 						$requeteAjoutUtilisateur = 
 						"INSERT INTO public.client(
 							Last_Name, First_Name, Password, Mail_Address, IDP)
@@ -125,6 +125,7 @@ else{
 
 
 			$wrong_password = false;
+			$unknown_email=false;
 			//Sinon check le contenu du formulaire
 			
 			//Requete SQL pour savoir si l'utilisateur est connu et si la connexion est acceptée
@@ -136,25 +137,38 @@ else{
 
 				//Utilisateur inconnu
 				if(empty($reponseUtilisateur)){
-
+					$unknown_email=true;
+					// Il faut envoyer toutes les variables que le template va utiliser
+					view_assign_info_template('wrong_password', $wrong_password, $smarty); 
+					view_assign_info_template('unknown_email', $unknown_email, $smarty);
 					$smarty->display($maPage . '.tpl');
 				}
 				//Check si le mdp match
 				else{
-					if($_POST["login_password"] == $reponseUtilisateur->Password){
-						$utilisateur->connexion($reponseUtilisateur->Last_Name, $reponseUtilisateur->First_Name, $reponseUtilisateur->Mail_Address);
+				$reponseUtilisateur = $reponseUtilisateur[0];
+					if($_POST["login_password"] == $reponseUtilisateur->password){
+						$utilisateur->connexion($reponseUtilisateur->last_name, $reponseUtilisateur->first_name, $reponseUtilisateur->mail_address);
+						$_SESSION['utilisateur'] = $utilisateur;
+						view_assign_info_template('wrong_password', $wrong_password, $smarty);
+						view_assign_info_template('unknown_email', $unknown_email, $smarty);
 						$smarty->display('accueil.tpl');
 					}
 					else{
 						$wrong_password = true;
+						view_assign_info_template('wrong_password', $wrong_password, $smarty);
+						view_assign_info_template('unknown_email', $unknown_email, $smarty);
 						$smarty->display($maPage . '.tpl');
 					}
-				}
-
+				}	
+			}
+			else{
+				view_assign_info_template('wrong_password', $wrong_password, $smarty);
+				view_assign_info_template('unknown_email', $unknown_email, $smarty);
+				$smarty->display($maPage . '.tpl');
 			}
 			
 			//Affichage de la page	
-			break;mars 20, 2021, 15:17:35
+			break;
 			
 		case "listeSymptome":
 
@@ -259,22 +273,17 @@ else{
 
 			$nb_resp = 0;
 			foreach($reponseREQ as $ligne){
-				$ligne->nom_caracteristique_2 = "";
-				$ligne->nom_caracteristique_1 = "";
-				$ligne->img_caracteristique_2 = "";
-				$ligne->img_caracteristique_1 = "";
-				$ligne->img_pathologie = "";
 				
+				//Deduit les codes de la pathologie et des carateristiques à partir du code complet
 				$patho_caracteristiques = $DATA_decodage_code[$ligne->code];
+				//Retrouve le nom de la pathologie et des caract a partir du code
 				$ligne->nom_pathologie = $DATA_options_pathologie[$patho_caracteristiques[0]];
-				if($patho_caracteristiques[1] != ""){
-					$ligne->nom_caracteristique_1 = $DATA_options_caracteristique[$patho_caracteristiques[1]];
-					$ligne->img_caracteristique_1 = $DATA_caract_to_image[$ligne->nom_caracteristique_1];
-					}
-				if($patho_caracteristiques[2] != ""){
-					$ligne->nom_caracteristique_2 = $DATA_options_caracteristique[$patho_caracteristiques[2]];
-					$ligne->img_caracteristique_2 = $DATA_caract_to_image[$ligne->nom_caracteristique_2];
-					}
+				$ligne->nom_caracteristique_1 = $DATA_options_caracteristique[$patho_caracteristiques[1]];
+				$ligne->nom_caracteristique_2 = $DATA_options_caracteristique[$patho_caracteristiques[2]];
+				//Trouve le chemin vers l'image a partir du nom de la pathologie/caract
+				$ligne->img_pathologie = "./images/blank.png";
+				$ligne->img_caracteristique_1 = $DATA_caract_to_image[$ligne->nom_caracteristique_1];
+				$ligne->img_caracteristique_2 = $DATA_caract_to_image[$ligne->nom_caracteristique_2];
 				$nb_resp++;
 			}
 			//Envoi des données au template
@@ -297,6 +306,12 @@ else{
 			$smarty->display($maPage . '.tpl');
 			break;	
 				
+		
+		case "contact":
+			$smarty->display($maPage . '.tpl');
+			break;
+
+		
 		
 		default:
 			$smarty->display('accueil.tpl');
