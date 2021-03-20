@@ -26,7 +26,7 @@
 {if $utilisateur->getIsConnected()}
         <div id="pract" class="array">
             <div id="container">
-                <p>Vous etes deja connecté</p>
+                <p>Youa re already logged in</p>
                 <form action="index.php" method="POST">
 
                     <button type="submit" id="btn_register"><p>Déconnexion</p></button>
@@ -39,21 +39,24 @@
                 <form action="index.php?page=register" method="POST">
         
                     <label for="name"><p>First Name</p></label>
-                    <input type="text" name="firstname" placeholder="First Name" required>
+                    <input type="text" name="register_firstname" placeholder="First Name" required>
         
                     <label for="firstname"><p>Last Name</p></label>
-                    <input type="text" name="lastname" placeholder="Last name" required>
+                    <input type="text" name="register_lastname" placeholder="Last name" required>
         
                     <label for="email"><p>Mail Address</p></label>
-                    <input type="text" name="email" placeholder="exemple@de.bosh.com" required>
+                    <input type="text" name="register_email" placeholder="exemple@de.bosh.com" required>
         
                     <label for="password"><p>Password</p></label>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="register_password" placeholder="Password" required>
         
                     <label for="rpt-password"><p>Confirm Password</p></label>
-                    <input type="password" name="rpt-password" placeholder="Confirm password" required>
+                    <input type="password" name="register_rpt-password" placeholder="Confirm password" required>
                     {if $passwordNotMatch}
                     <p style="color: rgb(121, 16, 16);">Passwords do not match</p>
+                    {/if}
+                    {if $adresseMailUtilisee}
+                    <p style="color: rgb(121, 16, 16);">Mail already used</p>
                     {/if}
                     <button type="submit" id="btn_register">Register</button>
         

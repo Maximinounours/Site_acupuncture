@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-10 16:55:24
+/* Smarty version 3.1.39, created on 2021-03-20 00:02:16
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6048ebec64bb10_89142660',
+  'unifunc' => 'content_60552d78c5fac8_27554574',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '494aeef636663883690a0138f078c84fa7f65e3b' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/connexion.tpl',
-      1 => 1615276442,
+      1 => 1616191763,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_6048ebec64bb10_89142660 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60552d78c5fac8_27554574 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -48,13 +48,26 @@ function content_6048ebec64bb10_89142660 (Smarty_Internal_Template $_smarty_tpl)
             
         </div>
         <div id="pract" class="array">
+
+
+<?php if ($_smarty_tpl->tpl_vars['utilisateur']->value->getIsConnected()) {?>
+        <div id="pract" class="array">
             <div id="container">
-                <form action="">
+                <p>Youa re already logged in</p>
+                <form action="index.php" method="POST">
+
+                    <button type="submit" id="btn_register"><p>Déconnexion</p></button>
+                </form>
+            </div>
+        </div>
+<?php } else { ?>
+            <div id="container">
+                <form action="index.php?page=connexion" method="POST">
                     <label for="email"><p>Mail address</p></label>
-                    <input type="text" name="email" placeholder="exemple@de.bosh.com">
+                    <input type="text" name="login_email" placeholder="exemple@de.bosh.com">
             
                     <label for="password"><p>Password</p></label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="login_password" placeholder="Password">
             
                     <button type="submit" id="btn_register"><p>Log in</p></button>
             
@@ -64,6 +77,7 @@ function content_6048ebec64bb10_89142660 (Smarty_Internal_Template $_smarty_tpl)
                         <p>No account ? <a href="index.php?page=register"> Register</a></p> 
                     </div>
                 </form>
+<?php }?>
             </div>
         </div>
     </div>

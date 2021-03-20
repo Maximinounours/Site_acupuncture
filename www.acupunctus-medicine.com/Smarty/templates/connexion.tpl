@@ -22,13 +22,26 @@
             
         </div>
         <div id="pract" class="array">
+
+
+{if $utilisateur->getIsConnected()}
+        <div id="pract" class="array">
             <div id="container">
-                <form action="">
+                <p>Youa re already logged in</p>
+                <form action="index.php" method="POST">
+
+                    <button type="submit" id="btn_register"><p>Déconnexion</p></button>
+                </form>
+            </div>
+        </div>
+{else}
+            <div id="container">
+                <form action="index.php?page=connexion" method="POST">
                     <label for="email"><p>Mail address</p></label>
-                    <input type="text" name="email" placeholder="exemple@de.bosh.com">
+                    <input type="text" name="login_email" placeholder="exemple@de.bosh.com">
             
                     <label for="password"><p>Password</p></label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="login_password" placeholder="Password">
             
                     <button type="submit" id="btn_register"><p>Log in</p></button>
             
@@ -38,6 +51,7 @@
                         <p>No account ? <a href="index.php?page=register"> Register</a></p> 
                     </div>
                 </form>
+{/if}
             </div>
         </div>
     </div>

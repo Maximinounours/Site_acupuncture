@@ -47,37 +47,45 @@ else{
 	switch($maPage){
 		case "register":
 			$passwordNotMatch=false;
+			$adresseMailUtilisee=false;
 			//Check si l'on a rempli le formulaire ---> on a utilisé required ok
-			
 			
 			//Check s'il est bien rempli et si la connexion est acceptee
 			//Donc plusieurs cas
-			if(!empty($_POST["firstname"])){
-				if (($_POST["password"])==($_POST["rpt-password"]) & !empty($_POST["rpt-password"])){
-					$requete = "SELECT * FROM \"Client\"";
+
+			//Pour savoir si on arrive sur la page on check une entree du formulaire
+			if(!empty($_POST["register_firstname"])){
+				//Cas ou on a rempli le formulaire correctement
+				if (($_POST["register_password"])==($_POST["register_rpt-password"]) & !empty($_POST["register_rpt-password"])){
+
+					//Prepare l'ajout dans la base de donnee du compte
+					$requete = "SELECT * FROM client";
 					$reponseUtilisateur = MODEL_SQL_envoi($requete, $dbh);
 
+					//Check si adresse mail nouvelle ou non
 					$Utilisateur_already_known = false;
 					foreach($reponseUtilisateur as $value){
-						if ($value->Mail_Address == $_POST["email"]){
+						if ($value->Mail_Address == $_POST["register_email"]){
 							$Utilisateur_already_known = true;
 							break;
 						}
 					}
+
+					//Si nouvel utilisateur on ajoute dans la base de donnees
 					if (!$Utilisateur_already_known){
 						$id_en_cours = $value->IDP + 1;
 						$requeteAjoutUtilisateur = 
-						"INSERT INTO public.\"Client\"(
-							\"Last_Name\", \"First_Name\", \"Password\", \"Mail_Address\", \"IDP\")
+						"INSERT INTO public.client(
+							Last_Name, First_Name, Password, Mail_Address, IDP)
 							VALUES ( '" . 
-							$_POST['firstname'] . "', '" .  
-							$_POST['lastname'] . "', '" .  
-							$_POST['password'] . "', '" .  
-							$_POST['email'] . "', '" .  
+							$_POST['register_firstname'] . "', '" .  
+							$_POST['register_lastname'] . "', '" .  
+							$_POST['register_password'] . "', '" .  
+							$_POST['register_email'] . "', '" .  
 							$id_en_cours . "');";
 						$reponseUtilisateur = MODEL_SQL_envoi($requeteAjoutUtilisateur, $dbh);
 
-						$utilisateur->connexion($_POST["lastname"], $_POST["firstname"], $_POST["email"]);
+						$utilisateur->connexion($_POST["register_lastname"], $_POST["register_firstname"], $_POST["register_email"]);
 						$_SESSION['utilisateur'] = $utilisateur;
 
 						view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
@@ -85,20 +93,25 @@ else{
 
 						$smarty->display('accueil.tpl');
 					}
+
+					//Sinon on indique que l'adresse mail est deja utilisee
 					else{
-						$passwordNotMatch=true;
+						$adresseMailUtilisee=true;
 						view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
+						view_assign_info_template('adresseMailUtilisee', $adresseMailUtilisee, $smarty);
 						$smarty->display($maPage . '.tpl');
 					}
 				}
 				else {
 					//affiche un message si les mdp ne sont pas les memes
 					$passwordNotMatch=true;
+					view_assign_info_template('adresseMailUtilisee', $adresseMailUtilisee, $smarty);
 					view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
 					$smarty->display($maPage . '.tpl');
 				}
 			}
 			else {
+				view_assign_info_template('adresseMailUtilisee', $adresseMailUtilisee, $smarty);
 				view_assign_info_template('passwordNotMatch', $passwordNotMatch, $smarty);
 				$smarty->display($maPage . '.tpl');
 			
@@ -108,18 +121,40 @@ else{
 			//Affichage de la page	
 			break;
 			
-		case "connexion":
-		
-			//Check si on est deja connecté ou pas (option deconnexion si oui)
-			
-			
+		case "connexion":		
+
+
+			$wrong_password = false;
 			//Sinon check le contenu du formulaire
 			
 			//Requete SQL pour savoir si l'utilisateur est connu et si la connexion est acceptée
-			
+			if(!empty($_POST["login_email"])){
+
+				//Recup les utilisateurs de la base de donnee
+				$requete = "SELECT * FROM client WHERE Mail_Address = '" . $_POST["login_email"] . "'";
+				$reponseUtilisateur = MODEL_SQL_envoi($requete, $dbh);
+
+				//Utilisateur inconnu
+				if(empty($reponseUtilisateur)){
+
+					$smarty->display($maPage . '.tpl');
+				}
+				//Check si le mdp match
+				else{
+					if($_POST["login_password"] == $reponseUtilisateur->Password){
+						$utilisateur->connexion($reponseUtilisateur->Last_Name, $reponseUtilisateur->First_Name, $reponseUtilisateur->Mail_Address);
+						$smarty->display('accueil.tpl');
+					}
+					else{
+						$wrong_password = true;
+						$smarty->display($maPage . '.tpl');
+					}
+				}
+
+			}
 			
 			//Affichage de la page	
-			break;
+			break;mars 20, 2021, 15:17:35
 			
 		case "listeSymptome":
 

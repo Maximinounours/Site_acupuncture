@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2021-03-15 12:06:39
+/* Smarty version 3.1.39, created on 2021-03-19 22:57:48
   from '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_604f3fbfe04d84_92322253',
+  'unifunc' => 'content_60551e5c785f28_26926865',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f54fc9e13a9326168ac6b46bde7b5b1f8f75eb2f' => 
     array (
       0 => '/var/www/html/Site_acupuncture/Site_acupuncture/www.acupunctus-medicine.com/Smarty/templates/register.tpl',
-      1 => 1615806380,
+      1 => 1616191061,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_604f3fbfe04d84_92322253 (Smarty_Internal_Template $_smarty_tpl) {
+function content_60551e5c785f28_26926865 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -80,6 +80,9 @@ function content_604f3fbfe04d84_92322253 (Smarty_Internal_Template $_smarty_tpl)
                     <input type="password" name="rpt-password" placeholder="Confirm password" required>
                     <?php if ($_smarty_tpl->tpl_vars['passwordNotMatch']->value) {?>
                     <p style="color: rgb(121, 16, 16);">Passwords do not match</p>
+                    <?php }?>
+                    <?php if ($_smarty_tpl->tpl_vars['adresseMailUtilisee']->value) {?>
+                    <p style="color: rgb(121, 16, 16);">Mail already used</p>
                     <?php }?>
                     <button type="submit" id="btn_register">Register</button>
         

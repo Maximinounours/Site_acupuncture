@@ -6,10 +6,6 @@
                             <target=_ self></target> Home</a>
                     </li>
                     <li>
-                        <a href="index.php?page=connexion">
-                            <target=_ self></target> Connexion </a>
-                    </li>
-                    <li>
                         <a href="index.php?page=contact">
                             <target=_ self></target> About us </a>
                     </li>
@@ -18,15 +14,24 @@
                                 <target=_ self></target> Information </a>
                     </li>
 
+{if $utilisateur->getIsConnected()}
+        <div id="pract" class="array">
+            <div id="container">
+                <p>Youa re already logged in</p>
+                <form action="index.php" method="POST">
 
-            <li>
-                <div id="info_utilisateur" >
-                    <p id = "user">{$utilisateur->_nom} {$utilisateur->_prenom}</p>
-                </div>
+                    <button type="submit" id="btn_register"><p>Déconnexion</p></button>
+                </form>
+            </div>
+        </div>
 
-                <div><button id="button">Déconnexion</button></div>
-            </li>
+{else}
 
+                    <li>
+                        <a href="index.php?page=connexion">
+                            <target=_ self></target> Connexion </a>
+                    </li>
+{/if}
 
                     <li>
                         <div id="image_logo">
