@@ -22,24 +22,42 @@
             <h2>Create an account Acupunctus Medecine</h2>
         </div>
         <div id="pract" class="array">
+
+{if $utilisateur->getIsConnected()}
+        <div id="pract" class="array">
             <div id="container">
-                <form action="">
+                <p>You are already logged in</p>
+                <form action="index.php" method="POST">
+
+                    <button type="submit" id="btn_register"><p>Déconnexion</p></button>
+                </form>
+            </div>
+        </div>
+
+{else}
+            <div id="container">
+                <form action="index.php?page=register" method="POST">
         
                     <label for="name"><p>First Name</p></label>
-                    <input type="text" name="name" placeholder="First Name">
+                    <input type="text" name="register_firstname" placeholder="First Name" required>
         
                     <label for="firstname"><p>Last Name</p></label>
-                    <input type="text" name="firstname" placeholder="Last name">
+                    <input type="text" name="register_lastname" placeholder="Last name" required>
         
                     <label for="email"><p>Mail Address</p></label>
-                    <input type="text" name="email" placeholder="exemple@de.bosh.com">
+                    <input type="text" name="register_email" placeholder="exemple@de.bosh.com" required>
         
                     <label for="password"><p>Password</p></label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="register_password" placeholder="Password" required>
         
                     <label for="rpt-password"><p>Confirm Password</p></label>
-                    <input type="password" name="rpt-password" placeholder="Confirm password">
-        
+                    <input type="password" name="register_rpt-password" placeholder="Confirm password" required>
+                    {if $passwordNotMatch}
+                    <p style="color: rgb(121, 16, 16);">Passwords do not match</p>
+                    {/if}
+                    {if $adresseMailUtilisee}
+                    <p style="color: rgb(121, 16, 16);">Mail already used</p>
+                    {/if}
                     <button type="submit" id="btn_register">Register</button>
         
                     <hr>
@@ -49,6 +67,7 @@
                     </div>
                 </form>
             </div>
+            {/if}
         </div>
     </div>
 	{include file="footer.tpl"}

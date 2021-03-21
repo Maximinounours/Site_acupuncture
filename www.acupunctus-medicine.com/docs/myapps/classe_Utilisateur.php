@@ -2,8 +2,8 @@
 class Utilisateur{
 
 	private $_isConnected;
-	private $_nom;
-	private $_prenom;
+	public $_nom;
+	public $_prenom;
 	private $_mail;
 	
 	public function __construct(){

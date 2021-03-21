@@ -41,7 +41,9 @@
                 <select name="pathologie" id="pathologie-select" onchange="">
                     <option value="">Choisir une pathologie</option>
                     {foreach from=$options_pathologie key=k item = i}
+                    {if $i} != ""}
                         <option value={$k} >{$i}</option>
+                        {/if}
                     {/foreach}
                 </select>
             </div>
@@ -51,7 +53,9 @@
                 <select name="caracteristique" id="caracteristique-select">
                     <option value="">Choisir une caractéristique</option>
                     {foreach from=$options_caracteristique key=k item = i}
+                    {if $i} != ""}
                         <option value={$i} >{$i}</option>
+                        {/if}
                     {/foreach}
                 </select>
             </div>
@@ -84,9 +88,14 @@
     </form>
 {/if}
 
-
-    {if $filtre1_actif}<p>Nombre de reponses : {$nb_resp}{$choix_filtre[0]} {$choix_filtre[1]} {$choix_filtre[2]}</p>{/if}
-    {if $filtre2_actif}<p>Nombre de reponses : {$nb_resp} Critere de recherche par mot clé : {$choix_filtre}</p>{/if}
+    <div id="filtre_actif">
+    {if $filtre1_actif}
+        <p>Nombre de reponses : {$nb_resp}</p> <p>Méridien : {$choix_filtre[0]}</p><p>Pathologie : {$choix_filtre[1]}</p><p>Caractéristique : {$choix_filtre[2]}</p>
+    {/if}
+    {if $filtre2_actif}
+    <p>Nombre de reponses : {$nb_resp} </p><p>Critere de recherche par mot clé : {$choix_filtre}</p>
+    {/if}
+    </div>
 
 
 
@@ -95,7 +104,7 @@
                 <ul class="arrayStern">
 
                     {foreach from=$reponseSQL item = itemSQL}
-                    <a href = "">
+                    <a href = {$itemSQL->lien}>
                     <li class="arrayHeader">
                         <div class="col"id="grid">
                             <div id="title">

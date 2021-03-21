@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/register.css">
     <link rel="stylesheet" href="css/structure.css">
-    <link rel="stylesheet" href="css/connexion.css">
 
 
     <meta charset="UTF-8">
@@ -22,22 +22,44 @@
             
         </div>
         <div id="pract" class="array">
+
+
+{if $utilisateur->getIsConnected()}
+        <div id="pract" class="array">
             <div id="container">
-                <form action="">
+                <p>You are already logged in</p>
+                <form action="index.php" method="POST">
+
+                    <button type="submit" id="btn_register"><p>Déconnexion</p></button>
+                </form>
+            </div>
+        </div>
+{else}
+            <div id="container">
+                <form action="index.php?page=connexion" method="POST">
                     <label for="email"><p>Mail address</p></label>
-                    <input type="text" name="email" placeholder="exemple@de.bosh.com">
+                    <input type="text" name="login_email" placeholder="exemple@de.bosh.com">
             
                     <label for="password"><p>Password</p></label>
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="login_password" placeholder="Password">
+
+                    {if $wrong_password}
+                    <p style="color: rgb(121, 16, 16);">Invalid password</p>
+                    {/if}
+                    {if $unknown_email}
+                    <p style="color: rgb(121, 16, 16);">Unknown mail</p>
+                    {/if}
             
                     <button type="submit" id="btn_register"><p>Log in</p></button>
             
                     <hr>
+
             
-                    <div id="register">
+                    <div id="login">
                         <p>No account ? <a href="index.php?page=register"> Register</a></p> 
                     </div>
                 </form>
+{/if}
             </div>
         </div>
     </div>

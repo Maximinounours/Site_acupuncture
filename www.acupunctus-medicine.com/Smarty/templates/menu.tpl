@@ -6,27 +6,30 @@
                             <target=_ self></target> Home</a>
                     </li>
                     <li>
-                        <a href="index.php?page=connexion">
-                            <target=_ self></target> Connexion </a>
-                    </li>
-                    <li>
                         <a href="index.php?page=contact">
                             <target=_ self></target> About us </a>
                     </li>
                     <li>
-                            <a href="index.php?page=info">
+                            <a href="index.php?page=pageInfo">
                                 <target=_ self></target> Information </a>
                     </li>
 
+{if $utilisateur->getIsConnected()}
+<li>
+            <div id="container_name">
+                <p>{$utilisateur->_nom} {$utilisateur->_prenom}</p>
+                <form action="index.php" method="POST">
+                    <button type="submit" id="btn_deconnexion"><p>Déconnexion</p></button>
+                </form>
+            </div>
+</li>
+{else}
 
-                    <li style=" background-color: red; width: 100%;">
-                    <div id="info_utilisateur" >
-                        <p>Nom prénom</p>
-                    </div>
-
-                    <div><button>Déconnexion</button></div>
+                    <li>
+                        <a href="index.php?page=connexion">
+                            <target=_ self></target> Connexion </a>
                     </li>
-
+{/if}
 
                     <li>
                         <div id="image_logo">
