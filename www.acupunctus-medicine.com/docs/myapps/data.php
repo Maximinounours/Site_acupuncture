@@ -61,4 +61,12 @@ $DATA_caract_to_image = [
    	""=>"./images/blank.png"
 ];
 
+$DATA_patho_to_image = [
+    "Merveilleux vaisseaux" => "./images/merveilleuxVaisseaux.png",
+    "Zang / Fu" => "./images/coeur.png",
+    "Jing jin" => "./images/muscle.png",
+    "Voie luo" => "./images/Branche.png",
+    "Méridien" => "./images/meridien.png"
+];
+
 ?>

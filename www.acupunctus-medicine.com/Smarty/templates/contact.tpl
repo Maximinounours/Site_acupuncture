@@ -50,8 +50,8 @@
         <div id="touch">
             <h2 id="line1"> We'd love to chat </h2>
             <div id="iconeChat">
-                <a href="mailto:acuponctus.medicine@hotmail.fr"><img src="./images/icone_loupe.png" alt="mail"width="20px" height="20px" div="col1"/></a>
-                <a href="tel:+33667570683"><img src="./images/icone_loupe.png" alt="phone" width="20px" height="20px" div="col2"/></a>
+                <a href="mailto:acuponctus.medicine@hotmail.fr"><img src="./images/mail.png" alt="mail"width="20px" height="20px" div="col1"/></a>
+                <a href="tel:+33667570683"><img src="./images/phone.png" alt="phone" width="20px" height="20px" div="col2"/></a>
                 <a href="http://www.insta.fr"><img src="./images/icone_insta.png" alt="phone" width="20px" height="20px" div="col3"/></a>
             </div>
             <!-- Je n'arrive pas a les aligner
